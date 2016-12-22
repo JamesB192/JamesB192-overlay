@@ -47,7 +47,7 @@ src_configure() {
 		--prefix="${EPREFIX}/usr" \
 		$(use	ssl		&& echo "--enable-crypto") \
 		$(use	seccomp		&& echo "--enable-seccomp") \
-		$(use	refclock	&& echo "--refclock=all") \
+		$(use	refclock	&& echo "--refclock=all")
 }
 
 src_install() {
