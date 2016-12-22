@@ -42,7 +42,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	waf-utils_src_configure --nopyc --nopyo \
+	waf-utils_src_configure \
 		--prefix="${EPREFIX}/usr" \
 		$(use	ssl		&& echo "--enable-crypto") \
 		$(use	refclock	&& echo "--refclock=all")
