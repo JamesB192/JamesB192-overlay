@@ -39,7 +39,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local group_127=()
 
 #		$(use  ssl	&& echo "--enable-crypto") \ ## Replaced
 	waf-utils_src_configure \
