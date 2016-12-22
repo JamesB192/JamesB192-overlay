@@ -5,7 +5,6 @@ EAPI=6
 KEYWORDS="~amd64 ~x86"
 SRC_URI="ftp://ftp.ntpsec.org/pub/releases/ntpsec-0.9.3.tar.bz2"
 
-
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 inherit python-r1 waf-utils
@@ -17,15 +16,16 @@ LICENSE="ntp"
 SLOT="0"
 IUSE="ntpviz refclock ssl seccomp" #ionice
 
-RDEPEND="
+CDEPEND="
 sys-libs/libcap
  dev-python/psutil 
-ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
 ssl? ( dev-libs/openssl )
 seccomp? ( sys-libs/libseccomp )
 "
-
-DEPEND="${RDEPEND}
+RDEPEND="${CDEPEND}
+ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
+"
+DEPEND="${CDEPEND}
 app-text/asciidoc
 app-text/docbook-xsl-stylesheets
 sys-devel/bison
@@ -38,7 +38,6 @@ src_prepare() {
 
 src_configure() {
 
-#		$(use  ssl	&& echo "--enable-crypto") \ ## Replaced
 	waf-utils_src_configure \
 		--prefix="${EPREFIX}/usr" \
 		$(use_enable ssl crypto) \

@@ -7,7 +7,6 @@ inherit git-r3
 EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
 
 PYTHON_COMPAT=( python2_7 )
-#PYTHON_COMPAT=( python3_4 )
 PYTHON_REQ_USE='threads(+)'
 inherit python-r1 waf-utils user systemd
 
@@ -24,14 +23,10 @@ sys-libs/libcap
 ssl? ( dev-libs/openssl )
 seccomp? ( sys-libs/libseccomp )
 "
-
-RDEPEND="
-${CDEPEND}
+RDEPEND="${CDEPEND}
 ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
 "
-
-DEPEND="
-${CDEPEND}
+DEPEND="${CDEPEND}
 app-text/asciidoc
 app-text/docbook-xsl-stylesheets
 sys-devel/bison
@@ -49,7 +44,6 @@ pkg_setup() {
 
 src_configure() {
 
-#		$(use  ssl	&& echo "--enable-crypto") \ ## Replaced
 	waf-utils_src_configure --nopyc --nopyo \
 		--prefix="${EPREFIX}/usr" \
 		$(use	ssl		&& echo "--enable-crypto") \
