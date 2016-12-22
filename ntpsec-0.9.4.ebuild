@@ -8,7 +8,7 @@ S="${WORKDIR}/ntpsec"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
-inherit python-r1 waf-utils
+inherit python-r1 waf-utils user systemd
 
 DESCRIPTION="The NTP reference implementation, refactored"
 HOMEPAGE="https://www.ntpsec.org/"
@@ -37,17 +37,32 @@ src_prepare() {
 	eapply_user
 }
 
-src_configure() {
+pkg_setup() {
+	enewgroup ntp 123
+	enewuser ntp 123 -1 /dev/null ntp
+}
 
-#		$(use  ssl	&& echo "--enable-crypto") \ ## Replaced
+src_configure() {
 	waf-utils_src_configure --nopyc --nopyo \
 		--prefix="${EPREFIX}/usr" \
-		$(use_enable ssl crypto) \
-		$(use_enable seccomp seccomp) \
-		$(use  refclock	&& echo "--refclock=all")
+		$(use	ssl		&& echo "--enable-crypto") \
+		$(use	seccomp		&& echo "--enable-seccomp") \
+		$(use	refclock	&& echo "--refclock=all") \
 }
 
 src_install() {
 	waf-utils_src_install
-	mv -v ${D}/usr/{,share/}man
+	mv -v "${ED}/usr/"{,share/}man
+	if use ntpviz ; then
+		dosbin	"${S}/contrib/cpu-temp-log" \
+			"${S}/contrib/gps-log" \
+			"${S}/contrib/smartctl-temp-log" \
+			"${S}/contrib/temper-temp-log" \
+			"${S}/contrib/zone-temp-log"
+	else
+		dorm "${ED}/bin/ntpviz" "${ED}/share/man/man1/ntpviz.1.bz2"
+	fi
+	dodoc "${S}/contrib/ntp.conf.basic.sample" "${S}/contrib/ntp.conf.log.sample"
+	dosbin "${S}/attic/ntpdate"
+	systemd_newunit "${files}/ntpd.service"
 }
