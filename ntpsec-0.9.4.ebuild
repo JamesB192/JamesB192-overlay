@@ -54,6 +54,7 @@ src_install() {
 	waf-utils_src_install
 	mv -v "${ED}/usr/"{,share/}man
 	if use ntpviz ; then
+		elog "ntpviz: placeholder"
 	else
 		dorm "${ED}/bin/ntpviz" "${ED}/share/man/man1/ntpviz.1.bz2"
 	fi
