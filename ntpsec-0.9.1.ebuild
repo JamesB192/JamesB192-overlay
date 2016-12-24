@@ -62,5 +62,5 @@ src_install() {
 	fi
 	dodoc "${S}/contrib/ntp.conf.basic.sample" "${S}/contrib/ntp.conf.log.sample"
 	dosbin "${S}/attic/ntpdate"
-	systemd_newunit "${files}/ntpd.service"
+	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
 }
