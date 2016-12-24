@@ -58,11 +58,10 @@ src_install() {
 			"${S}/contrib/gps-log" \
 			"${S}/contrib/smartctl-temp-log" \
 			"${S}/contrib/temper-temp-log" \
-			"${S}/contrib/zone-temp-log"
+			"${S}/contrib/pi-temp-log"
 	else
 		dorm "${ED}/bin/ntpviz" "${ED}/share/man/man1/ntpviz.1.bz2"
 	fi
-	dodoc "${S}/contrib/ntp.conf.basic.sample" "${S}/contrib/ntp.conf.log.sample"
 	dosbin "${S}/attic/ntpdate"
 	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
 }
