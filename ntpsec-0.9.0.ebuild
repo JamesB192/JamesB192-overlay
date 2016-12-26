@@ -45,6 +45,7 @@ pkg_setup() {
 src_configure() {
 	waf-utils_src_configure \
 		--prefix="${EPREFIX}/usr" \
+		$(use	doc		&& echo "--enable-doc") \
 		$(use	refclock	&& echo "--refclock=all")
 }
 

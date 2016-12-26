@@ -45,6 +45,7 @@ pkg_setup() {
 src_configure() {
 	waf-utils_src_configure --nopyc --nopyo \
 		--prefix="${EPREFIX}/usr" \
+		$(use	doc		&& echo "--enable-doc") \
 		$(use	ssl		&& echo "--enable-crypto") \
 		$(use	seccomp		&& echo "--enable-seccomp") \
 		$(use	refclock	&& echo "--refclock=all")
