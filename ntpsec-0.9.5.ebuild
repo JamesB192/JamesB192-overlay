@@ -3,6 +3,7 @@
 # $Header: $
 EAPI=6
 SRC_URI="ftp://ftp.ntpsec.org/pub/releases/ntpsec-0.9.5.tar.gz"
+RESTRICT="mirror"
 KEYWORDS="-amd64 -x86"
 S="${WORKDIR}"
 

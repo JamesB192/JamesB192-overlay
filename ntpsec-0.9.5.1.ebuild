@@ -4,6 +4,7 @@
 EAPI=6
 KEYWORDS="-amd64 -x86"
 SRC_URI="ftp://ftp.ntpsec.org/pub/releases/ntpsec-0.9.5-1.tar.gz"
+RESTRICT="mirror"
 S="${WORKDIR}/ntpsec-0.9.5-1"
 
 PYTHON_COMPAT=( python2_7 )
