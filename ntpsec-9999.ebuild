@@ -13,9 +13,15 @@ inherit python-r1 waf-utils user systemd
 DESCRIPTION="The NTP reference implementation, refactored"
 HOMEPAGE="https://www.ntpsec.org/"
 
+NTPSEC_REFCLOCK=(
+	oncore trimble truetime gpsd jjy generic spectracom acts
+	shm pps hpgps zyfer arbiter nmea neoclock jupiter dumbclock
+	local magnavox)
+IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
+
 LICENSE="ntp"
 SLOT="0"
-IUSE="ntpviz refclock ssl seccomp" #ionice
+IUSE="doc ntpviz ${IUSE_NTPSEC_REFCLOCK} ssl seccomp" #ionice
 
 CDEPEND="
 sys-libs/libcap
@@ -27,8 +33,7 @@ RDEPEND="${CDEPEND}
 ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
 "
 DEPEND="${CDEPEND}
-app-text/asciidoc
-app-text/docbook-xsl-stylesheets
+doc? ( app-text/asciidoc app-text/docbook-xsl-stylesheets )
 sys-devel/bison
 "
 
@@ -43,12 +48,24 @@ pkg_setup() {
 }
 
 src_configure() {
+	local string_127=""
+	local rclocks="";
+	local refclock
+	for refclock in ${NTPSEC_REFCLOCK[@]} ; do
+#		$(use  rclock_${rclock} && group_127+="${refclock}," )
+#		group_127+= ( use rclock_${refclock} ${refclock} )
+		if use  rclock_${refclock} ; then
+#			string_127+="$refclock,"
+			$rclocks="--refclock=`echo ${string_127}|sed 's|,$||'`"
+		fi
+	done
+#	elog "refclocks: `echo ${string_127}|sed 's|,$||'`"
 
-	waf-utils_src_configure --nopyc --nopyo \
+	waf-utils_src_configure --nopyc --nopyo ${rclocks} \
 		--prefix="${EPREFIX}/usr" \
 		$(use	ssl		&& echo "--enable-crypto") \
 		$(use	seccomp		&& echo "--enable-seccomp") \
-		$(use	refclock	&& echo "--refclock=all")
+		$(use	doc		&& echo "--enable-doc")
 }
 
 src_install() {
