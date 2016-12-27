@@ -50,19 +50,16 @@ pkg_setup() {
 src_configure() {
 	local string_127=""
 	local rclocks="";
-	local refclock
+	local CLOCKSTRING=""
 	for refclock in ${NTPSEC_REFCLOCK[@]} ; do
-#		$(use  rclock_${rclock} && group_127+="${refclock}," )
-#		group_127+= ( use rclock_${refclock} ${refclock} )
 		if use  rclock_${refclock} ; then
-#			string_127+="$refclock,"
-			$rclocks="--refclock=`echo ${string_127}|sed 's|,$||'`"
+			string_127+="$refclock,"
+			CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
 		fi
 	done
-#	elog "refclocks: `echo ${string_127}|sed 's|,$||'`"
 
-	waf-utils_src_configure --nopyc --nopyo ${rclocks} \
-		--prefix="${EPREFIX}/usr" \
+	elog "refclocks: ${CLOCKSTRING}"
+	waf-utils_src_configure --nopyc --nopyo --refclock="${CLOCKSTRING}" \
 		$(use	ssl		&& echo "--enable-crypto") \
 		$(use	seccomp		&& echo "--enable-seccomp") \
 		$(use	doc		&& echo "--enable-doc")
