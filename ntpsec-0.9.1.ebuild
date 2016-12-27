@@ -15,7 +15,7 @@ HOMEPAGE="https://www.ntpsec.org/"
 
 LICENSE="ntp"
 SLOT="0"
-IUSE="ntpviz refclock ssl seccomp" #ionice
+IUSE="doc ntpviz refclock ssl seccomp" #ionice
 
 CDEPEND="
 sys-libs/libcap
