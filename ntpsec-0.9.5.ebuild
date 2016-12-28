@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 EAPI=6
-SRC_URI="ftp://ftp.ntpsec.org/pub/releases/ntpsec-0.9.5.tar.gz"
+KEYWORDS="~amd64 -x86"
+SRC_URI="ftp://ftp.ntpsec.org/pub/releases/ntpsec-0.9.5-1.tar.gz"
 RESTRICT="mirror"
-KEYWORDS="-amd64 -x86"
-S="${WORKDIR}"
+S="${WORKDIR}/ntpsec-0.9.5-1"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
@@ -14,23 +14,29 @@ inherit python-r1 waf-utils user systemd
 DESCRIPTION="The NTP reference implementation, refactored"
 HOMEPAGE="https://www.ntpsec.org/"
 
+NTPSEC_REFCLOCK=(
+	oncore trimble truetime gpsd jjy generic spectracom acts
+	shm pps hpgps zyfer arbiter nmea neoclock jupiter dumbclock
+	local magnavox )
+IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
+
 LICENSE="ntp"
 SLOT="0"
-IUSE="doc ntpviz refclock ssl seccomp" #ionice
+IUSE="doc ntpviz ${IUSE_NTPSEC_REFCLOCK} ssl seccomp" #ionice
 
 CDEPEND="
-sys-libs/libcap
- dev-python/psutil 
-ssl? ( dev-libs/openssl )
-seccomp? ( sys-libs/libseccomp )
+	sys-libs/libcap
+	 dev-python/psutil 
+	ssl? ( dev-libs/openssl )
+	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="${CDEPEND}
-ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
+	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
 "
 DEPEND="${CDEPEND}
-app-text/asciidoc
-app-text/docbook-xsl-stylesheets
-sys-devel/bison
+	app-text/asciidoc
+	app-text/docbook-xsl-stylesheets
+	sys-devel/bison
 "
 
 src_prepare() {
@@ -44,7 +50,19 @@ pkg_setup() {
 }
 
 src_configure() {
-	waf-utils_src_configure --nopyc --nopyo \
+	local string_127=""
+	local rclocks="";
+	local CLOCKSTRING=""
+	for refclock in ${NTPSEC_REFCLOCK[@]} ; do
+		if use  rclock_${refclock} ; then
+			string_127+="$refclock,"
+			CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
+		fi
+	done
+
+	sed "s|-1||" -i "${S}/VERSION"
+	elog "refclocks: ${CLOCKSTRING}"
+	waf-utils_src_configure --nopyc --nopyo --refclock="${CLOCKSTRING}" \
 		--prefix="${EPREFIX}/usr" \
 		$(use	doc		&& echo "--enable-doc") \
 		$(use	ssl		&& echo "--enable-crypto") \
@@ -67,3 +85,4 @@ src_install() {
 	dosbin "${S}/attic/ntpdate"
 	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
 }
+
