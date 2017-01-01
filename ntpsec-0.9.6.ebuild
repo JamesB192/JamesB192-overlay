@@ -21,7 +21,7 @@ IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
 LICENSE="ntp"
 SLOT="0"
-IUSE="doc ntpviz ${IUSE_NTPSEC_REFCLOCK} ssl seccomp" #ionice
+IUSE="doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} smba seccomp smear ssl" #ionice
 
 # net-misc/pps-tools oncore,pps,jupiter,magnavox
 CDEPEND="
@@ -66,7 +66,12 @@ src_configure() {
 
 	waf-utils_src_configure --nopyc --nopyo --refclock="${CLOCKSTRING}" \
 		$(use	doc		&& echo "--enable-doc") \
+		$(use	early		&& echo "--enable-early-droproot") \
+		$(use	gdb		&& echo "--enable-debug-gdb") \
+		$(use	nist		&& echo "--enable-lockclock") \
+		$(use	samba		&& echo "--enable-mssntp") \
 		$(use	seccomp		&& echo "--enable-seccomp") \
+		$(use	smear		&& echo "--enable-leap-smear") \
 		$(use	ssl		&& echo "--enable-crypto") \
 
 }
