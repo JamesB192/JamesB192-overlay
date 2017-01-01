@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 EAPI=6
-KEYWORDS="~amd64 -x86"
+KEYWORDS="~amd64 ~x86"
 SRC_URI="ftp://ftp.ntpsec.org/pub/releases/ntpsec-0.9.6.tar.gz"
 RESTRICT="mirror"
 
@@ -23,9 +23,10 @@ LICENSE="ntp"
 SLOT="0"
 IUSE="doc ntpviz ${IUSE_NTPSEC_REFCLOCK} ssl seccomp" #ionice
 
+# net-misc/pps-tools oncore,pps,jupiter,magnavox
 CDEPEND="
 	sys-libs/libcap
-	 dev-python/psutil 
+	 dev-python/psutil
 	ssl? ( dev-libs/openssl )
 	seccomp? ( sys-libs/libseccomp )
 "
@@ -36,6 +37,10 @@ DEPEND="${CDEPEND}
 	app-text/asciidoc
 	app-text/docbook-xsl-stylesheets
 	sys-devel/bison
+	rclock_jupiter? ( net-misc/pps-tools }
+	rclock_magnavox? ( net-misc/pps-tools }
+	rclock_oncore? ( net-misc/pps-tools }
+	rclock_pps? ( net-misc/pps-tools }
 "
 
 src_prepare() {
@@ -55,16 +60,15 @@ src_configure() {
 	for refclock in ${NTPSEC_REFCLOCK[@]} ; do
 		if use  rclock_${refclock} ; then
 			string_127+="$refclock,"
-			CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
 		fi
 	done
+	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
 
-#	elog "refclocks: ${CLOCKSTRING}"
 	waf-utils_src_configure --nopyc --nopyo --refclock="${CLOCKSTRING}" \
-		--prefix="${EPREFIX}/usr" \
 		$(use	doc		&& echo "--enable-doc") \
+		$(use	seccomp		&& echo "--enable-seccomp") \
 		$(use	ssl		&& echo "--enable-crypto") \
-		$(use	seccomp		&& echo "--enable-seccomp")
+
 }
 
 src_install() {
@@ -76,10 +80,8 @@ src_install() {
 			"${S}/contrib/smartctl-temp-log" \
 			"${S}/contrib/temper-temp-log" \
 			"${S}/contrib/zone-temp-log"
-	else
-		dorm "${ED}/bin/ntpviz" "${ED}/share/man/man1/ntpviz.1.bz2"
 	fi
-	dosbin "${S}/attic/ntpdate"
-	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
+	dodoc "${S}/contrib/ntp.conf.basic.sample" "${S}/contrib/ntp.conf.log.sample"
+	systemd_newunit "${S}/etc/ntpd.service" ntpd.service
+	newconfd "${S}"/etc/ntpd.confd ntpd
 }
-

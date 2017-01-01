@@ -23,18 +23,24 @@ LICENSE="ntp"
 SLOT="0"
 IUSE="doc ntpviz ${IUSE_NTPSEC_REFCLOCK} ssl seccomp" #ionice
 
+# net-misc/pps-tools oncore,pps,jupiter,magnavox
 CDEPEND="
-sys-libs/libcap
- dev-python/psutil 
-ssl? ( dev-libs/openssl )
-seccomp? ( sys-libs/libseccomp )
+	sys-libs/libcap
+	 dev-python/psutil 
+	ssl? ( dev-libs/openssl )
+	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="${CDEPEND}
-ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
+	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
 "
 DEPEND="${CDEPEND}
-doc? ( app-text/asciidoc app-text/docbook-xsl-stylesheets )
-sys-devel/bison
+	app-text/asciidoc
+	app-text/docbook-xsl-stylesheets
+	sys-devel/bison
+	rclock_jupiter? ( net-misc/pps-tools }
+	rclock_magnavox? ( net-misc/pps-tools }
+	rclock_oncore? ( net-misc/pps-tools }
+	rclock_pps? ( net-misc/pps-tools }
 "
 
 src_prepare() {
@@ -54,15 +60,15 @@ src_configure() {
 	for refclock in ${NTPSEC_REFCLOCK[@]} ; do
 		if use  rclock_${refclock} ; then
 			string_127+="$refclock,"
-			CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
 		fi
 	done
+	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
 
-	elog "refclocks: ${CLOCKSTRING}"
 	waf-utils_src_configure --nopyc --nopyo --refclock="${CLOCKSTRING}" \
-		$(use	ssl		&& echo "--enable-crypto") \
+		$(use	doc		&& echo "--enable-doc") \
 		$(use	seccomp		&& echo "--enable-seccomp") \
-		$(use	doc		&& echo "--enable-doc")
+		$(use	ssl		&& echo "--enable-crypto") \
+
 }
 
 src_install() {
@@ -74,10 +80,8 @@ src_install() {
 			"${S}/contrib/smartctl-temp-log" \
 			"${S}/contrib/temper-temp-log" \
 			"${S}/contrib/zone-temp-log"
-	else
-		rm "${ED}/bin/ntpviz" "${ED}/share/man/man1/ntpviz.1.bz2"
 	fi
 	dodoc "${S}/contrib/ntp.conf.basic.sample" "${S}/contrib/ntp.conf.log.sample"
-	dosbin "${S}/attic/ntpdate"
-	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
+	systemd_newunit "${S}/etc/ntpd.service" ntpd.service
+	newconfd "${S}"/etc/ntpd.confd ntpd
 }
