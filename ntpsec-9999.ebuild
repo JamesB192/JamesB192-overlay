@@ -83,5 +83,9 @@ src_install() {
 	fi
 	dodoc "${S}/contrib/ntp.conf.basic.sample" "${S}/contrib/ntp.conf.log.sample"
 	systemd_newunit "${S}/etc/ntpd.service" ntpd.service
+	mv -v "${S}/etc/logrotate-config.ntpd" "${ED}/etc/logrotate.d/ntpd"
+	mv -v "${S}/etc/ntpconf.d/" "${ED}/etc/"
+	mv -v "${ED}/etc/ntpconf.d/example.conf" "${ED}/etc/ntp.conf"
+	sed "s|includefile |includefile ntpconf.d/|" -i "${ED}/etc/ntp.conf"
 	newconfd "${S}"/etc/ntpd.confd ntpd
 }
