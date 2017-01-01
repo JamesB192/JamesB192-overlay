@@ -83,6 +83,7 @@ src_install() {
 	fi
 	dodoc "${S}/contrib/ntp.conf.basic.sample" "${S}/contrib/ntp.conf.log.sample"
 	systemd_newunit "${S}/etc/ntpd.service" ntpd.service
+	mkdir -pv "${ED}/etc/"{logrotate,ntpconf}.d
 	cp -v "${S}/etc/logrotate-config.ntpd" "${ED}/etc/logrotate.d/ntpd"
 	cp -Rv "${S}/etc/ntpconf.d/" "${ED}/etc/"
 	mv -v "${ED}/etc/ntpconf.d/example.conf" "${ED}/etc/ntp.conf"
