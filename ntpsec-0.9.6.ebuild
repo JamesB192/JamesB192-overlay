@@ -21,7 +21,7 @@ IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
 LICENSE="ntp"
 SLOT="0"
-IUSE="doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} smba seccomp smear ssl" #ionice
+IUSE="doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} samba seccomp smear ssl" #ionice
 
 # net-misc/pps-tools oncore,pps,jupiter,magnavox
 CDEPEND="
