@@ -37,10 +37,10 @@ DEPEND="${CDEPEND}
 	app-text/asciidoc
 	app-text/docbook-xsl-stylesheets
 	sys-devel/bison
-	rclock_jupiter? ( net-misc/pps-tools }
-	rclock_magnavox? ( net-misc/pps-tools }
-	rclock_oncore? ( net-misc/pps-tools }
-	rclock_pps? ( net-misc/pps-tools }
+	rclock_jupiter? ( net-misc/pps-tools )
+	rclock_magnavox? ( net-misc/pps-tools )
+	rclock_oncore? ( net-misc/pps-tools )
+	rclock_pps? ( net-misc/pps-tools )
 "
 
 src_prepare() {
