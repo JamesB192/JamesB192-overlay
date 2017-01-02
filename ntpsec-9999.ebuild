@@ -93,5 +93,4 @@ src_install() {
 	cp -Rv "${S}/etc/ntp-conf.d/" "${ED}/etc/"
 	mv -v "${ED}/etc/ntp-conf.d/example.conf" "${ED}/etc/ntp.conf"
 	sed "s|includefile |includefile ntp-conf.d/|" -i "${ED}/etc/ntp.conf"
-	newconfd "${S}"/etc/ntpd.confd ntpd
 }
