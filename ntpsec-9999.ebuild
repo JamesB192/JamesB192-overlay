@@ -81,7 +81,6 @@ src_install() {
 	mv -v "${ED}/usr/"{,share/}man
 	if use ntpviz ; then
 		dosbin	"${S}/contrib/cpu-temp-log" \
-			"${S}/contrib/gps-log" \
 			"${S}/contrib/smartctl-temp-log" \
 			"${S}/contrib/temper-temp-log" \
 			"${S}/contrib/zone-temp-log"
