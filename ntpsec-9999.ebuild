@@ -81,7 +81,6 @@ src_install() {
 	mv -v "${ED}/usr/"{,share/}man
 	if use ntpviz ; then
 		dosbin	"${S}/contrib/cpu-temp-log" \
-			"${S}/contrib/gps-log" \
 			"${S}/contrib/smartctl-temp-log" \
 			"${S}/contrib/temper-temp-log" \
 			"${S}/contrib/zone-temp-log"
@@ -93,5 +92,4 @@ src_install() {
 	cp -Rv "${S}/etc/ntp-conf.d/" "${ED}/etc/"
 	mv -v "${ED}/etc/ntp-conf.d/example.conf" "${ED}/etc/ntp.conf"
 	sed "s|includefile |includefile ntp-conf.d/|" -i "${ED}/etc/ntp.conf"
-	newconfd "${S}"/etc/ntpd.confd ntpd
 }
