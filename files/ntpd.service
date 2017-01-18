@@ -1,12 +1,15 @@
 [Unit]
 Description=Network Time Service
-After=ntpdate.service sntp.service
+After=network.target nss-lookup.target
 Conflicts=systemd-timesyncd.service
 
 [Service]
-ExecStart=/usr/sbin/ntpd -g -n
+Type=forking
 PrivateTmp=true
-Capabilities=CAP_IPC_LOCK
+EnvironmentFile=-/etc/conf.d/ntpd
+ExecStart=/usr/sbin/ntpd -g -n ${NTP_OPTS}
+Restart=always
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
