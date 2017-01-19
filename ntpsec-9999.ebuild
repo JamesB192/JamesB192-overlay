@@ -29,6 +29,7 @@ CDEPEND="
 	 dev-python/psutil 
 	ssl? ( dev-libs/openssl )
 	seccomp? ( sys-libs/libseccomp )
+	dev-libs/libsodium
 "
 RDEPEND="${CDEPEND}
 	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )

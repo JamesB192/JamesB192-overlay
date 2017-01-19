@@ -6,9 +6,11 @@ KEYWORDS="~amd64 ~x86"
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
+	BDEPEND="dev-libs/libsodium"
 else
 	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
 	RESTRICT="mirror"
+	BDEPEND=""
 fi
 
 PYTHON_COMPAT=( python2_7 )
@@ -30,6 +32,7 @@ IUSE="doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} samba seccomp smear ssl"
 
 # net-misc/pps-tools oncore,pps,jupiter,magnavox
 CDEPEND="
+	${BDEPEND}
 	sys-libs/libcap
 	 dev-python/psutil 
 	ssl? ( dev-libs/openssl )
