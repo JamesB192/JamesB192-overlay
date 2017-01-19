@@ -6,8 +6,8 @@ Conflicts=systemd-timesyncd.service
 [Service]
 Type=forking
 PrivateTmp=true
-EnvironmentFile=-/etc/conf.d/ntpd
-ExecStart=/usr/sbin/ntpd -g -n ${NTP_OPTS}
+EnvironmentFile=-/etc/conf.d/ntp
+ExecStart=/usr/sbin/ntpd ${NTPD_OPTS}
 Restart=always
 RemainAfterExit=yes
 
