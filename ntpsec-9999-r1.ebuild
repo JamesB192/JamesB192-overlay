@@ -98,7 +98,7 @@ src_install() {
 	fi
 
 
-	systemd_newunit "${FILESDIR}/etc/ntpd.service" ntpd.service
+	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
 	newinitd "${FILESDIR}/ntpd.rc-r1" "ntp"
 	newconfd "${FILESDIR}/ntpd.confd" "ntp"
 	mkdir "${ED}/etc/systemd/system/"
