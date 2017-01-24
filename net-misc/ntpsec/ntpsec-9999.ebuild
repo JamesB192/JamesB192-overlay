@@ -28,7 +28,7 @@ IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
 LICENSE="ntp"
 SLOT="0"
-IUSE="debug doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} samba seccomp smear ssl tests" #ionice
+IUSE="debug doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} samba seccomp smear tests" #ionice
 
 # net-misc/pps-tools oncore,pps,jupiter,magnavox
 CDEPEND="
@@ -80,7 +80,6 @@ src_configure() {
 		$(use	samba		&& echo "--enable-mssntp") \
 		$(use	seccomp		&& echo "--enable-seccomp") \
 		$(use	smear		&& echo "--enable-leap-smear") \
-		$(use	ssl		&& echo "--enable-crypto") \
 		$(use	tests		&& echo "--alltests") \
 		$(use_enable debug debug) \
 
