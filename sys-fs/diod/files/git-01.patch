@@ -1,0 +1,31 @@
+diff --git a/utils/Makefile.am b/utils/Makefile.am
+index 169b6c4..89cf61c 100644
+--- a/utils/Makefile.am
++++ b/utils/Makefile.am
+@@ -3,7 +3,7 @@ AM_CFLAGS = @GCCWARN@
+ AM_CPPFLAGS = \
+ 	-I../libnpfs -I../liblsd -I../libdiod -I../libnpclient
+ 
+-sbin_PROGRAMS = diodmount diodcat dtop diodload diodls diodshowmount dioddate
++sbin_PROGRAMS = diodmount diodcat diodload diodls diodshowmount dioddate
+ 
+ common_ldadd = \
+ 	$(top_builddir)/libdiod/libdiod.a \
+@@ -23,9 +23,6 @@ diodmount_SOURCES = diodmount.c $(common_sources)
+ diodcat_LDADD = $(common_ldadd)
+ diodcat_SOURCES = diodcat.c $(common_sources)
+ 
+-dtop_LDADD = $(common_ldadd)
+-dtop_SOURCES = dtop.c sample.c sample.h
+-
+ diodload_LDADD = $(common_ldadd)
+ diodload_SOURCES = diodload.c $(common_sources)
+ 
+@@ -41,7 +38,6 @@ dioddate_SOURCES = dioddate.c $(common_sources)
+ man8_MANS = \
+ 	diodmount.8 \
+ 	diodcat.8 \
+-	dtop.8 \
+ 	diodload.8 \
+ 	diodls.8 \
+ 	diodshowmount.8 \
