@@ -35,7 +35,7 @@ CDEPEND="
 	${BDEPEND}
 	sys-libs/libcap
 	 dev-python/psutil 
-	ssl? ( dev-libs/openssl )
+	dev-libs/openssl
 	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="${CDEPEND}
@@ -94,7 +94,8 @@ src_install() {
 			"${S}/contrib/temper-temp-log" \
 			"${S}/contrib/zone-temp-log"
 		if [[ ${PV} == *0.9.6* ]]; then
-			dosbin "${S}/contrib/gps-log"
+			dosbin "${S}/contrib/gps-log" \
+				"${S}/contrib/temp-log"
 		fi
 	fi
 
