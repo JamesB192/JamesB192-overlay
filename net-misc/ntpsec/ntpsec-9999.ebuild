@@ -35,7 +35,7 @@ CDEPEND="
 	${BDEPEND}
 	sys-libs/libcap
 	 dev-python/psutil
-	dev-libs/openssl
+	dev-libs/openssl:*
 	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="${CDEPEND}
@@ -71,7 +71,6 @@ src_configure() {
 		fi
 	done
 	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
-
 	waf-utils_src_configure --nopyc --nopyo --refclock="${CLOCKSTRING}" \
 		$(use	doc		&& echo "--enable-doc") \
 		$(use	early		&& echo "--enable-early-droproot") \
@@ -81,8 +80,7 @@ src_configure() {
 		$(use	seccomp		&& echo "--enable-seccomp") \
 		$(use	smear		&& echo "--enable-leap-smear") \
 		$(use	tests		&& echo "--alltests") \
-		$(use_enable debug debug) \
-
+		$(use_enable debug debug)
 }
 
 src_install() {
@@ -98,8 +96,6 @@ src_install() {
 				"${S}/contrib/temp-log"
 		fi
 	fi
-
-
 	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
 	newinitd "${FILESDIR}/ntpd.rc-r1" "ntp"
 	newconfd "${FILESDIR}/ntpd.confd" "ntp"
