@@ -21,8 +21,8 @@ DESCRIPTION="The NTP reference implementation, refactored"
 HOMEPAGE="https://www.ntpsec.org/"
 
 NTPSEC_REFCLOCK=(
-	oncore trimble truetime gpsd jjy generic spectracom acts
-	shm pps hpgps zyfer arbiter nmea neoclock jupiter dumbclock
+	oncore trimble truetime gpsd jjy generic spectracom 
+	shm pps hpgps zyfer arbiter nmea neoclock jupiter modem
 	local magnavox)
 IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 

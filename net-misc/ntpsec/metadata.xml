@@ -16,6 +16,7 @@
     <flag name="ntpviz">(meta) Pull in ntpviz dependencies.</flag>
 
     <flag name="rclock_arbiter">Refclock support for Arbiter 1088A/B GPS Receiver</flag>
+    <flag name="rclock_dumbclock">Refclock support for Dumb Clock</flag>
     <flag name="rclock_generic">Refclock support for Generic Reference Driver (Parse)</flag>
     <flag name="rclock_gpsd">Refclock support for GPSD NG client protocol</flag>
     <flag name="rclock_hpgps">Refclock support for Hewlett Packard 58503A GPS Receiver</flag>
