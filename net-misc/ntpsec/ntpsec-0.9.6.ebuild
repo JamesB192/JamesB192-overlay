@@ -26,7 +26,7 @@ NTPSEC_REFCLOCK=(
 	local magnavox)
 IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
-LICENSE="ntp"
+LICENSE="NTP"
 SLOT="0"
 IUSE="debug doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} samba seccomp smear ssl tests" #ionice
 

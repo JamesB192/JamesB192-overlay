@@ -21,12 +21,12 @@ DESCRIPTION="The NTP reference implementation, refactored"
 HOMEPAGE="https://www.ntpsec.org/"
 
 NTPSEC_REFCLOCK=(
-	oncore trimble truetime gpsd jjy generic spectracom 
+	oncore trimble truetime gpsd jjy generic spectracom
 	shm pps hpgps zyfer arbiter nmea neoclock jupiter modem
 	local magnavox)
 IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
-LICENSE="ntp"
+LICENSE="NTP MIT BSD2 BSD3 CC4"
 SLOT="0"
 IUSE="debug doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} samba seccomp smear tests" #ionice
 
