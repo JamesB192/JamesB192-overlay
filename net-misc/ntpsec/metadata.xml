@@ -10,7 +10,7 @@
   </longdescription>
   <use>
     <flag name="doc">Build NTP documentation</flag>
-    <flag name="earlydrop">Droproot earlier (breaks SHM and NetBSD)./flag>
+    <flag name="earlydrop">Droproot earlier (breaks SHM and NetBSD).</flag>
     <flag name="gdb">Enable GDB debugging symbols</flag>
     <flag name="nist">Enable NIST lockclock scheme.</flag>
     <flag name="ntpviz">(meta) Pull in ntpviz dependencies.</flag>
