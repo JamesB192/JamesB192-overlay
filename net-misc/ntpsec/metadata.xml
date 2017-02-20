@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>JamesB.fe80@gmail.com</email>
+    <name>JamesB192</name>
+  </maintainer>
+  <longdescription>
+    A more secure refactor of the reference NTP implementation
+  </longdescription>
+  <use>
+    <flag name="">
+    </flag>
+    <flag name="">
+    </flag>
+    <flag name="">
+    </flag>
+    <flag name="">
+    </flag>
+    <flag name="">
+    </flag>
+    <flag name="">
+    </flag>
+    <flag name="">
+    </flag>
+    <flag name="">
+    </flag>
+    <flag name="">
+    </flag>
+    <flag name="">
+    </flag>
+    <flag name="">
+    </flag>
+    <flag name="">
+    </flag>
+    <flag name="tests">
+      build and run tests
+    </flag>
+  </use>
+</pkgmetadata>

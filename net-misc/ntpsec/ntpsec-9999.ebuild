@@ -34,7 +34,7 @@ IUSE="debug doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} samba seccomp smea
 CDEPEND="
 	${BDEPEND}
 	sys-libs/libcap
-	 dev-python/psutil 
+	 dev-python/psutil
 	dev-libs/openssl
 	seccomp? ( sys-libs/libseccomp )
 "
