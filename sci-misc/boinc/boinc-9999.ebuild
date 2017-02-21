@@ -5,9 +5,7 @@
 EAPI=6
 KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
-WX_GTK_VER=3.0
-
-inherit autotools eutils linux-info systemd user versionator wxwidgets git-r3
+inherit autotools eutils linux-info systemd user versionator git-r3
 
 MY_PV=$(get_version_component_range 1-2)
 
@@ -16,13 +14,11 @@ EGIT_REPO_URI="https://github.com/BOINC/boinc.git"
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="http://boinc.ssl.berkeley.edu/"
-#SRC_URI="https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz
-#	X? ( http://boinc.berkeley.edu/logo/boinc_glossy2_512_F.tif -> ${PN}.tif )"
 RESTRICT="mirror"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="X cuda curl_ssl_libressl +curl_ssl_openssl static-libs"
+IUSE="cuda curl_ssl_libressl +curl_ssl_openssl static-libs"
 
 REQUIRED_USE="^^ ( curl_ssl_libressl curl_ssl_openssl ) "
 
@@ -39,32 +35,12 @@ RDEPEND="
 		>=dev-util/nvidia-cuda-toolkit-2.1
 		>=x11-drivers/nvidia-drivers-180.22
 	)
-	X? (
-		dev-db/sqlite:3
-		media-libs/freeglut
-		virtual/jpeg:0=
-		x11-libs/gtk+:2
-		>=x11-libs/libnotify-0.7
-		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit]
-	)
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	app-text/docbook-xml-dtd:4.4
 	app-text/docbook2X
-	X? (
-		|| ( media-gfx/imagemagick[png,tiff]
-			media-gfx/graphicsmagick[imagemagick,png,tiff]
-		)
-	)
 "
-
-PATCHES=(
-	# >=x11-libs/wxGTK-3.0.2.0-r3 has webview removed, bug 587462
-#	"${FILESDIR}"/fix_webview.patch
-)
-
-#S="${WORKDIR}/${PN}-client_release-${MY_PV}"
 
 pkg_setup() {
 	# Bug 578750
@@ -96,8 +72,6 @@ src_prepare() {
 	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
 
 	eautoreconf
-
-	use X && need-wxwidgets unicode
 }
 
 src_configure() {
@@ -108,29 +82,12 @@ src_configure() {
 		--enable-unicode \
 		--with-ssl \
 		--without-x --disable-manager --without-wxdir
-#		$(use_with X x) \
-#		$(use_enable X manager) \
-#		$(usex X --with-wx-config="${WX_CONFIG}" --without-wxdir)
 }
 
 src_install() {
 	default
 
 	keepdir /var/lib/${PN}
-
-	if use X; then
-		# Create new icons. bug 593362
-		local s SIZES=(16 22 24 32 36 48 64 72 96 128 192 256)
-		for s in "${SIZES[@]}"; do
-			convert "${DISTDIR}"/${PN}.tif -resize ${s}x${s} "${WORKDIR}"/boinc_${s}.png || die
-			newicon -s $s "${WORKDIR}"/boinc_${s}.png boinc.png
-		done
-		make_desktop_entry boincmgr "${PN}" "${PN}" "Math;Science" "Path=/var/lib/${PN}"
-
-		# Rename the desktop file to boincmgr.desktop to (hot)fix bug 599910
-		mv "${ED%/}"/usr/share/applications/boincmgr{-${PN},}.desktop || \
-			die "Failed to rename desktop file"
-	fi
 
 	# cleanup cruft
 	rm -rf "${ED%/}"/etc || die "rm failed"
@@ -154,7 +111,6 @@ pkg_preinst() {
 pkg_postinst() {
 	elog
 	elog "You are using the source compiled version of boinc."
-	use X && elog "The graphical manager can be found at /usr/bin/boincmgr"
 	elog
 	elog "You need to attach to a project to do anything useful with boinc."
 	elog "You can do this by running /etc/init.d/boinc attach"
@@ -162,15 +118,6 @@ pkg_postinst() {
 	elog "http://boinc.berkeley.edu/wiki/Anonymous_platform"
 	elog
 	# Add warning about the new password for the client, bug 121896.
-	if use X; then
-		elog "If you need to use the graphical manager the password is in:"
-		elog "/var/lib/boinc/gui_rpc_auth.cfg"
-		elog "Where /var/lib/ is default RUNTIMEDIR, that can be changed in:"
-		elog "/etc/conf.d/boinc"
-		elog "You should change this password to something more memorable (can be even blank)."
-		elog "Remember to launch init script before using manager. Or changing the password."
-		elog
-	fi
 	if use cuda; then
 		elog "To be able to use CUDA you should add boinc user to video group."
 		elog "Run as root:"
