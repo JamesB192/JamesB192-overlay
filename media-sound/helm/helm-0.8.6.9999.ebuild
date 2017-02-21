@@ -21,7 +21,6 @@ case "$PV" in
 	"0.6.1-9999")	EGIT_COMMIT="db209280217a17294dea15209d6d31254678af5a" ;;
 esac
 
-
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
