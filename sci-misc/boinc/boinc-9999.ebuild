@@ -1,7 +1,6 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
-
+# $Header: $
 EAPI=6
 
 WX_GTK_VER=3.0
@@ -42,7 +41,6 @@ RDEPEND="
 	X? (
 		dev-db/sqlite:3
 		media-libs/freeglut
-		sys-libs/glibc:2.2
 		virtual/jpeg:0=
 		x11-libs/gtk+:2
 		>=x11-libs/libnotify-0.7
@@ -108,9 +106,10 @@ src_configure() {
 		--disable-static \
 		--enable-unicode \
 		--with-ssl \
-		$(use_with X x) \
-		$(use_enable X manager) \
-		$(usex X --with-wx-config="${WX_CONFIG}" --without-wxdir)
+		--without-x --disable-manager --without-wxdir
+#		$(use_with X x) \
+#		$(use_enable X manager) \
+#		$(usex X --with-wx-config="${WX_CONFIG}" --without-wxdir)
 }
 
 src_install() {
