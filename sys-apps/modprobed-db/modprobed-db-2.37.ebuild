@@ -1,11 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
-
 EAPI=4
 inherit systemd
 
-DESCRIPTION="Keeps track of EVERY kernel module that has ever been probed. Useful for 'make localmodconfig'"
+DESCRIPTION="Keeps track of EVERY kernel module that has ever been probed."
 HOMEPAGE="https://wiki.archlinux.org/index.php/Modprobed_db"
 SRC_URI="http://repo-ck.com/source/${PN}/${P}.tar.xz"
 RESTRICT="mirror"

@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -10,13 +9,9 @@ SCONS_MIN_VERSION="1.2.1"
 
 inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs
 
-if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.savannah.nongnu.org/gpsd.git"
 	inherit git-2
-else
-	SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-fi
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping clients"
 HOMEPAGE="http://catb.org/gpsd/"

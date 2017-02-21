@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=|| ( virtual/lua >=dev-lang/lua-5.1:* >=dev-lang/luajit-2:* ) sys-apps/tcp-wrappers virtual/libc sys-libs/libcap sys-libs/ncurses:* tcmalloc? ( dev-util/google-perftools )
+DESCRIPTION=Distributed I/O Daemon - a 9P file server
+EAPI=5
+HOMEPAGE=https://github.com/chaos/diod
+IUSE=rdma tcmalloc luajit
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=|| ( virtual/lua >=dev-lang/lua-5.1:* >=dev-lang/luajit-2:* ) sys-apps/tcp-wrappers virtual/libc sys-libs/libcap sys-libs/ncurses:* tcmalloc? ( dev-util/google-perftools )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://github.com/chaos/diod/archive/1.0.24.tar.gz
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=06c2887f9b6e10f5e5d05786494deef2
