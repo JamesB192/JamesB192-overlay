@@ -1,7 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
+
 EAPI=6
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 WX_GTK_VER=3.0
 
@@ -20,7 +22,6 @@ RESTRICT="mirror"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="X cuda curl_ssl_libressl +curl_ssl_openssl static-libs"
 
 REQUIRED_USE="^^ ( curl_ssl_libressl curl_ssl_openssl ) "
