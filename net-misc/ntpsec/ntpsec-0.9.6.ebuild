@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 EAPI=6
@@ -26,7 +26,7 @@ NTPSEC_REFCLOCK=(
 	local magnavox)
 IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
-LICENSE="HPND MIT BSD-2 BSD CC-BY-NC-SA-4.0"
+LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
 SLOT="0"
 IUSE="debug doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} samba seccomp smear ssl tests" #ionice
 
