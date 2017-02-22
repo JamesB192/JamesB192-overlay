@@ -1,0 +1,8 @@
+dev-python/raven 5.27.0.9999: Raven is a client for Sentry
+media-sound/helm 0.6.1.9999 0.6.2.9999 0.6.3.9999 0.6.6.9999 0.7.0.9999 0.7.1.9999 0.8.5.9999 0.8.6.9999 0.8.9999 9999: Open source polyphonic software synthesizer with lots of modulation
+net-misc/ntpsec 0.9.6 9999: The NTP reference implementation, refactored
+sci-geosciences/gpsd 9998-r1: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
+sci-misc/boinc 9999: The Berkeley Open Infrastructure for Network Computing
+sys-apps/modprobed-db 2.37: Keeps track of EVERY kernel module that has ever been probed.
+sys-fs/diod 1.0.23 1.0.24 9999: Distributed I/O Daemon - a 9P file server
+sys-fs/gitfs 0.4.5.1.9999: Version controlled file system.

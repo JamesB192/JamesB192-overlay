@@ -1,0 +1,38 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml. Please add
+# your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using egencache *
+
+net-misc/ntpsec:doc - Build NTP documentation
+net-misc/ntpsec:early - Droproot earlier (breaks SHM and NetBSD).
+net-misc/ntpsec:gdb - Enable GDB debugging symbols
+net-misc/ntpsec:nist - Enable NIST lockclock scheme.
+net-misc/ntpsec:ntpviz - (meta) Pull in ntpviz dependencies.
+net-misc/ntpsec:rclock_arbiter - Refclock support for Arbiter 1088A/B GPS Receiver
+net-misc/ntpsec:rclock_dumbclock - Refclock support for Dumb Clock
+net-misc/ntpsec:rclock_generic - Refclock support for Generic Reference Driver (Parse)
+net-misc/ntpsec:rclock_gpsd - Refclock support for GPSD NG client protocol
+net-misc/ntpsec:rclock_hpgps - Refclock support for Hewlett Packard 58503A GPS Receiver
+net-misc/ntpsec:rclock_jjy - Refclock support for JJY Receivers
+net-misc/ntpsec:rclock_jupiter - Refclock support for Rockwell Jupiter GPS
+net-misc/ntpsec:rclock_local - Refclock support for Undisciplined Local Clock
+net-misc/ntpsec:rclock_magnavox - Refclock support for Magnavox MX4200 and related GPS receivers
+net-misc/ntpsec:rclock_modem - Refclock support for NIST/USNO/PTB Modem Time Services
+net-misc/ntpsec:rclock_neoclock - Refclock support for NeoClock4X - DCF77 / TDF serial line
+net-misc/ntpsec:rclock_nmea - Refclock support for Generic NMEA GPS Receiver
+net-misc/ntpsec:rclock_oncore - Refclock support for Motorola UT Oncore GPS
+net-misc/ntpsec:rclock_pps - Refclock support for PPS Clock Discipline
+net-misc/ntpsec:rclock_shm - Refclock support for Shared Memory Driver
+net-misc/ntpsec:rclock_spectracom - Refclock support for Spectracom GPS Receivers
+net-misc/ntpsec:rclock_trimble - Refclock support for Trimble Navigation GPSes
+net-misc/ntpsec:rclock_truetime - Refclock support for TrueTime GPS/GOES/OMEGA Receivers
+net-misc/ntpsec:rclock_zyfer - Refclock support for Zyfer GPStarplus Receiver
+net-misc/ntpsec:smear - Enable Leap Smearing.
+net-misc/ntpsec:tests - Exec all/no unit tests
+sci-geosciences/gpsd:dbus - export gpsd data over dbus connections
+sci-geosciences/gpsd:latency_timing - support latency timing information
+sci-geosciences/gpsd:ntp - Enable net-misc/ntp shared memory interface and PPS kernel support for GPS time
+sci-geosciences/gpsd:shm - export gpsd over shared memory
+sci-geosciences/gpsd:sockets - export gpsd over unix sockets
+sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening a bug about it.
+sys-fs/diod:luajit - Lua Just In Time compiler
+sys-fs/diod:rdma - Infiniband RDMA (Remote Direct Memory Access) transport
