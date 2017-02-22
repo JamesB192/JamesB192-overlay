@@ -104,7 +104,6 @@ src_install() {
 	cp -v "${FILESDIR}/ntpd.service" "${ED}/etc/systemd/system/"
 	# ntpd.confd  ntpd.rc-r1  ntpd.service
 
-	dodoc "${S}/contrib/ntp.conf.basic.sample" "${S}/contrib/ntp.conf.log.sample"
 	mkdir -pv "${ED}/etc/"{logrotate,ntp-conf}.d
 	cp -v "${S}/etc/logrotate-config.ntpd" "${ED}/etc/logrotate.d/ntpd"
 	cp -Rv "${S}/etc/ntp-conf.d/" "${ED}/etc/"
