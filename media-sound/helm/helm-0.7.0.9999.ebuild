@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils git-r3
+inherit eutils git-r3 multilib
 
 DESCRIPTION="Open source polyphonic software synthesizer with lots of modulation"
 HOMEPAGE="http://tytel.org/helm/"
@@ -19,6 +19,7 @@ case "$PV" in
 	"0.6.3-9999")	EGIT_COMMIT="9599422c1bf4d094157512e1f07b07dd66ff0d83" ;;
 	"0.6.2-9999")	EGIT_COMMIT="0ea228b2ae32f0e5738c3b31cd448962909e954c" ;;
 	"0.6.1-9999")	EGIT_COMMIT="db209280217a17294dea15209d6d31254678af5a" ;;
+	"9999") ;;
 esac
 
 LICENSE="GPL-3+"
