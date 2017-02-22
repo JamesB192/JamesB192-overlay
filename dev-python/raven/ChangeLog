@@ -1,0 +1,24 @@
+# ChangeLog for dev-python/raven
+# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+  22 Feb 2017; James Browning <JamesB.fe80@gmail.com>
+  raven-5.27.0.9999.ebuild:
+  Another omniblob commit
+
+  change header on all ebuilds
+  regenerate md5 metadata cache
+  media-sound/helm: pull 9999 into the fold
+  media-sound/helm: add missing inherit multilib to placate RepoMan
+
+  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> metadata.xml:
+  Update multiple metadatat.xml file to include text from upstream.
+
+  Package-Manager: Portage-2.3.3, Repoman-2.3.1
+
+*raven-5.27.0.9999 (21 Feb 2017)
+
+  21 Feb 2017; James Browning <JamesB.fe80@gmail.com> +metadata.xml,
+  +raven-5.27.0.9999.ebuild:
+  omnibus commit
+

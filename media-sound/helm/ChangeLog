@@ -1,0 +1,46 @@
+# ChangeLog for media-sound/helm
+# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> helm-0.6.1.9999.ebuild,
+  helm-0.6.2.9999.ebuild, helm-0.6.3.9999.ebuild, helm-0.6.6.9999.ebuild,
+  helm-0.7.0.9999.ebuild, helm-0.7.1.9999.ebuild, helm-0.8.5.9999.ebuild,
+  helm-0.8.6.9999.ebuild, helm-0.8.9999.ebuild, helm-9999.ebuild:
+  Another omniblob commit
+
+  change header on all ebuilds
+  regenerate md5 metadata cache
+  media-sound/helm: pull 9999 into the fold
+  media-sound/helm: add missing inherit multilib to placate RepoMan
+
+  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> metadata.xml:
+  Update multiple metadatat.xml file to include text from upstream.
+
+  Package-Manager: Portage-2.3.3, Repoman-2.3.1
+
+  21 Feb 2017; James Browning <JamesB.fe80@gmail.com> +metadata.xml:
+  omnibus commit
+
+  21 Feb 2017; James Browning <JamesB.fe80@gmail.com> helm-0.6.1.9999.ebuild,
+  helm-0.6.2.9999.ebuild, helm-0.6.3.9999.ebuild, helm-0.6.6.9999.ebuild,
+  helm-0.7.0.9999.ebuild, helm-0.7.1.9999.ebuild, helm-0.8.5.9999.ebuild,
+  helm-0.8.6.9999.ebuild, helm-0.8.9999.ebuild:
+  remove empty lines for repoman
+
+*helm-9999 (13 Feb 2017)
+*helm-0.8.9999 (13 Feb 2017)
+*helm-0.8.6.9999 (13 Feb 2017)
+*helm-0.8.5.9999 (13 Feb 2017)
+*helm-0.7.1.9999 (13 Feb 2017)
+*helm-0.7.0.9999 (13 Feb 2017)
+*helm-0.6.6.9999 (13 Feb 2017)
+*helm-0.6.3.9999 (13 Feb 2017)
+*helm-0.6.2.9999 (13 Feb 2017)
+*helm-0.6.1.9999 (13 Feb 2017)
+
+  13 Feb 2017; James Browning <JamesB.fe80@gmail.com> +helm-0.6.1.9999.ebuild,
+  +helm-0.6.2.9999.ebuild, +helm-0.6.3.9999.ebuild, +helm-0.6.6.9999.ebuild,
+  +helm-0.7.0.9999.ebuild, +helm-0.7.1.9999.ebuild, +helm-0.8.5.9999.ebuild,
+  +helm-0.8.6.9999.ebuild, +helm-0.8.9999.ebuild, +helm-9999.ebuild:
+  add media-sound/helm for tertl31_
+

@@ -1,0 +1,28 @@
+# ChangeLog for sys-apps/modprobed-db
+# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+  22 Feb 2017; James Browning <JamesB.fe80@gmail.com>
+  modprobed-db-2.37.ebuild:
+  Another omniblob commit
+
+  change header on all ebuilds
+  regenerate md5 metadata cache
+  media-sound/helm: pull 9999 into the fold
+  media-sound/helm: add missing inherit multilib to placate RepoMan
+
+  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> metadata.xml:
+  Update multiple metadatat.xml file to include text from upstream.
+
+  Package-Manager: Portage-2.3.3, Repoman-2.3.1
+
+  21 Feb 2017; James Browning <JamesB.fe80@gmail.com> +metadata.xml,
+  modprobed-db-2.37.ebuild:
+  omnibus commit
+
+*modprobed-db-2.37 (26 Jan 2017)
+
+  26 Jan 2017; James Browning <JamesB.fe80@gmail.com>
+  +modprobed-db-2.37.ebuild:
+  add sys-apps/modprobed-db-2.37 for drinkingjar
+

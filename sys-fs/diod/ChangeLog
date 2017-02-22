@@ -1,0 +1,35 @@
+# ChangeLog for sys-fs/diod
+# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> diod-1.0.23.ebuild,
+  diod-1.0.24.ebuild, diod-9999.ebuild:
+  Another omniblob commit
+
+  change header on all ebuilds
+  regenerate md5 metadata cache
+  media-sound/helm: pull 9999 into the fold
+  media-sound/helm: add missing inherit multilib to placate RepoMan
+
+  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> metadata.xml:
+  Fill in metadata with fakish values from changelog
+
+  Package-Manager: Portage-2.3.3, Repoman-2.3.1
+
+  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> metadata.xml:
+  Update multiple metadatat.xml file to include text from upstream.
+
+  Package-Manager: Portage-2.3.3, Repoman-2.3.1
+
+  21 Feb 2017; James Browning <JamesB.fe80@gmail.com> +metadata.xml:
+  omnibus commit
+
+*diod-9999 (13 Feb 2017)
+*diod-1.0.24 (13 Feb 2017)
+*diod-1.0.23 (13 Feb 2017)
+
+  13 Feb 2017; James Browning <JamesB.fe80@gmail.com> +diod-1.0.23.ebuild,
+  +diod-1.0.24.ebuild, +diod-9999.ebuild, +files/git-01.patch,
+  +files/git-02.patch:
+  add sys-fs/diod for my own use
+
