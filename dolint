@@ -1,3 +1,5 @@
+#!/bin/sh
+
 egencache --repo=JamesB192 --write-timestamp --tolerant \
  --update-manifests \
  --update-changelogs \
