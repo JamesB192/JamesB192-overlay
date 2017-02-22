@@ -6,9 +6,12 @@
     <name>JamesB192</name>
   </maintainer>
   <longdescription>
-    
+  BOINC (Berkeley Open Infrastructure for Network Computing) is a software
+  platform for distributed computing using volunteered computer resources.
   </longdescription>
   <use>
-    <flag name="cuda"></flag>
+    <flag name="cuda">Use nvidia cuda toolkit for speeding up computations.
+  NOTE: works only for subset of nvidia graphic cards so make sure your card
+  is supported before opening a bug about it.</flag>
   </use>
 </pkgmetadata>

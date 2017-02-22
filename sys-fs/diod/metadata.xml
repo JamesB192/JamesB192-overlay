@@ -6,7 +6,7 @@
     <name>JamesB192</name>
   </maintainer>
   <longdescription>
-    
+    A multi-threaded, user space file server that speaks 9P2000.L protocol.
   </longdescription>
   <use>
     <flag name="luajit"></flag>

@@ -6,7 +6,7 @@
     <name>JamesB192</name>
   </maintainer>
   <longdescription>
-    A more secure refactor of the reference NTP implementation
+    a security-hardened implementation of Network Time Protocol Version 4.
   </longdescription>
   <use>
     <flag name="doc">Build NTP documentation</flag>
