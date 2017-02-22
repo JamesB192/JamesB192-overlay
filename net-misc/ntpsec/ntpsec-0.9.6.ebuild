@@ -3,15 +3,8 @@
 # $Header: $
 EAPI=6
 KEYWORDS="~amd64 ~x86"
-if [[ ${PV} == *9999* ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
-	BDEPEND="dev-libs/libsodium"
-else
-	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
-	RESTRICT="mirror"
-	BDEPEND=""
-fi
+SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
+RESTRICT="mirror"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
@@ -30,9 +23,7 @@ LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
 SLOT="0"
 IUSE="debug doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} samba seccomp smear ssl tests" #ionice
 
-# net-misc/pps-tools oncore,pps,jupiter,magnavox
 CDEPEND="
-	${BDEPEND}
 	sys-libs/libcap
 	 dev-python/psutil
 	ssl? ( dev-libs/openssl:* )
@@ -50,6 +41,7 @@ DEPEND="${CDEPEND}
 	rclock_oncore? ( net-misc/pps-tools )
 	rclock_pps? ( net-misc/pps-tools )
 "
+# net-misc/pps-tools oncore,pps,jupiter,magnavox
 
 src_prepare() {
 	python_setup
@@ -92,9 +84,7 @@ src_install() {
 			"${S}/contrib/smartctl-temp-log" \
 			"${S}/contrib/temper-temp-log" \
 			"${S}/contrib/zone-temp-log"
-		if [[ ${PV} == *0.9.6* ]]; then
-			dosbin "${S}/contrib/gps-log"
-		fi
+			"${S}/contrib/gps-log"
 	fi
 	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
 	newinitd "${FILESDIR}/ntpd.rc-r1" "ntp"
