@@ -3,19 +3,16 @@
 # $Id$
 
 EAPI=6
-#EAPI=4
 inherit systemd
 
 DESCRIPTION="Keeps track of EVERY kernel module that has ever been probed."
 HOMEPAGE="https://wiki.archlinux.org/index.php/Modprobed_db"
 SRC_URI="http://repo-ck.com/source/${PN}/${P}.tar.xz"
 RESTRICT="mirror"
-
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
 DEPEND="app-arch/xz-utils"
 RDEPEND="virtual/modutils"
 

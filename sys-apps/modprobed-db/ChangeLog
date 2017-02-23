@@ -2,6 +2,14 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  23 Feb 2017; James Browning <JamesB.fe80@gmail.com>
+  modprobed-db-2.37.ebuild:
+  Change metadata/layout.conf to use gpg signed commits and manifests
+  Change metadata/layout.conf to prohibit EAPIs 0-3
+  Change metadata/layout.conf to deprecate EAPI 4
+  sys-apps/modprobed-db: bump to EAPI 6
+  lint
+
   22 Feb 2017; James Browning <JamesB.fe80@gmail.com>
   modprobed-db-2.37.ebuild:
   Another omniblob commit
