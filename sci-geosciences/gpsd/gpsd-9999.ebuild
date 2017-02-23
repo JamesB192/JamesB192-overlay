@@ -2,21 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
 SCONS_MIN_VERSION="1.2.1"
 
-inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs
+inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs git-r3
 
-	EGIT_REPO_URI="git://git.savannah.nongnu.org/gpsd.git"
-	inherit git-2
+EGIT_REPO_URI="git://git.savannah.nongnu.org/gpsd.git"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-
 DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping clients"
 HOMEPAGE="http://catb.org/gpsd/"
-
 LICENSE="BSD"
 SLOT="0"
 
@@ -45,14 +42,9 @@ RDEPEND="X? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	test? ( sys-devel/bc )"
-
-# xml packages are for man page generation
-if [[ ${PV} == "9999" ]] ; then
-	DEPEND+="
-		app-text/xmlto
-		=app-text/docbook-xml-dtd-4.1*"
-fi
+	test? ( sys-devel/bc )
+	app-text/xmlto
+	=app-text/docbook-xml-dtd-4.1*"
 
 src_prepare() {
 	# Make sure our list matches the source.
