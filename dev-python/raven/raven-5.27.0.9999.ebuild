@@ -24,4 +24,4 @@ LICENSE="HPND"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-inherit git-r3 distutils-r1
+inherit git-2 distutils-r1
