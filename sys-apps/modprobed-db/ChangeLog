@@ -4,6 +4,10 @@
 
   23 Feb 2017; James Browning <JamesB.fe80@gmail.com>
   modprobed-db-2.37.ebuild:
+  Tighten an remove EAPI 4 comment
+
+  23 Feb 2017; James Browning <JamesB.fe80@gmail.com>
+  modprobed-db-2.37.ebuild:
   Change metadata/layout.conf to use gpg signed commits and manifests
   Change metadata/layout.conf to prohibit EAPIs 0-3
   Change metadata/layout.conf to deprecate EAPI 4

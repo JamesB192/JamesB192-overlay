@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>JamesB.fe80@gmail.com</email>
+    <name>JamesB192</name>
+  </maintainer>
+  <longdescription>
+An EXI (Efficient XML Interchange) solution for Python.
+
+This is a wrapper on the C implementation EXIP (http://exip.sourceforge.net/) using Cython.
+  </longdescription>
+</pkgmetadata>

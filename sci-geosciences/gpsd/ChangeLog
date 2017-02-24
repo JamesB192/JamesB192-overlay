@@ -2,6 +2,12 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+*gpsd-9999 (23 Feb 2017)
+
+  23 Feb 2017; James Browning <JamesB.fe80@gmail.com> -gpsd-9998-r1.ebuild,
+  +gpsd-9999.ebuild:
+  Bump to EAPI 6 , change to git-r3 and unroll 9999 ifs.
+
   22 Feb 2017; James Browning <JamesB.fe80@gmail.com> gpsd-9998-r1.ebuild:
   Another omniblob commit
 
