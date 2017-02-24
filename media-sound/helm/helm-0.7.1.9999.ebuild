@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=5
 inherit eutils git-r3 multilib
 
 DESCRIPTION="Open source polyphonic software synthesizer with lots of modulation"
@@ -39,7 +39,6 @@ DOCS="README.md"
 
 src_prepare() {
 	sed -e 's|/usr/lib/|/usr/'$(get_libdir)'/|' -i Makefile || die
-	epatch_user
 }
 
 src_compile() {
