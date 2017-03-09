@@ -21,7 +21,7 @@ REALNAME="gitfs"
 REALVERSION="0.3.1"
 REPO_URI="http://pypi.python.org/packages/source/${REALNAME:0:1}/${REALNAME}/"
 SOURCEFILE="${REALNAME}-${REALVERSION}.tar.gz"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 DESCRIPTION="Version controlled file system."
 HOMEPAGE="http://www.presslabs.com/gitfs/"
