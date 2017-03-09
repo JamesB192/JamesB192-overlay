@@ -4,6 +4,10 @@
 
   09 Mar 2017; James Browning <JamesB.fe80@gmail.com>
   gitfs-0.4.5.1.9999.ebuild:
+  global: change ebuild headers and lint
+
+  09 Mar 2017; James Browning <JamesB.fe80@gmail.com>
+  gitfs-0.4.5.1.9999.ebuild:
   add python 3.{4,5,6} support
 
   22 Feb 2017; James Browning <JamesB.fe80@gmail.com>

@@ -2,6 +2,10 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  09 Mar 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-0.9.6.ebuild,
+  ntpsec-9999.ebuild:
+  global: change ebuild headers and lint
+
   09 Mar 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999.ebuild:
   drop 0.9.6 from 9999 and trade out obselete contrib/ for makeheat
 
