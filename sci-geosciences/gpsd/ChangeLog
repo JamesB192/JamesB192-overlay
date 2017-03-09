@@ -2,6 +2,9 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  09 Mar 2017; James Browning <JamesB.fe80@gmail.com> gpsd-9999.ebuild:
+  shim to upstream except cancelled attempt at adding python 3.{4,5,6} support
+
 *gpsd-9999 (23 Feb 2017)
 
   23 Feb 2017; James Browning <JamesB.fe80@gmail.com> -gpsd-9998-r1.ebuild,
