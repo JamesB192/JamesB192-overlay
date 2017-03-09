@@ -18,7 +18,7 @@ case "$PV" in
 
 	"5.27.0.9999")	EGIT_COMMIT="833ffac3062abe23f3382e375b17f40030794673" ;;
 esac
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 LICENSE="HPND"
 SLOT="0"
