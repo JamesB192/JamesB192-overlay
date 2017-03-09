@@ -2,26 +2,34 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI="5"
 
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
+#PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 SCONS_MIN_VERSION="1.2.1"
 
-inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs git-r3
+inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs
 
-EGIT_REPO_URI="git://git.savannah.nongnu.org/gpsd.git"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+if [[ ${PV} == "9999" ]] ; then
+	EGIT_REPO_URI="git://git.savannah.nongnu.org/gpsd.git"
+	inherit git-2
+else
+	SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+fi
+
 DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping clients"
 HOMEPAGE="http://catb.org/gpsd/"
+
 LICENSE="BSD"
 SLOT="0"
 
 GPSD_PROTOCOLS=(
-	aivdm ashtech earthmate evermore fury fv18 garmin garmintxt
-	geostar gpsclock isync itrax mtk3301 navcom nmea0183 nmea2000 ntrip
-	oceanserver oncore passthrough rtcm104v2 rtcm104v3 sirf skytraq
-	superstar2 tnt tripmate tsip ublox
+	aivdm ashtech earthmate evermore fury fv18 garmin garmintxt geostar
+	gpsclock isync itrax mtk3301 navcom nmea0183 nmea2000 ntrip oceanserver
+	oncore passthrough rtcm104v2 rtcm104v3 sirf skytraq superstar2 tnt
+	tripmate tsip ublox
 )
 IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/gpsd_protocols_}
 IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth cxx debug dbus ipv6 latency_timing ncurses ntp python qt4 +shm +sockets static test udev usb X"
@@ -42,9 +50,14 @@ RDEPEND="X? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	test? ( sys-devel/bc )
-	app-text/xmlto
-	=app-text/docbook-xml-dtd-4.1*"
+	test? ( sys-devel/bc )"
+
+# xml packages are for man page generation
+if [[ ${PV} == "9999" ]] ; then
+	DEPEND+="
+		app-text/xmlto
+		=app-text/docbook-xml-dtd-4.1*"
+fi
 
 src_prepare() {
 	# Make sure our list matches the source.
@@ -57,8 +70,7 @@ src_prepare() {
 		die "please sync ebuild & source"
 	fi
 
-#	epatch "${FILESDIR}"/${PN}-3.8-ldflags.patch
-#	epatch "${FILESDIR}"/${PN}-3.11-rpath.patch
+	epatch "${FILESDIR}"/${P}-do_not_rm_library.patch
 
 	# Avoid useless -L paths to the install dir
 	sed -i \
