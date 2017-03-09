@@ -15,6 +15,7 @@ else
 fi
 
 PYTHON_COMPAT=( python2_7 )
+#PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE='threads(+)'
 inherit python-r1 waf-utils user systemd
 
@@ -88,14 +89,7 @@ src_install() {
 	waf-utils_src_install
 	mv -v "${ED}/usr/"{,share/}man
 	if use ntpviz ; then
-		dosbin	"${S}/contrib/cpu-temp-log" \
-			"${S}/contrib/smartctl-temp-log" \
-			"${S}/contrib/temper-temp-log" \
-			"${S}/contrib/zone-temp-log"
-		if [[ ${PV} == *0.9.6* ]]; then
-			dosbin "${S}/contrib/gps-log" \
-				"${S}/contrib/temp-log"
-		fi
+		dosbin	"${S}/contrib/makeheat"
 	fi
 	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
 	newinitd "${FILESDIR}/ntpd.rc-r1" "ntp"
