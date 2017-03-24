@@ -2,6 +2,12 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+*ntpsec-0.9.7 (24 Mar 2017)
+
+  24 Mar 2017; James Browning <JamesB.fe80@gmail.com> +ntpsec-0.9.7.ebuild,
+  ntpsec-9999.ebuild:
+  0.9.7 bump and include contrib/ better
+
   09 Mar 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-0.9.6.ebuild,
   ntpsec-9999.ebuild:
   global: change ebuild headers and lint
