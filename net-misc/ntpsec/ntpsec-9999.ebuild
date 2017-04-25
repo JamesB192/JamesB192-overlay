@@ -6,7 +6,7 @@ KEYWORDS="~amd64 ~x86"
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
-	BDEPEND="dev-libs/libsodium"
+	BDEPEND=""
 else
 	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
 	RESTRICT="mirror"
@@ -101,4 +101,10 @@ src_install() {
 	cp -Rv "${S}/etc/ntp-conf.d/" "${ED}/etc/"
 	mv -v "${ED}/etc/ntp-conf.d/example.conf" "${ED}/etc/ntp.conf"
 	sed "s|includefile |includefile ntp-conf.d/|" -i "${ED}/etc/ntp.conf"
+	if [[ ${PV} == *9999* ]]; then
+		for I in ntplog{gps,temp} ntpviz-{dai,week}ly; do
+			systemd_newunit "${S}/etc/${I}.service" "${I}.service"
+			systemd_newunit "${S}/etc/${I}.timer"   "${I}.timer"
+		done
+	fi
 }
