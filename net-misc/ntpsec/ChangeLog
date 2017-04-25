@@ -2,6 +2,9 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  25 Apr 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999.ebuild:
+  remove libsodium dependancy and add systemd units to 9999
+
 *ntpsec-0.9.7 (24 Mar 2017)
 
   24 Mar 2017; James Browning <JamesB.fe80@gmail.com> +ntpsec-0.9.7.ebuild,
