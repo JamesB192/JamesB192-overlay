@@ -6,11 +6,11 @@ KEYWORDS="~amd64 ~x86"
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
-	BDEPEND="dev-libs/libsodium"
+	BDEPEND=""
 else
 	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
 	RESTRICT="mirror"
-	BDEPEND="dev-libs/libsodium"
+	BDEPEND=""
 fi
 
 PYTHON_COMPAT=( python2_7 )
