@@ -18,11 +18,11 @@ EGIT_COMMIT="2e9595290e7bf8954f5fc6834293de8d2a7cadb5"
 
 REALNAME="gitfs"
 REALVERSION="0.3.1"
-REPO_URI="http://pypi.python.org/packages/source/${REALNAME:0:1}/${REALNAME}/"
+REPO_URI="https://pypi.python.org/packages/source/${REALNAME:0:1}/${REALNAME}/"
 SOURCEFILE="${REALNAME}-${REALVERSION}.tar.gz"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 DESCRIPTION="Version controlled file system."
-HOMEPAGE="http://www.presslabs.com/gitfs/"
+HOMEPAGE="https://www.presslabs.com/gitfs/"
 
 inherit git-r3 distutils-r1
