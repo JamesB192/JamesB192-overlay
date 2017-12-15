@@ -2,6 +2,9 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  15 Dec 2017; James Browning <JamesB.fe80@gmail.com> gpsd-9999.ebuild:
+  dev-python/raven & sci-geosciences/gpsd: change git-2 eclass to git-r3
+
   09 Mar 2017; James Browning <JamesB.fe80@gmail.com> gpsd-9999.ebuild:
   global: change ebuild headers and lint
 

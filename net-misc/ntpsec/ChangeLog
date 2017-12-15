@@ -2,6 +2,15 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+*ntpsec-9999-r1 (15 Dec 2017)
+
+  15 Dec 2017; James Browning <JamesB.fe80@gmail.com> -ntpsec-9999.ebuild,
+  +ntpsec-9999-r1.ebuild:
+  9999: bump to -r1 fixing several bug and increasing ntpviz use-flag
+  features...
+
+  ... miscellaneous lint
+
 *ntpsec-1.0.0 (14 Dec 2017)
 
   14 Dec 2017; James Browning <JamesB.fe80@gmail.com> +ntpsec-1.0.0.ebuild:
