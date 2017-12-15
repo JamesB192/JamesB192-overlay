@@ -22,16 +22,17 @@ DESCRIPTION="The NTP reference implementation, refactored"
 HOMEPAGE="https://www.ntpsec.org/"
 
 NTPSEC_REFCLOCK=(
-	oncore trimble truetime gpsd jjy generic spectracom
-	shm pps hpgps zyfer arbiter nmea neoclock jupiter modem
-	local magnavox)
+		arbiter generic gpsd hpgps jjy local
+		modem neoclock nmea oncore pps shm
+		spectracom trimble truetime zyfer
+	)
 IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
 LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
 SLOT="0"
 IUSE="debug doc early gdb nist ntpviz ${IUSE_NTPSEC_REFCLOCK} samba seccomp smear tests" #ionice
 
-# net-misc/pps-tools oncore,pps,jupiter,magnavox
+# net-misc/pps-tools oncore,pps
 CDEPEND="
 	${BDEPEND}
 	sys-libs/libcap
@@ -46,8 +47,6 @@ DEPEND="${CDEPEND}
 	app-text/asciidoc
 	app-text/docbook-xsl-stylesheets
 	sys-devel/bison
-	rclock_jupiter? ( net-misc/pps-tools )
-	rclock_magnavox? ( net-misc/pps-tools )
 	rclock_oncore? ( net-misc/pps-tools )
 	rclock_pps? ( net-misc/pps-tools )
 "
@@ -81,30 +80,30 @@ src_configure() {
 		$(use	seccomp		&& echo "--enable-seccomp") \
 		$(use	smear		&& echo "--enable-leap-smear") \
 		$(use	tests		&& echo "--alltests") \
-		$(use_enable debug debug)
+		$(use	debug		&& echo "--enable-debug")
 }
 
 src_install() {
 	waf-utils_src_install
-	mv -v "${ED}/usr/"{,share/}man
+	if use ntpviz; then
+		for I in ntplog{gps,temp} ntpviz-{dai,week}ly; do
+			systemd_newunit "${S}/etc/${I}.service" "${I}.service"
+			systemd_newunit "${S}/etc/${I}.timer"   "${I}.timer"
+		done
+	else
+		rm -v "${ED}usr/bin/"ntp{viz,log{gps,temp}}
+	fi
+
 	dosbin	"${S}/contrib/ntpheat"{,usb}
 	dodoc	"${S}/contrib/logrotate-ntpd"
 	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
 	newinitd "${FILESDIR}/ntpd.rc-r1" "ntp"
 	newconfd "${FILESDIR}/ntpd.confd" "ntp"
-	mkdir "${ED}/etc/systemd/system/"
-	cp -v "${FILESDIR}/ntpd.service" "${ED}/etc/systemd/system/"
-	# ntpd.confd  ntpd.rc-r1  ntpd.service
 
-	mkdir -pv "${ED}/etc/"{logrotate,ntp-conf}.d
-	cp -v "${S}/etc/logrotate-config.ntpd" "${ED}/etc/logrotate.d/ntpd"
-	cp -Rv "${S}/etc/ntp-conf.d/" "${ED}/etc/"
-	mv -v "${ED}/etc/ntp-conf.d/example.conf" "${ED}/etc/ntp.conf"
-	sed "s|includefile |includefile ntp-conf.d/|" -i "${ED}/etc/ntp.conf"
-	if [[ ${PV} == *9999* ]]; then
-		for I in ntplog{gps,temp} ntpviz-{dai,week}ly; do
-			systemd_newunit "${S}/etc/${I}.service" "${I}.service"
-			systemd_newunit "${S}/etc/${I}.timer"   "${I}.timer"
-		done
-	fi
+	mkdir -p "${ED}etc/"{logrotate,ntp}.d
+	cp "${S}/etc/logrotate-config.ntpd" "${ED}etc/logrotate.d/ntpd"
+	cp -R "${S}/etc/ntp.d/" "${ED}etc/"
+	mv "${ED}etc/ntp.d/default.conf" "${ED}etc/ntp.conf"
+	sed "s|includefile |includefile ntp-conf.d/|" -i "${ED}etc/ntp.conf"
+
 }
