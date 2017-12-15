@@ -12,7 +12,7 @@ inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.savannah.nongnu.org/gpsd.git"
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
