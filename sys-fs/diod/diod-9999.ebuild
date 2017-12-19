@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit git-r3 eutils autotools-utils
+inherit git-r3 eutils
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
@@ -45,5 +45,5 @@ src_configure() {
 		$(use_with tcmalloc)
 		$(use luajit && echo --with-lua-suffix=jit-5.1)
 	)
-	autotools-utils_src_configure
+	econf
 }
