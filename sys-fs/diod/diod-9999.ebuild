@@ -5,8 +5,6 @@ EAPI=6
 
 inherit git-r3 eutils
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
 DESCRIPTION="Distributed I/O Daemon - a 9P file server"
 HOMEPAGE="https://github.com/chaos/diod"
 EGIT_REPO_URI="https://github.com/chaos/diod.git"
