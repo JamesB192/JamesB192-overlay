@@ -36,3 +36,5 @@ sci-geosciences/gpsd:sockets - export gpsd over unix sockets
 sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening a bug about it.
 sys-fs/diod:luajit - Lua Just In Time compiler
 sys-fs/diod:rdma - Infiniband RDMA (Remote Direct Memory Access) transport
+sys-libs/timezone-data:leaps_timezone - Install the set of "right" timezones; these timezones include leap seconds when counting seconds since the epoch (while POSIX does not) as they are based on the TAI (International Atomic Time) clock
+sys-libs/timezone-data:ntp - Install upstream leap-seconds.list fiie where ntp, ntpsec and other programs can find it.
