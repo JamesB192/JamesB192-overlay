@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
 	RESTRICT="mirror"
-	BDEPEND="dev-libs/libsodium"
+	BDEPEND=""
 fi
 
 PYTHON_COMPAT=( python2_7 )
@@ -41,8 +41,8 @@ CDEPEND="
 	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="${CDEPEND}
-	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
 "
+
 DEPEND="${CDEPEND}
 	app-text/asciidoc
 	app-text/docbook-xsl-stylesheets
@@ -62,6 +62,19 @@ pkg_setup() {
 }
 
 src_configure() {
+	if use samba; then
+		elog "[samba] These services involve a TCP connection to another process that could"
+		elog "[samba] potentially block, denying services to other users. Therefore, this flag"
+		elog "[samba] shoud be used only for a dedicated server with no clients other than MS-SNTP"
+	fi
+	if use seccomp; then
+		elog "[seccomp] System call sandboxing may cause ntpsec to fail on some"
+		elog "[seccomp] systems where seccomp is not implemented / supported."
+	fi
+	if use smear; then
+		elog "[smear] This is an experimental option. DO NOT USE THIS OPTION ON PUBLIC-ACCESS SERVERS!"
+	fi
+
 	local string_127=""
 	local rclocks="";
 	local CLOCKSTRING=""
@@ -86,6 +99,8 @@ src_configure() {
 src_install() {
 	waf-utils_src_install
 	if use ntpviz; then
+		elog "[ntpviz] Please have sci-visualization/gnuplot and media-fonts/liberation-fonts installed"
+		elog "[ntpviz] these are not needed but provide graphs and prettier fonts for the graphs."
 		for I in ntplog{gps,temp} ntpviz-{dai,week}ly; do
 			systemd_newunit "${S}/etc/${I}.service" "${I}.service"
 			systemd_newunit "${S}/etc/${I}.timer"   "${I}.timer"
@@ -93,7 +108,6 @@ src_install() {
 	else
 		rm -v "${ED}usr/bin/"ntp{viz,log{gps,temp}}
 	fi
-
 	dosbin	"${S}/contrib/ntpheat"{,usb}
 	dodoc	"${S}/contrib/logrotate-ntpd"
 	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service

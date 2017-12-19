@@ -2,6 +2,12 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+*ntpsec-9999-r2 (19 Dec 2017)
+
+  19 Dec 2017; James Browning <JamesB.fe80@gmail.com> -ntpsec-9999-r1.ebuild,
+  +ntpsec-9999-r2.ebuild:
+  add warning and notices to bump ntpmisc-9999 to r2 also lint
+
 *ntpsec-9999-r1 (15 Dec 2017)
 
   15 Dec 2017; James Browning <JamesB.fe80@gmail.com> -ntpsec-9999.ebuild,
