@@ -2,6 +2,9 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  22 Dec 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999-r2.ebuild:
+  net-misc/ntpviz-99999-r2 change docdir and allow compiled python files
+
 *ntpsec-9999-r2 (19 Dec 2017)
 
   19 Dec 2017; James Browning <JamesB.fe80@gmail.com> -ntpsec-9999-r1.ebuild,

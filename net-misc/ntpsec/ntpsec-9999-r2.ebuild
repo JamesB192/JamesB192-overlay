@@ -84,7 +84,7 @@ src_configure() {
 		fi
 	done
 	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
-	waf-utils_src_configure --nopyc --nopyo --refclock="${CLOCKSTRING}" \
+	waf-utils_src_configure --docdir=/usr/share/doc/ntpsec --refclock="${CLOCKSTRING}" \
 		$(use	doc		&& echo "--enable-doc") \
 		$(use	early		&& echo "--enable-early-droproot") \
 		$(use	gdb		&& echo "--enable-debug-gdb") \
