@@ -2,6 +2,10 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  24 Dec 2017; James Browning <JamesB.fe80@gmail.com> -ntpsec-0.9.6.ebuild,
+  -ntpsec-0.9.7.ebuild:
+  remove versions < 1.0
+
   24 Dec 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999-r2.ebuild:
   ntpsec/ntpsec-9999: fix HTML install path, remove NTPviz documentation
   conditionally and lint

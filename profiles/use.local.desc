@@ -8,14 +8,11 @@ net-misc/ntpsec:gdb - Enable GDB debugging symbols
 net-misc/ntpsec:nist - Enable NIST lockclock scheme.
 net-misc/ntpsec:ntpviz - (meta) Pull in ntpviz dependencies.
 net-misc/ntpsec:rclock_arbiter - Refclock support for Arbiter 1088A/B GPS Receiver
-net-misc/ntpsec:rclock_dumbclock - Refclock support for Dumb Clock
 net-misc/ntpsec:rclock_generic - Refclock support for Generic Reference Driver (Parse)
 net-misc/ntpsec:rclock_gpsd - Refclock support for GPSD NG client protocol
 net-misc/ntpsec:rclock_hpgps - Refclock support for Hewlett Packard 58503A GPS Receiver
 net-misc/ntpsec:rclock_jjy - Refclock support for JJY Receivers
-net-misc/ntpsec:rclock_jupiter - Refclock support for Rockwell Jupiter GPS
 net-misc/ntpsec:rclock_local - Refclock support for Undisciplined Local Clock
-net-misc/ntpsec:rclock_magnavox - Refclock support for Magnavox MX4200 and related GPS receivers
 net-misc/ntpsec:rclock_modem - Refclock support for NIST/USNO/PTB Modem Time Services
 net-misc/ntpsec:rclock_neoclock - Refclock support for NeoClock4X - DCF77 / TDF serial line
 net-misc/ntpsec:rclock_nmea - Refclock support for Generic NMEA GPS Receiver
