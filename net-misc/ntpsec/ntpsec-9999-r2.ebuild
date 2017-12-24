@@ -84,8 +84,8 @@ src_configure() {
 		fi
 	done
 	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
-	waf-utils_src_configure --docdir=/usr/share/doc/ntpsec --refclock="${CLOCKSTRING}" \
-		$(use	doc		&& echo "--enable-doc") \
+	waf-utils_src_configure --refclock="${CLOCKSTRING}" \
+		$(use	doc		&& echo "--enable-doc --docdir=/usr/share/doc/${PN}-${PVR}" ) \
 		$(use	early		&& echo "--enable-early-droproot") \
 		$(use	gdb		&& echo "--enable-debug-gdb") \
 		$(use	nist		&& echo "--enable-lockclock") \
@@ -107,6 +107,8 @@ src_install() {
 		done
 	else
 		rm -v "${ED}usr/bin/"ntp{viz,log{gps,temp}}
+		rm -v "${ED}usr/share/man/man1/"ntp{loggps,logtemp,viz}.1
+		rm -v "${ED}usr/share/doc/${PV}-${PV}/"ntp{loggps,viz}.html
 	fi
 	dosbin	"${S}/contrib/ntpheat"{,usb}
 	dodoc	"${S}/contrib/logrotate-ntpd"
