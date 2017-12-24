@@ -6,6 +6,6 @@
     <name>JamesB192</name>
   </maintainer>
   <longdescription>
-    NTP statistics visualization web service
+    make visualizations of offset, jitter, etc. from NTP(sec) stats file data
   </longdescription>
 </pkgmetadata>

@@ -2,6 +2,10 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  24 Dec 2017; James Browning <JamesB.fe80@gmail.com> metadata.xml,
+  ntpviz-9999.ebuild:
+  ntpviz/ntpviz-9999: fix dependencies and description, also lint
+
 *ntpviz-9999 (22 Dec 2017)
 
   22 Dec 2017; James Browning <JamesB.fe80@gmail.com> +metadata.xml,
