@@ -1,9 +1,12 @@
 # ChangeLog for net-misc/ntpsec
-# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
-  24 Dec 2017; James Browning <JamesB.fe80@gmail.com> -ntpsec-0.9.6.ebuild,
-  -ntpsec-0.9.7.ebuild:
+  13 Jan 2018; James Browning <JamesB.fe80@gmail.com> ntpsec-9999-r2.ebuild:
+  unsuccessfully try to get ntpsec to build the module for more than 2.7
+
+  24 Dec 2017; James Browning <JamesB.fe80@gmail.com> metadata.xml,
+  -ntpsec-0.9.6.ebuild, -ntpsec-0.9.7.ebuild:
   remove versions < 1.0
 
   24 Dec 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999-r2.ebuild:
