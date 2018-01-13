@@ -25,11 +25,6 @@ net-misc/ntpsec:rclock_truetime - Refclock support for TrueTime GPS/GOES/OMEGA R
 net-misc/ntpsec:rclock_zyfer - Refclock support for Zyfer GPStarplus Receiver
 net-misc/ntpsec:smear - Enable Leap Smearing.
 net-misc/ntpsec:tests - Exec all/no unit tests
-sci-geosciences/gpsd:dbus - export gpsd data over dbus connections
-sci-geosciences/gpsd:latency_timing - support latency timing information
-sci-geosciences/gpsd:ntp - Enable net-misc/ntp shared memory interface and PPS kernel support for GPS time
-sci-geosciences/gpsd:shm - export gpsd over shared memory
-sci-geosciences/gpsd:sockets - export gpsd over unix sockets
 sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening a bug about it.
 sys-fs/diod:luajit - Lua Just In Time compiler
 sys-fs/diod:rdma - Infiniband RDMA (Remote Direct Memory Access) transport
