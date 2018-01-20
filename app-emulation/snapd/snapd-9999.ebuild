@@ -1,0 +1,1 @@
+snapd-2.30-r3.ebuild

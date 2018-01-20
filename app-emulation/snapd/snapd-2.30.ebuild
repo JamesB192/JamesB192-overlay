@@ -3,18 +3,21 @@
 
 EAPI=6
 
-inherit golang-vcs-snapshot
+inherit golang-build
 inherit systemd
+inherit bash-completion-r1
 
-EGO_PN=github.com/snapcore/snapd
-EGO_SRC=github.com/snapcore/snapd/...
-EGIT_COMMIT="181f66ac30bc3a2bfb8e83c809019c037d34d1f3"
+#EGO_PN=github.com/snapcore/snapd
+EGO_PN="../../"
+#EGO_SRC=github.com/snapcore/snapd/...
+#EGIT_COMMIT="181f66ac30bc3a2bfb8e83c809019c037d34d1f3"
 
 DESCRIPTION="Service and tools for management of snap packages"
 HOMEPAGE="http://snapcraft.io/"
 # rather than reference the git commit, it is better to src_uri to the package version (if possible) for future compatibility and ease of reading
 # non-standard versioning upstream makes package renaming (below) prudent
-SRC_URI="https://github.com/snapcore/${PN}/archive/${PV}.tar.gz -> ${PF}.tar.gz"
+#https://github.com/snapcore/${PN}/archive/${PV}-novendor.tar.gz -> ${PF}-no-vendor.tar.gz
+SRC_URI="https://github.com/snapcore/snapd/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${PF}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -51,6 +54,7 @@ src_compile() {
 	go install -v "${EGO_PN}/cmd/snapd" || die
 	go install -v "${EGO_PN}/cmd/snap" || die
 	# go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}/cmd/snapd" || die
+	make -C "${S}/src/github.com/snapcore/snapd/data/systemd/"
 }
 
 src_install() {
@@ -62,16 +66,16 @@ src_install() {
 	doexe "$GOPATH/bin/snapd"
 	cd "src/${EGO_PN}" || die
 	# Install systemd units
-#	systemd_dounit debian/snapd.{service,socket}
-#	systemd_dounit debian/snapd.refresh.{service,timer}
+	sed  -e 's!/usr/lib/snapd/!/usr/libexec/snapd/!' -i "${S}/src/github.com/snapcore/snapd/data/systemd"/snapd.service
+	sed -i -e 's/RandomizedDelaySec=/#RandomizedDelaySec=/' "${S}/src/github.com/snapcore/snapd/data/systemd"/*.timer
+	systemd_dounit "${S}/src/github.com/snapcore/snapd/data/systemd"/*.{service,timer,socket}
 	# Work around https://github.com/zyga/snapd-gentoo/issues/1
-	sed -i -e 's/RandomizedDelaySec=/#RandomizedDelaySec=/' debian/snapd.refresh.timer
-	# NOTE: the two "frameworks" units should be dropped upstream soon
-#	systemd_dounit debian/snapd.frameworks.target
-#	systemd_dounit debian/snapd.frameworks-pre.target
 	# Put /snap/bin on PATH
 	dodir /etc/profile.d/
-	echo 'PATH=$PATH:/snap/bin' > ${D}/etc/profile.d/snapd.sh
+	echo 'PATH=$PATH:/snap/bin' > "${D}/etc/profile.d/snapd.sh"
+	dobashcomp "${S}/src/github.com/snapcore/snapd/data/completion/snap"
+	insinto "/usr/libexec/snapd/"
+#	doins "${S}/src/github.com/snapcore/snapd/data/info"
 }
 
 pkg_postinst() {
