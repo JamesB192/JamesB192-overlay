@@ -9,4 +9,3 @@ sys-apps/modprobed-db 2.37: Keeps track of EVERY kernel module that has ever bee
 sys-apps/snap-confine 1.0.44: The snap-confine program helps to launch snappy applications
 sys-fs/diod 1.0.23 1.0.24 9999: Distributed I/O Daemon - a 9P file server
 sys-fs/gitfs 0.4.5.1.9999: Version controlled file system.
-sys-libs/timezone-data 2017c-r1: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
