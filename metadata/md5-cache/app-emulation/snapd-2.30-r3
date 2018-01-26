@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile configure install postinst postrm prepare unpack
-DEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-fs/squashfs-tools:* sys-fs/xfsprogs >=dev-lang/go-1.8 virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst postrm unpack
+DEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] dev-libs/glib sys-fs/squashfs-tools:* sys-fs/xfsprogs >=dev-lang/go-1.8 virtual/pkgconfig
 DESCRIPTION=Service and tools for management of snap packages
 EAPI=6
 HOMEPAGE=http://snapcraft.io/
 KEYWORDS=~amd64
 LICENSE=GPL-3
-RDEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-fs/squashfs-tools:*
+RDEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] dev-libs/glib sys-fs/squashfs-tools:*
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://github.com/snapcore/snapd/releases/download/2.30/snapd_2.30.vendor.tar.xz -> snapd-2.30.tar.xz
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=52eb45df4335fa2d893d2dac82e386ee
+_md5_=6419eeedef416db8c5561d727573f797
