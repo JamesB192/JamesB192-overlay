@@ -19,7 +19,7 @@ if [[ ${PV} == *9999* ]]; then
 #	EVCS_OFFLINE="yes"
 	EGIT_CHECKOUT_DIR="${S}/${PN}/src/github.com/${PN}/"
 	S="${S}/${PN}"
-	KEYWORDS="~amd64"
+	KEYWORDS=""
 else
 	SRC_URI="https://github.com/snapcore/snapd/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
 	RESTRICT="mirror"
@@ -41,8 +41,8 @@ DEPEND="${RDEPEND}
 # TODO: put /var/lib/snpad/desktop on XDG_DATA_DIRS
 
 fry() {
-	eerror "something died"
-	chmod g+rX "${WORKDIR}"
+	eerror "Died in ${FUNCNAME}: making ebuild home directory group readable and descendable."
+	chmod g+rX "${HOMEDIR}"
 	die
 }
 
@@ -52,8 +52,6 @@ src_unpack() {
 	mkdir -pv "${S}/src/github.com/${PN}/"
 	if [[ ${PV} == *9999* ]]; then
 		git-r3_src_unpack
-
-#		set -eu
 		cd "${EGIT_CHECKOUT_DIR}"
 		if ! which govendor >/dev/null;then
 			export PATH="$PATH:${GOPATH%%:*}/bin"
@@ -92,7 +90,6 @@ src_configure() {
 
 	cd "${S}/src/github.com/${PN}/cmd/"
 	pwd
-#	set -eux
 	if [[ ${PV} == *9999* ]]; then
 		( cd .. && ./mkversion.sh)
 	else
@@ -101,7 +98,7 @@ src_configure() {
 	test -f configure.ac	# Sanity check, are we in the right directory?
 	rm -f config.status
 	autoreconf -i -f	# Regenerate the build system
-	econf --enable-maintainer-mode
+	econf --enable-maintainer-mode --disable-silent-rules
 }
 
 src_compile() {

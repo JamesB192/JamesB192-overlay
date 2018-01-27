@@ -2,6 +2,9 @@
 # Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  27 Jan 2018; James Browning <JamesB.fe80@gmail.com> snapd-9999.ebuild:
+  unkeyword 9999, make fry() more usefull and cleanup
+
   26 Jan 2018; James Browning <JamesB.fe80@gmail.com> -snapd-2.30.ebuild:
   trim some old cruft and add comments where new code is not ready
 
