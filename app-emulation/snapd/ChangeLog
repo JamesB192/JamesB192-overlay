@@ -2,6 +2,13 @@
 # Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  31 Jan 2018; James Browning <JamesB.fe80@gmail.com> snapd-9999.ebuild:
+  add dev-python/docutils and sys-apps/apparmor in DEPEND
+
+  this should fix another build bug reported by wendelltduncan
+
+  Package-Manager: Portage-2.3.19, Repoman-2.3.6
+
   27 Jan 2018; James Browning <JamesB.fe80@gmail.com> snapd-9999.ebuild:
   unkeyword 9999, make fry() more usefull and cleanup
 

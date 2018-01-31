@@ -28,10 +28,11 @@ fi
 
 RDEPEND="!sys-apps/snap-confine
 	sys-libs/libseccomp[static-libs]
+	sys-apps/apparmor
 	dev-libs/glib
 	sys-fs/squashfs-tools:*"
-#	sys-libs/libapparmor
 DEPEND="${RDEPEND}
+	dev-python/docutils
 	sys-fs/xfsprogs
 	>=dev-lang/go-1.8"
 
