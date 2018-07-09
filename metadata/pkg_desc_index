@@ -1,11 +1,7 @@
-app-emulation/snapd 2.30-r3 9999: Service and tools for management of snap packages
+app-emulation/snapd 2.30-r3 2.34 9999: Service and tools for management of snap packages
 dev-python/pyexip 99999: EXI (Efficient XML Interchange) Python wrapper on EXIP
 dev-python/raven 5.27.0.9999: Raven is a client for Sentry
 media-sound/helm 0.6.1.9999 0.6.2.9999 0.6.3.9999 0.6.6.9999 0.7.0.9999 0.7.1.9999 0.8.5.9999 0.8.6.9999 0.8.9999 9999: Open source polyphonic software synthesizer with lots of modulation
-net-misc/ntpsec 1.0.0 1.0.1.9999 9999: The NTP reference implementation, refactored
-net-misc/ntpviz 9999: make visualizations of offset, jitter, etc. from NTP(sec) stats file data
 sci-misc/boinc 9999: The Berkeley Open Infrastructure for Network Computing
-sys-apps/modprobed-db 2.37: Keeps track of EVERY kernel module that has ever been probed.
 sys-apps/snap-confine 1.0.44: The snap-confine program helps to launch snappy applications
-sys-fs/diod 1.0.23 1.0.24 9999: Distributed I/O Daemon - a 9P file server
 sys-fs/gitfs 0.4.5.1.9999: Version controlled file system.

@@ -2,6 +2,14 @@
 # Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  09 Jul 2018; James Browning <JamesB.fe80@gmail.com> snapd-2.34.ebuild,
+  snapd-9999.ebuild:
+  */*: automatc lint and
+  app-emulation/snapd: remove line in files repoman pointed at
+  net-misc/ntpsec: dropped as now in upstream
+  sys-fs/diod: dropped as broken
+  sys-apps/modprobe-db: dropped due to missing dep
+
 *snapd-2.34 (09 Jul 2018)
 
   09 Jul 2018; James Browning <JamesB.fe80@gmail.com> +snapd-2.34.ebuild,
