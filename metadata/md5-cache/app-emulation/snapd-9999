@@ -1,10 +1,11 @@
 DEFINED_PHASES=compile configure install postinst postrm setup unpack
-DEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-apps/apparmor dev-libs/glib sys-fs/squashfs-tools:* dev-python/docutils sys-fs/xfsprogs >=dev-lang/go-1.8 virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-apps/apparmor dev-libs/glib sys-fs/squashfs-tools:* >=dev-lang/go-1.8 dev-python/docutils sys-fs/xfsprogs virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Service and tools for management of snap packages
 EAPI=6
 HOMEPAGE=http://snapcraft.io/
+IUSE=kernel_linux
 LICENSE=GPL-3
 RDEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-apps/apparmor dev-libs/glib sys-fs/squashfs-tools:*
 SLOT=0
-_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	8f6de46b0aa318aea0e8cac62ece098b	linux-info	aedb720bff5a5dec9b87edd351382bfc	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
-_md5_=bdf5a7b3814983414e9556d56d1eb94e
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	git-r3	8f6de46b0aa318aea0e8cac62ece098b	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=5221627b0eb2ad8713cdb4b5f5c8e648

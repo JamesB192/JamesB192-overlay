@@ -4,6 +4,7 @@
 EAPI=6
 
 inherit bash-completion-r1 linux-info systemd
+inherit golang-base
 
 DESCRIPTION="Service and tools for management of snap packages"
 HOMEPAGE="http://snapcraft.io/"
@@ -16,13 +17,15 @@ CONFIG_CHECK="CGROUPS CGROUP_DEVICE CGROUP_FREEZER NAMESPACES SQUASHFS SQUASHFS_
 export GOPATH="${S}/${PN}"
 
 if [[ ${PV} == *9999* ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/snapcore/${PN}.git"
-	EGIT_CHECKOUT_DIR="${S}/${PN}/src/github.com/${PN}/"
+	inherit golang-vcs
+	EGO_PN="github.com/snapcore/${PN}"
 	S="${S}/${PN}"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
+	inherit golang-vcs-snapshot
+	EGO_PN="github.com/snapcore/${PN}"
+	SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz
+		${EGO_VENDOR_URI}"
 	RESTRICT="mirror"
 	KEYWORDS="~amd64"
 fi
@@ -33,7 +36,6 @@ RDEPEND="!sys-apps/snap-confine
 	dev-libs/glib
 	sys-fs/squashfs-tools:*"
 DEPEND="${RDEPEND}
-	>=dev-lang/go-1.8
 	dev-python/docutils
 	sys-fs/xfsprogs"
 
@@ -166,7 +168,7 @@ pkg_postinst() {
 
 ## added package post-removal instructions for tidying up added services
 pkg_postrm() {
-debug-print-function $FUNCNAME "$@"
+	debug-print-function $FUNCNAME "$@"
 
 	systemctl disable snapd.service
 	systemctl stop snapd.service
