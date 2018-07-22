@@ -45,7 +45,7 @@ fry() {
 	die
 }
 
-if [[ "a" == "a" ]]; then
+if [[ "a" == "b" ]]; then
 	src_unpack() {
 		debug-print-function $FUNCNAME "$@"
 
