@@ -1,0 +1,55 @@
+diff a/wscript b/wscript
+--- a/wscript
++++ b/wscript
+@@ -1028,51 +1028,14 @@ def build(ctx):
+         ctx.recurse("ntpd")
+         return
+ 
+-    if ctx.env.REFCLOCK_GENERIC or ctx.env.REFCLOCK_TRIMBLE:
+-        # required by the generic and Trimble refclocks
+-        ctx.recurse("libparse")
+     ctx.recurse("libntp")
+-    ctx.recurse("ntpd")
+-    ctx.recurse("ntpfrob")
+-    ctx.recurse("ntptime")
+     ctx.recurse("pylib")
+-    ctx.recurse("attic")
+-    ctx.recurse("tests")
+-
+-    # Make sure the python scripts compile, but don't install them
+-    ctx(
+-        features="py",
+-        source=python_scripts,
+-        install_path=None,
+-    )
+-
+-    scripts = ["ntpclients/ntpleapfetch"] + python_scripts
+-
+-    ctx(
+-        features="subst",
+-        source=scripts,
+-        target=[x.replace('.py', '') for x in scripts],
+-        chmod=Utils.O755,
+-        install_path='${BINDIR}',
+-    )
+ 
+     ctx.add_post_fun(afterparty)
+     if ctx.cmd == 'clean':
+         afterparty(ctx)
+ 
+-    ctx.manpage(1, "ntpclients/ntploggps-man.txt")
+-    ctx.manpage(1, "ntpclients/ntpdig-man.txt")
+-    ctx.manpage(1, "ntpclients/ntpmon-man.txt")
+-    ctx.manpage(1, "ntpclients/ntpq-man.txt")
+-    ctx.manpage(1, "ntpclients/ntpsweep-man.txt")
+-    ctx.manpage(1, "ntpclients/ntptrace-man.txt")
+-    ctx.manpage(1, "ntpclients/ntpviz-man.txt")
+-    ctx.manpage(1, "ntpclients/ntplogtemp-man.txt")
+-    ctx.manpage(8, "ntpclients/ntpkeygen-man.txt")
+-    ctx.manpage(8, "ntpclients/ntpleapfetch-man.txt")
+-    ctx.manpage(8, "ntpclients/ntpwait-man.txt")
+-    ctx.manpage(8, "ntpclients/ntpsnmpd-man.txt")
+-
+     # Skip running unit tests on a cross compile build
+     if ctx.env.ENABLE_CROSS:
+         pprint("YELLOW", "Unit test runner skipped on a cross-compiled build.")

@@ -2,4 +2,27 @@
 # your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using egencache *
 
+net-misc/ntpsec:early - Drop root privileges early
+net-misc/ntpsec:gdb - Enable debugging with gdb
+net-misc/ntpsec:heat - Install contrib heat generating scripts
+net-misc/ntpsec:nist - Enable lockclock
+net-misc/ntpsec:ntpviz - Make visualizations of offsets, jiffies, etc.
+net-misc/ntpsec:rclock_arbiter - Arbiter 1088A/B GPS driver
+net-misc/ntpsec:rclock_generic - Enable support for generic time radios and GPSDOs
+net-misc/ntpsec:rclock_gpsd - Enable gpsd daemon support
+net-misc/ntpsec:rclock_hpgps - Hewlett Packard GPS driver
+net-misc/ntpsec:rclock_jjy - JJY driver
+net-misc/ntpsec:rclock_local - Support for undisciplined local clock (not recommended)
+net-misc/ntpsec:rclock_modem - NIST/USNO/PTB Modem Time Services
+net-misc/ntpsec:rclock_neoclock - NeoClock4X DCF77/TDF driver
+net-misc/ntpsec:rclock_nmea - NMEA GPS driver
+net-misc/ntpsec:rclock_oncore - Oncore driver
+net-misc/ntpsec:rclock_pps - PPS cesium clock driver
+net-misc/ntpsec:rclock_shm - Obtain refclock info from shared memory-segment
+net-misc/ntpsec:rclock_spectracom - Spectracom driver
+net-misc/ntpsec:rclock_trimble - Trimble driver
+net-misc/ntpsec:rclock_truetime - Trutime driver (deprecated)
+net-misc/ntpsec:rclock_zyfer - Zyfer driver
+net-misc/ntpsec:smear - Specify the interval over which a leap second is applied (experimental)
+net-misc/ntpsec:tests - Enable tests
 sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening a bug about it.
