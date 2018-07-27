@@ -4,4 +4,3 @@ dev-python/raven 5.27.0.9999: Raven is a client for Sentry
 media-sound/helm 0.6.1.9999 0.6.2.9999 0.6.3.9999 0.6.6.9999 0.7.0.9999 0.7.1.9999 0.8.5.9999 0.8.6.9999 0.8.9999 9999: Open source polyphonic software synthesizer with lots of modulation
 net-misc/ntpsec 1.1.1-r1: The NTP reference implementation, refactored
 sys-apps/snap-confine 1.0.44: The snap-confine program helps to launch snappy applications
-sys-fs/gitfs 0.4.5.1.9999: Version controlled file system.
