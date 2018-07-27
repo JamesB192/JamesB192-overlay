@@ -25,4 +25,3 @@ net-misc/ntpsec:rclock_truetime - Trutime driver (deprecated)
 net-misc/ntpsec:rclock_zyfer - Zyfer driver
 net-misc/ntpsec:smear - Specify the interval over which a leap second is applied (experimental)
 net-misc/ntpsec:tests - Enable tests
-sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening a bug about it.
