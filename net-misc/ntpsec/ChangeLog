@@ -3,6 +3,10 @@
 # (auto-generated from git log)
 
   27 Jul 2018; James Browning <JamesB.fe80@gmail.com>
+  files/0001-wafScriptRevise.patch, ntpsec-1.1.1-r1.ebuild:
+  fix wscript patch, patching for 2nd+ runs
+
+  27 Jul 2018; James Browning <JamesB.fe80@gmail.com>
   -files/0002-pylibntpsec_only.patch, ntpsec-1.1.1-r1.ebuild:
   delete obselete patch and replace cp calls w/ do* helper
 

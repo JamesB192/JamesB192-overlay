@@ -1,43 +1,22 @@
 diff --git a/wscript b/wscript
-index 08ffc9632..050046677 100644
+index 08ffc9632..8f172b6fc 100644
 --- a/wscript
 +++ b/wscript
-@@ -1074,25 +1074,23 @@ def build(ctx):
+@@ -1074,7 +1074,7 @@ def build(ctx):
      ctx.manpage(8, "ntpclients/ntpsnmpd-man.txt")
  
      # Skip running unit tests on a cross compile build
 -    if not ctx.env.ENABLE_CROSS:
--        # Force re-running of tests.  Same as 'waf --alltests'
--        if ctx.cmd == "check":
--            ctx.options.all_tests = True
--
--            # Print log if -v is supplied
--            if ctx.options.verbose:
--                ctx.add_post_fun(test_print_log)
--
--        # Write test log to a file
--        ctx.add_post_fun(test_write_log)
-+    if ctx.env.ENABLE_CROSS:
-+        pprint("YELLOW", "Unit test runner skipped on a cross-compiled build.")
-+        from waflib import Options
-+        Options.options.no_tests = True
-+    elif ctx.cmd == "build":
-+        from waflib import Options
-+        Options.options.no_tests = True
-+    else:
-+        # Print log
-+        ctx.options.all_tests = True
- 
-         # Print a summary at the end
++    if not ctx.cmd == "build":
+         # Force re-running of tests.  Same as 'waf --alltests'
+         if ctx.cmd == "check":
+             ctx.options.all_tests = True
+@@ -1090,7 +1090,7 @@ def build(ctx):
          ctx.add_post_fun(waf_unit_test.summary)
          ctx.add_post_fun(waf_unit_test.set_exit_code)
--    else:
+     else:
 -        pprint("YELLOW", "Unit test runner skipped on a cross-compiled build.")
--        from waflib import Options
--        Options.options.no_tests = True
-+
-+        # Write test log to a file
-+        ctx.add_post_fun(test_print_log)
++        pprint("YELLOW", "Unit test runner skipped in build.")
+         from waflib import Options
+         Options.options.no_tests = True
  
-     if ctx.cmd == "build":
-         if "PYTHONPATH" in os.environ:

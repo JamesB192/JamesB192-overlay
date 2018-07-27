@@ -65,19 +65,17 @@ pkg_setup() {
 }
 
 src_prepare() {
-	FIRST="True"
 	default
 	# Remove autostripping of binaries
 	sed -i -e '/Strip binaries/d' wscript
 	eapply "${FILESDIR}/0001-wafScriptRevise.patch"
 	eapply "${FILESDIR}/0002-log_rotation.patch"
 	python_copy_sources
+
+	local NTPSEC_PYTHON_PATCH_ITERATION=0
 	python_patch() {
-		if [[ ${FIRST} == "True" ]]; then
-			FIRST="False"
-		else
+		if (( ++NTPSEC_PYTHON_PATCH_ITERATION > 1 )); then
 			eapply "${FILESDIR}/0003-pylibntpsec_only.patch"
-#			einfo "No patch here for now, I messed it up. -- JB192"
 		fi
 	}
 	python_foreach_impl run_in_build_dir python_patch
