@@ -149,12 +149,13 @@ src_install() {
 	keepdir /var/lib/ntp
 
 	# Install a log rotate script
-	mkdir -pv "${ED}"/etc/logrotate.d
-	cp -v "${S}"/etc/logrotate-config.ntpd "${ED}"/etc/logrotate.d/ntpd
+	insinto /etc/logrotate.d
+	doins "${S}"/etc/logrotate-config.ntpd
 
 	# Install the configuration file and sample configuration
-	cp -v "${FILESDIR}"/ntp.conf "${ED}"/etc/ntp.conf
-	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
+	insinto /etv
+	doins "${FILESDIR}"/ntp.conf
+	doins -r "${S}"/etc/ntp.d/
 }
 
 src_test() {
