@@ -2,6 +2,13 @@
 # Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+*helm-0.9.0.9999 (28 Jul 2018)
+*helm-0.8.0.9999 (28 Jul 2018)
+
+  28 Jul 2018; James Browning <JamesB.fe80@gmail.com> +helm-0.8.0.9999.ebuild,
+  -helm-0.8.9999.ebuild, +helm-0.9.0.9999.ebuild, helm-9999.ebuild:
+  fix typos and bump to include 0.9.0
+
   09 Mar 2017; James Browning <JamesB.fe80@gmail.com> helm-0.6.1.9999.ebuild,
   helm-0.6.2.9999.ebuild, helm-0.6.3.9999.ebuild, helm-0.6.6.9999.ebuild,
   helm-0.7.0.9999.ebuild, helm-0.7.1.9999.ebuild, helm-0.8.5.9999.ebuild,
