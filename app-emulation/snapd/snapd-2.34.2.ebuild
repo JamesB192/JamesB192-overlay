@@ -104,8 +104,8 @@ src_compile() {
 		go install $VX "github.com/snapcore/${PN}/cmd/${I}" ||fry
 	done
 	"${S}/bin/snap" help --man > "${C}/snap/snap.1" || fry
-#	rst2man.py "${C}/snap-confine/"snap-confine.{rst,1}
-#	rst2man.py "${C}/snap-discard-ns/"snap-discard-ns.{rst,5}
+	rst2man.py "${C}/snap-confine/"snap-confine.{rst,1}
+	rst2man.py "${C}/snap-discard-ns/"snap-discard-ns.{rst,5}
 }
 
 src_install() {
@@ -139,7 +139,6 @@ src_install() {
 			data/selinux/snappy.te \
 			data/selinux/snappy.fc
 	doexe "${C}"/decode-mount-opts/decode-mount-opts
-	doexe "${C}"/snap-confine/snap-confine
 #	mv -v "${C}"/snap-confine/snappy-app-dev "${ED}/lib/udev"
 	doexe "${C}"/snap-discard-ns/snap-discard-ns
 
@@ -159,6 +158,8 @@ src_install() {
 
 	dobashcomp data/completion/snap
 
+	exeopts -m 6755
+	doexe "${C}"/snap-confine/snap-confine
 }
 
 pkg_postinst() {
