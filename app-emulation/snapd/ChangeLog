@@ -2,6 +2,10 @@
 # Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  29 Jul 2018; James Browning <JamesB.fe80@gmail.com> -snapd-2.30-r3.ebuild,
+  -snapd-2.34.ebuild, -snapd-2.34-r1.ebuild, -snapd-2.34-r2.ebuild:
+  remove older broken ebuilds.
+
   29 Jul 2018; James Browning <JamesB.fe80@gmail.com> snapd-2.34.ebuild,
   snapd-2.34.2.ebuild:
   make /usr/lib64/snapd/snap-confine set_UID and set_GID
