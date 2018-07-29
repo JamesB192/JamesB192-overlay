@@ -4,6 +4,10 @@
 
   29 Jul 2018; James Browning <JamesB.fe80@gmail.com> snapd-2.34.2.ebuild,
   snapd-9999.ebuild:
+  unroll mkversion.sh
+
+  29 Jul 2018; James Browning <JamesB.fe80@gmail.com> snapd-2.34.2.ebuild,
+  snapd-9999.ebuild:
   Add early translation support and replace MINE complex with MY_S
 
   29 Jul 2018; James Browning <JamesB.fe80@gmail.com> +files/ebuild_diff.txt,

@@ -80,12 +80,21 @@ src_configure() {
 	debug-print-function $FUNCNAME "$@"
 
 	cd "${MY_S}/cmd/"
-	pwd
 	if [[ ${PV} == *9999* ]]; then
-		( cd .. && ./mkversion.sh || fry)
+		MY_V = "$(git describe --dirty --always | sed -e 's/-/+git/;y/-/./' )"
 	else
-		( cd .. && ./mkversion.sh "${PV}" || fry)
+		MY_V = "${PV}"
 	fi
+	cat <<EOF > "${MY_S}/cmd/version_generated.go"
+package cmd
+
+func init() {
+        Version = "$v"
+}
+EOF
+	echo "${MY_V}" > "${MY_S}/cmd/VERSION"
+	echo "VERSION=${MY_V}" > "${MY_S}/data/info"
+
 	test -f configure.ac || fry	# Sanity check, are we in the right directory?
 	rm -f config.status || fry
 	autoreconf -i -f || fry	# Regenerate the build system
