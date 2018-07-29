@@ -10,14 +10,14 @@ HOMEPAGE="http://snapcraft.io/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
-MINE="github.com/snapcore/${PN}"
+MY_S="${S}/src/github.com/snapcore/${PN}"
+PKG_LINGUAS="am bs ca cs da de el en_GB es fi fr gl hr ia id it ja lt ms nb oc pt_BR pt ru sv tr ug zh_CN"
+
 CONFIG_CHECK="CGROUPS CGROUP_DEVICE CGROUP_FREEZER NAMESPACES SQUASHFS SQUASHFS_ZLIB SQUASHFS_LZO SQUASHFS_XZ BLK_DEV_LOOP SECCOMP SECCOMP_FILTER"
 
 export GOPATH="${S}/${PN}"
 
 if [[ ${PV} == *9999* ]]; then
-#	inherit golang-vcs
-#	EGO_PN="github.com/snapcore/${PN}"
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/snapcore/${PN}.git"
 	EGIT_CHECKOUT_DIR="${S}/${PN}/src/github.com/${PN}/"
@@ -37,6 +37,7 @@ RDEPEND="!sys-apps/snap-confine
 DEPEND="${RDEPEND}
 	>=dev-lang/go-1.9
 	dev-python/docutils
+	sys-devel/gettext
 	sys-fs/xfsprogs"
 
 fry() {
@@ -76,7 +77,7 @@ fi
 src_configure() {
 	debug-print-function $FUNCNAME "$@"
 
-	cd "${S}/src/${MINE}/cmd/"
+	cd "${MY_S}/cmd/"
 	pwd
 	if [[ ${PV} == *9999* ]]; then
 		( cd .. && ./mkversion.sh || fry)
@@ -92,8 +93,8 @@ src_configure() {
 src_compile() {
 	debug-print-function $FUNCNAME "$@"
 
-	C="${S}/src/${MINE}/cmd/"
-	emake -C "${S}/src/${MINE}/data/" || fry
+	C="${MY_S}/cmd/"
+	emake -C "${MY_S}/data/" || fry
 	emake -C "${C}"  || fry
 
 	export GOPATH="${S}/"
@@ -105,13 +106,17 @@ src_compile() {
 	"${S}/bin/snap" help --man > "${C}/snap/snap.1" || fry
 	rst2man.py "${C}/snap-confine/"snap-confine.{rst,1}
 	rst2man.py "${C}/snap-discard-ns/"snap-discard-ns.{rst,5}
+
+	for I in ${PKG_LINGUAS};do
+		msgfmt --output-file="${MY_S}/po/${I}.mo" "${MY_S}/po/${I}.po"
+	done
 }
 
 src_install() {
 	debug-print-function $FUNCNAME "$@"
 
-	C="${S}/src/${MINE}/cmd"
-	DS="${S}/src/${MINE}/data/systemd"
+	C="${MY_S}/cmd"
+	DS="${MY_S}/data/systemd"
 
 	doman \
 		"${C}/snap-confine/snap-confine.1" \
@@ -121,7 +126,7 @@ src_install() {
 	systemd_dounit \
 		"${DS}/snapd.service"		"${DS}/snapd.socket"
 
-	cd "${S}/src/${MINE}"
+	cd "${MY_S}"
 	dodir  \
 		"/etc/profile.d" \
 		"/usr/lib/snapd" \
@@ -148,14 +153,18 @@ src_install() {
 	doexe "${S}/bin"/snap-update-ns
 	doexe "${S}/bin"/snap-seccomp ### missing libseccomp
 
-	mv -v "${S}/src/${MINE}/data/info" "${ED}/usr/lib/snapd/"
+	mv -v "${MY_S}/data/info" "${ED}/usr/lib/snapd/"
 	mv -v data/env/snapd.sh "${ED}/etc/profile.d/"
-	dodoc	"${S}/src/${MINE}/packaging/ubuntu-14.04"/copyright \
-		"${S}/src/${MINE}/packaging/ubuntu-16.04"/changelog
+	dodoc	"${MY_S}/packaging/ubuntu-14.04"/copyright \
+		"${MY_S}/packaging/ubuntu-16.04"/changelog
 
 	dobin "${S}/bin"/{snap,snapctl}
 
 	dobashcomp data/completion/snap
+
+	for I in ${PKG_LINGUAS};do
+		domo "${MY_S}/po/${I}.mo"
+	done
 
 	exeopts -m6755
 	doexe "${C}"/snap-confine/snap-confine

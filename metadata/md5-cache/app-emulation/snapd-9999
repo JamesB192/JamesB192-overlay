@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm setup unpack
-DEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-apps/apparmor dev-libs/glib sys-fs/squashfs-tools:* >=dev-lang/go-1.9 dev-python/docutils sys-fs/xfsprogs virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-apps/apparmor dev-libs/glib sys-fs/squashfs-tools:* >=dev-lang/go-1.9 dev-python/docutils sys-devel/gettext sys-fs/xfsprogs virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Service and tools for management of snap packages
 EAPI=6
 HOMEPAGE=http://snapcraft.io/
@@ -8,4 +8,4 @@ LICENSE=GPL-3
 RDEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-apps/apparmor dev-libs/glib sys-fs/squashfs-tools:*
 SLOT=0
 _eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	git-r3	8f6de46b0aa318aea0e8cac62ece098b	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=61751389d7fbb48513ee7e068e27dd16
+_md5_=87d55b5f1429150b818f8fe36d0544e1
