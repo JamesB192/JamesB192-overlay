@@ -4,7 +4,6 @@
 EAPI=6
 
 inherit bash-completion-r1 linux-info systemd
-inherit golang-base
 
 DESCRIPTION="Service and tools for management of snap packages"
 HOMEPAGE="http://snapcraft.io/"
@@ -17,15 +16,17 @@ CONFIG_CHECK="CGROUPS CGROUP_DEVICE CGROUP_FREEZER NAMESPACES SQUASHFS SQUASHFS_
 export GOPATH="${S}/${PN}"
 
 if [[ ${PV} == *9999* ]]; then
-	inherit golang-vcs
-	EGO_PN="github.com/snapcore/${PN}"
+#	inherit golang-vcs
+#	EGO_PN="github.com/snapcore/${PN}"
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/snapcore/${PN}.git"
+	EGIT_CHECKOUT_DIR="${S}/${PN}/src/github.com/${PN}/"
 	S="${S}/${PN}"
 	KEYWORDS=""
 else
-	inherit golang-vcs-snapshot
+	inherit golang-base golang-vcs-snapshot
 	EGO_PN="github.com/snapcore/${PN}"
-	SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz
-		${EGO_VENDOR_URI}"
+	SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
 	RESTRICT="mirror"
 	KEYWORDS="~amd64"
 fi
@@ -36,6 +37,7 @@ RDEPEND="!sys-apps/snap-confine
 	dev-libs/glib
 	sys-fs/squashfs-tools:*"
 DEPEND="${RDEPEND}
+	>=dev-lang/go-1.9
 	dev-python/docutils
 	sys-fs/xfsprogs"
 
@@ -45,10 +47,9 @@ fry() {
 	die
 }
 
-if [[ "a" == "b" ]]; then
+if [[ 8 == *9999* ]]; then
 	src_unpack() {
 		debug-print-function $FUNCNAME "$@"
-		einfo "Wrong Unpack()"
 
 		mkdir -pv "${S}/src/github.com/${PN}/"
 		if [[ ${PV} == *9999* ]]; then

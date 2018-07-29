@@ -16,6 +16,8 @@ CONFIG_CHECK="CGROUPS CGROUP_DEVICE CGROUP_FREEZER NAMESPACES SQUASHFS SQUASHFS_
 export GOPATH="${S}/${PN}"
 
 if [[ ${PV} == *9999* ]]; then
+#	inherit golang-vcs
+#	EGO_PN="github.com/snapcore/${PN}"
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/snapcore/${PN}.git"
 	EGIT_CHECKOUT_DIR="${S}/${PN}/src/github.com/${PN}/"
@@ -33,7 +35,7 @@ RDEPEND="!sys-apps/snap-confine
 	dev-libs/glib
 	sys-fs/squashfs-tools:*"
 DEPEND="${RDEPEND}
-	>=dev-lang/go-1.8
+	>=dev-lang/go-1.9
 	dev-python/docutils
 	sys-fs/xfsprogs"
 
@@ -43,7 +45,7 @@ fry() {
 	die
 }
 
-if [[ "a" == "a" ]]; then
+if [[ 9999 == *9999* ]]; then
 	src_unpack() {
 		debug-print-function $FUNCNAME "$@"
 
