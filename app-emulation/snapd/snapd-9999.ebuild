@@ -18,11 +18,13 @@ CONFIG_CHECK="CGROUPS CGROUP_DEVICE CGROUP_FREEZER NAMESPACES SQUASHFS SQUASHFS_
 export GOPATH="${S}/${PN}"
 
 if [[ ${PV} == *9999* ]]; then
+#	inherit golang-vcs
+#	EGO_PN="github.com/snapcore/${PN}"
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/snapcore/${PN}.git"
 	EGIT_CHECKOUT_DIR="${S}/${PN}/src/github.com/${PN}/"
 	S="${S}/${PN}"
-	KEYWORDS=""
+	KEYWORDS="-*"
 else
 	SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
 	RESTRICT="mirror"
@@ -37,14 +39,7 @@ RDEPEND="!sys-apps/snap-confine
 DEPEND="${RDEPEND}
 	>=dev-lang/go-1.9
 	dev-python/docutils
-	sys-devel/gettext
 	sys-fs/xfsprogs"
-
-fry() {
-	eerror "Died in ${FUNCNAME}: making ebuild home directory group readable and descendable."
-	chmod g+rX "${HOMEDIR}"
-	die
-}
 
 if [[ 9999 == *9999* ]]; then
 	src_unpack() {
@@ -57,12 +52,12 @@ if [[ 9999 == *9999* ]]; then
 			if ! which govendor >/dev/null;then
 				export PATH="$PATH:${GOPATH%%:*}/bin"
 				if ! which govendor >/dev/null;then
-					echo Installing govendor
-					go get -u github.com/kardianos/govendor ||fry
+					einfo Installing govendor
+					go get -u github.com/kardianos/govendor
 				fi
 			fi
-			echo Obtaining dependencies
-			"${GOPATH}/bin/govendor" sync ||fry
+			einfo Obtaining dependencies
+			"${GOPATH}/bin/govendor" sync
 		else
 			if [ ${A} != "" ]; then
 				unpack ${A}
@@ -77,55 +72,58 @@ fi
 src_configure() {
 	debug-print-function $FUNCNAME "$@"
 
-	cd "${MY_S}/cmd/"
+	cd "${S}/src/${MINE}/cmd/"
+	pwd
 	if [[ ${PV} == *9999* ]]; then
-		MY_V = "$(git describe --dirty --always | sed -e 's/-/+git/;y/-/./' )"
+		MY_V="$(git describe --dirty --always | sed -e 's/-/+git/;y/-/./' )"
 	else
-		MY_V = "${PV}"
+		MY_V="${PV}"
 	fi
-	cat <<EOF > "${MY_S}/cmd/version_generated.go"
+	cat <<EOF > "version_generated.go"
 package cmd
 
 func init() {
         Version = "$v"
 }
 EOF
-	echo "${MY_V}" > "${MY_S}/cmd/VERSION"
-	echo "VERSION=${MY_V}" > "${MY_S}/data/info"
+	echo "${MY_V}" > "VERSION"
+	echo "VERSION=${MY_V}" > "../data/info"
 
-	test -f configure.ac || fry	# Sanity check, are we in the right directory?
-	rm -f config.status || fry
-	autoreconf -i -f || fry	# Regenerate the build system
-	econf --enable-maintainer-mode --disable-silent-rules || fry
+	test -f configure.ac	# Sanity check, are we in the right directory?
+	rm -f config.status
+	autoreconf -i -f	# Regenerate the build system
+	econf --enable-maintainer-mode --disable-silent-rules
 }
 
 src_compile() {
 	debug-print-function $FUNCNAME "$@"
 
-	C="${MY_S}/cmd/"
-	emake -C "${MY_S}/data/" || fry
-	emake -C "${C}"  || fry
+	C="${S}/src/${MINE}/cmd/"
+	emake -C "${S}/src/${MINE}/data/"
+	emake -C "${C}"
 
 	export GOPATH="${S}/"
 	VX="" # or "-v -x" for verbosity
 	for I in snapctl snap-exec snap snapd snap-seccomp snap-update-ns; do
 		einfo "go building: ${I}"
-		go install $VX "github.com/snapcore/${PN}/cmd/${I}" ||fry
+		go install $VX "github.com/snapcore/${PN}/cmd/${I}"
 	done
-	"${S}/bin/snap" help --man > "${C}/snap/snap.1" || fry
+	"${S}/bin/snap" help --man > "${C}/snap/snap.1"
 	rst2man.py "${C}/snap-confine/"snap-confine.{rst,1}
 	rst2man.py "${C}/snap-discard-ns/"snap-discard-ns.{rst,5}
 
+	CV="" # or "-c -v" for chacks and verbosity
 	for I in ${PKG_LINGUAS};do
-		msgfmt --output-file="${MY_S}/po/${I}.mo" "${MY_S}/po/${I}.po"
+		einfo -n "building mo: ${I}"
+		msgfmt ${CV} --output-file="${S}/src/${MINE}/po/${I}.mo" "${S}/src/${MINE}/po/${I}.po"
 	done
 }
 
 src_install() {
 	debug-print-function $FUNCNAME "$@"
 
-	C="${MY_S}/cmd"
-	DS="${MY_S}/data/systemd"
+	C="${S}/src/${MINE}/cmd"
+	DS="${S}/src/${MINE}/data/systemd"
 
 	doman \
 		"${C}/snap-confine/snap-confine.1" \
@@ -135,7 +133,7 @@ src_install() {
 	systemd_dounit \
 		"${DS}/snapd.service"		"${DS}/snapd.socket"
 
-	cd "${MY_S}"
+	cd "${S}/src/${MINE}"
 	dodir  \
 		"/etc/profile.d" \
 		"/usr/lib/snapd" \
@@ -162,18 +160,16 @@ src_install() {
 	doexe "${S}/bin"/snap-update-ns
 	doexe "${S}/bin"/snap-seccomp ### missing libseccomp
 
-	mv -v "${MY_S}/data/info" "${ED}/usr/lib/snapd/"
+	mv -v "${S}/src/${MINE}/data/info" "${ED}/usr/lib/snapd/"
 	mv -v data/env/snapd.sh "${ED}/etc/profile.d/"
-	dodoc	"${MY_S}/packaging/ubuntu-14.04"/copyright \
-		"${MY_S}/packaging/ubuntu-16.04"/changelog
+	dodoc	"${S}/src/${MINE}/packaging/ubuntu-14.04"/copyright \
+		"${S}/src/${MINE}/packaging/ubuntu-16.04"/changelog
 
 	dobin "${S}/bin"/{snap,snapctl}
 
 	dobashcomp data/completion/snap
 
-	for I in ${PKG_LINGUAS};do
-		domo "${MY_S}/po/${I}.mo"
-	done
+	domo "${S}/src/${MINE}/po/"*.mo
 
 	exeopts -m6755
 	doexe "${C}"/snap-confine/snap-confine
@@ -187,7 +183,7 @@ pkg_postinst() {
 
 ## added package post-removal instructions for tidying up added services
 pkg_postrm() {
-debug-print-function $FUNCNAME "$@"
+	debug-print-function $FUNCNAME "$@"
 
 	systemctl disable snapd.service
 	systemctl stop snapd.service

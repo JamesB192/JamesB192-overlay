@@ -2,6 +2,10 @@
 # Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  30 Jul 2018; James Browning <JamesB.fe80@gmail.com> snapd-2.34.2.ebuild,
+  snapd-9999.ebuild:
+  mark 9999 broken and minor enhancements.
+
   29 Jul 2018; James Browning <JamesB.fe80@gmail.com> snapd-2.34.2.ebuild,
   snapd-9999.ebuild:
   unroll mkversion.sh
