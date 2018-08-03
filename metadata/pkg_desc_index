@@ -1,4 +1,4 @@
-app-emulation/snapd 2.34.3 9999: Service and tools for management of snap packages
+app-emulation/snapd 2.34 2.34.3 9999: Service and tools for management of snap packages
 dev-python/raven 5.27.0.9999: Raven is a client for Sentry
 media-sound/helm 0.6.1.9999 0.6.2.9999 0.6.3.9999 0.6.6.9999 0.7.0.9999 0.7.1.9999 0.8.0.9999 0.8.5.9999 0.8.6.9999 0.9.0.9999 9999: Open source polyphonic software synthesizer with lots of modulation
 net-misc/ntpsec 1.1.1-r1: The NTP reference implementation, refactored

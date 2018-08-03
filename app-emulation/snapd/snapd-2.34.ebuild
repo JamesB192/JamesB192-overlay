@@ -16,14 +16,10 @@ PKG_LINGUAS="am bs ca cs da de el en_GB es fi fr gl hr ia id it ja lt ms nb oc p
 CONFIG_CHECK="CGROUPS CGROUP_DEVICE CGROUP_FREEZER NAMESPACES SQUASHFS SQUASHFS_ZLIB SQUASHFS_LZO SQUASHFS_XZ BLK_DEV_LOOP SECCOMP SECCOMP_FILTER"
 
 export GOPATH="${S}/${PN}"
-## not compatible
-#inherit golang-vcs
-#EGO_PN="github.com/snapcore/${PN}"
-inherit git-r3
-EGIT_REPO_URI="https://github.com/snapcore/${PN}.git"
-EGIT_CHECKOUT_DIR="${S}/${PN}/src/github.com/${PN}/"
-S="${S}/${PN}"
-KEYWORDS="-*"
+
+SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
+RESTRICT="mirror"
+KEYWORDS="~amd64"
 
 RDEPEND="!sys-apps/snap-confine
 	sys-libs/libseccomp[static-libs]
@@ -39,18 +35,10 @@ src_unpack() {
 	debug-print-function $FUNCNAME "$@"
 
 	mkdir -pv "${S}/src/github.com/${PN}/"
-	git-r3_src_unpack
-	cd "${EGIT_CHECKOUT_DIR}"
-	if ! which govendor >/dev/null;then
-		export PATH="$PATH:${GOPATH%%:*}/bin"
-		if ! which govendor >/dev/null;then
-			einfo Installing govendor
-			go get -u github.com/kardianos/govendor
-		fi
+	if [ ${A} != "" ]; then
+		unpack ${A}
+		mv "${S}"/* "${S}/src/github.com/${PN}"
 	fi
-	einfo Obtaining dependencies
-	"${GOPATH}/bin/govendor" sync
-
 	ln -sv . "${S}/src/github.com"/snapcore
 }
 
@@ -59,16 +47,15 @@ src_configure() {
 
 	cd "${S}/src/${MINE}/cmd/"
 	pwd
-	MY_V="$(git describe --dirty --always | sed -e 's/-/+git/;y/-/./' )"
 	cat <<EOF > "version_generated.go"
 package cmd
 
 func init() {
-        Version = "${MY_V}"
+        Version = "${PV}"
 }
 EOF
-	echo "${MY_V}" > "VERSION"
-	echo "VERSION=${MY_V}" > "../data/info"
+	echo "${PV}" > "VERSION"
+	echo "VERSION=${PV}" > "../data/info"
 
 	test -f configure.ac	# Sanity check, are we in the right directory?
 	rm -f config.status

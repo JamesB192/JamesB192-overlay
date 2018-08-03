@@ -42,7 +42,7 @@ src_configure() {
 package cmd
 
 func init() {
-        Version = "$PV"
+        Version = "{$PV}"
 }
 EOF
 	echo "${PV}" > "${MY_S}/cmd/VERSION"
