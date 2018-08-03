@@ -13,7 +13,16 @@ IUSE=""
 MY_S="${S}/src/github.com/snapcore/${PN}"
 PKG_LINGUAS="am bs ca cs da de el en_GB es fi fr gl hr ia id it ja lt ms nb oc pt_BR pt ru sv tr ug zh_CN"
 
-CONFIG_CHECK="CGROUPS CGROUP_DEVICE CGROUP_FREEZER NAMESPACES SQUASHFS SQUASHFS_ZLIB SQUASHFS_LZO SQUASHFS_XZ BLK_DEV_LOOP SECCOMP SECCOMP_FILTER"
+CONFIG_CHECK="	CGROUPS \
+		CGROUP_DEVICE \
+		CGROUP_FREEZER \
+		NAMESPACES SQUASHFS \
+		SQUASHFS_ZLIB \
+		SQUASHFS_LZO \
+		SQUASHFS_XZ \
+		BLK_DEV_LOOP \
+		SECCOMP \
+		SECCOMP_FILTER"
 
 export GOPATH="${S}/${PN}"
 
@@ -118,18 +127,21 @@ src_install() {
 			data/selinux/snappy.te \
 			data/selinux/snappy.fc
 	doexe "${C}"/decode-mount-opts/decode-mount-opts
-#	mv -v "${C}"/snap-confine/snappy-app-dev "${ED}/lib/udev"
 	doexe "${C}"/snap-discard-ns/snap-discard-ns
 
-	mv -v data/dbus/io.snapcraft.Launcher.service "${ED}/usr/share/dbus-1/services/"
-	mv -v data/polkit/io.snapcraft.snapd.policy "${ED}/usr/share/polkit-1/actions/"
+	insinto "/usr/share/dbus-1/services/"
+	doins data/dbus/io.snapcraft.Launcher.service
+	insinto "/usr/share/polkit-1/actions/"
+	doins data/polkit/io.snapcraft.snapd.policy
 	doexe "${S}/bin"/snapd
 	doexe "${S}/bin"/snap-exec
 	doexe "${S}/bin"/snap-update-ns
 	doexe "${S}/bin"/snap-seccomp ### missing libseccomp
 
-	mv -v "${S}/src/${MINE}/data/info" "${ED}/usr/lib/snapd/"
-	mv -v data/env/snapd.sh "${ED}/etc/profile.d/"
+	insinto "/usr/lib/snapd/"
+	doins "${S}/src/${MINE}/data/info"
+	insinto "/etc/profile.d/"
+	doins data/env/snapd.sh "${ED}/etc/profile.d/"
 	dodoc	"${S}/src/${MINE}/packaging/ubuntu-14.04"/copyright \
 		"${S}/src/${MINE}/packaging/ubuntu-16.04"/changelog
 
@@ -143,13 +155,6 @@ src_install() {
 	doexe "${C}"/snap-confine/snap-confine
 }
 
-pkg_postinst() {
-	debug-print-function $FUNCNAME "$@"
-
-	systemctl enable snapd.socket
-}
-
-## added package post-removal instructions for tidying up added services
 pkg_postrm() {
 	debug-print-function $FUNCNAME "$@"
 

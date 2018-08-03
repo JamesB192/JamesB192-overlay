@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm setup unpack
+DEFINED_PHASES=compile configure install postrm setup unpack
 DEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-apps/apparmor dev-libs/glib sys-fs/squashfs-tools:* >=dev-lang/go-1.9 dev-python/docutils sys-fs/xfsprogs virtual/pkgconfig
 DESCRIPTION=Service and tools for management of snap packages
 EAPI=6
@@ -11,4 +11,4 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=https://github.com/snapcore/snapd/releases/download/2.34/snapd_2.34.vendor.tar.xz -> snapd-2.34.tar.xz
 _eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=8279fe37aa58e2ebf2480a27163700ba
+_md5_=53a273372dd2a8626d170b569ad88398
