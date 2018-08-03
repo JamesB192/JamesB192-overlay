@@ -17,19 +17,11 @@ CONFIG_CHECK="CGROUPS CGROUP_DEVICE CGROUP_FREEZER NAMESPACES SQUASHFS SQUASHFS_
 
 export GOPATH="${S}/${PN}"
 
-if [[ ${PV} == *9999* ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/snapcore/${PN}.git"
-	EGIT_CHECKOUT_DIR="${S}/${PN}/src/github.com/${PN}/"
-	S="${S}/${PN}"
-	KEYWORDS="-*"
-else
-	inherit golang-base golang-vcs-snapshot
-	EGO_PN="github.com/snapcore/${PN}"
-	SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
-	RESTRICT="mirror"
-	KEYWORDS="~amd64"
-fi
+inherit golang-base golang-vcs-snapshot
+EGO_PN="github.com/snapcore/${PN}"
+SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
+RESTRICT="mirror"
+KEYWORDS="~amd64"
 
 RDEPEND="!sys-apps/snap-confine
 	sys-libs/libseccomp[static-libs]
@@ -42,52 +34,19 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	sys-fs/xfsprogs"
 
-if [[ 8 == *9999* ]]; then
-	src_unpack() {
-		debug-print-function $FUNCNAME "$@"
-
-		mkdir -pv "${S}/src/github.com/${PN}/"
-		if [[ ${PV} == *9999* ]]; then
-			git-r3_src_unpack
-			cd "${EGIT_CHECKOUT_DIR}"
-			if ! which govendor >/dev/null;then
-				export PATH="$PATH:${GOPATH%%:*}/bin"
-				if ! which govendor >/dev/null;then
-					echo Installing govendor
-					go get -u github.com/kardianos/govendor
-				fi
-			fi
-			echo Obtaining dependencies
-			"${GOPATH}/bin/govendor" sync
-		else
-			if [ ${A} != "" ]; then
-				unpack ${A}
-				mv "${S}"/* "${S}/src/github.com/${PN}"
-			fi
-		fi
-
-		ln -sv . "${S}/src/github.com"/snapcore
-	}
-fi
-
 src_configure() {
 	debug-print-function $FUNCNAME "$@"
 
 	cd "${MY_S}/cmd/"
-	if [[ ${PV} == *9999* ]]; then
-		MY_V="$(git describe --dirty --always | sed -e 's/-/+git/;y/-/./' )"
-	else
-		MY_V="${PV}"
-	fi
 	cat <<EOF > "${MY_S}/cmd/version_generated.go"
 package cmd
 
 func init() {
-        Version = "$v"
+        Version = "$PV"
 }
 EOF
-	echo "${MY_V}" > "${MY_S}/cmd/VERSION"
-	echo "VERSION=${MY_V}" > "${MY_S}/data/info"
+	echo "${PV}" > "${MY_S}/cmd/VERSION"
+	echo "VERSION=${PV}" > "${MY_S}/data/info"
 
 	test -f configure.ac	# Sanity check, are we in the right directory?
 	rm -f config.status
@@ -103,7 +62,7 @@ src_compile() {
 	emake -C "${C}"
 
 	export GOPATH="${S}/"
-	VX="" # or "-v -x" for verbosity
+	VX="-v -x" # or "-v -x" for verbosity
 	for I in snapctl snap-exec snap snapd snap-seccomp snap-update-ns; do
 		einfo "go building: ${I}"
 		go install $VX "github.com/snapcore/${PN}/cmd/${I}"
@@ -114,7 +73,7 @@ src_compile() {
 
 	for I in ${PKG_LINGUAS};do
 		einfo "mo building: ${I}"
-		msgfmt --output-file="${MY_S}/po/${I}.mo" "${MY_S}/po/${I}.po"
+		msgfmt -v --output-file="${MY_S}/po/${I}.mo" "${MY_S}/po/${I}.po"
 	done
 }
 
