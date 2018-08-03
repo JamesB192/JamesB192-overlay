@@ -4,6 +4,10 @@
 
   03 Aug 2018; James Browning <JamesB.fe80@gmail.com> snapd-2.34.ebuild,
   snapd-2.34.3.ebuild, snapd-9999.ebuild:
+  formatting
+
+  03 Aug 2018; James Browning <JamesB.fe80@gmail.com> snapd-2.34.ebuild,
+  snapd-2.34.3.ebuild, snapd-9999.ebuild:
   replace mv in install split config checks and unify inherits
 
 *snapd-2.34 (03 Aug 2018)

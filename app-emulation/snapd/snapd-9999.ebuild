@@ -7,11 +7,25 @@ inherit bash-completion-r1 git-r3 linux-info systemd
 
 DESCRIPTION="Service and tools for management of snap packages"
 HOMEPAGE="http://snapcraft.io/"
+EGIT_REPO_URI="https://github.com/snapcore/${PN}.git"
+EGIT_CHECKOUT_DIR="${S}/${PN}/src/github.com/${PN}/"
+
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="-*"
 IUSE=""
 MY_S="${S}/src/github.com/snapcore/${PN}"
 PKG_LINGUAS="am bs ca cs da de el en_GB es fi fr gl hr ia id it ja lt ms nb oc pt_BR pt ru sv tr ug zh_CN"
+
+RDEPEND="!sys-apps/snap-confine
+	sys-libs/libseccomp[static-libs]
+	sys-apps/apparmor
+	dev-libs/glib
+	sys-fs/squashfs-tools:*"
+DEPEND="${RDEPEND}
+	>=dev-lang/go-1.9
+	dev-python/docutils
+	sys-fs/xfsprogs"
 
 CONFIG_CHECK="	CGROUPS \
 		CGROUP_DEVICE \
@@ -27,20 +41,7 @@ CONFIG_CHECK="	CGROUPS \
 
 export GOPATH="${S}/${PN}"
 
-EGIT_REPO_URI="https://github.com/snapcore/${PN}.git"
-EGIT_CHECKOUT_DIR="${S}/${PN}/src/github.com/${PN}/"
 S="${S}/${PN}"
-KEYWORDS="-*"
-
-RDEPEND="!sys-apps/snap-confine
-	sys-libs/libseccomp[static-libs]
-	sys-apps/apparmor
-	dev-libs/glib
-	sys-fs/squashfs-tools:*"
-DEPEND="${RDEPEND}
-	>=dev-lang/go-1.9
-	dev-python/docutils
-	sys-fs/xfsprogs"
 
 src_unpack() {
 	debug-print-function $FUNCNAME "$@"

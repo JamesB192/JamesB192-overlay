@@ -7,27 +7,11 @@ inherit bash-completion-r1 linux-info systemd
 
 DESCRIPTION="Service and tools for management of snap packages"
 HOMEPAGE="http://snapcraft.io/"
+SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
+
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
-MY_S="${S}/src/github.com/snapcore/${PN}"
-PKG_LINGUAS="am bs ca cs da de el en_GB es fi fr gl hr ia id it ja lt ms nb oc pt_BR pt ru sv tr ug zh_CN"
-
-CONFIG_CHECK="	CGROUPS \
-		CGROUP_DEVICE \
-		CGROUP_FREEZER \
-		NAMESPACES SQUASHFS \
-		SQUASHFS_ZLIB \
-		SQUASHFS_LZO \
-		SQUASHFS_XZ \
-		BLK_DEV_LOOP \
-		SECCOMP \
-		SECCOMP_FILTER"
-
-export GOPATH="${S}/${PN}"
-
-SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
-RESTRICT="mirror"
 KEYWORDS="~amd64"
 
 RDEPEND="!sys-apps/snap-confine
@@ -39,6 +23,25 @@ DEPEND="${RDEPEND}
 	>=dev-lang/go-1.9
 	dev-python/docutils
 	sys-fs/xfsprogs"
+
+MY_S="${S}/src/github.com/snapcore/${PN}"
+PKG_LINGUAS="am bs ca cs da de el en_GB es fi fr gl hr ia id it ja lt ms nb oc pt_BR pt ru sv tr ug zh_CN"
+
+CONFIG_CHECK="	CGROUPS \
+		CGROUP_DEVICE \
+		CGROUP_FREEZER \
+		NAMESPACES \
+		SQUASHFS \
+		SQUASHFS_ZLIB \
+		SQUASHFS_LZO \
+		SQUASHFS_XZ \
+		BLK_DEV_LOOP \
+		SECCOMP \
+		SECCOMP_FILTER"
+
+export GOPATH="${S}/${PN}"
+
+RESTRICT="mirror"
 
 src_unpack() {
 	debug-print-function $FUNCNAME "$@"

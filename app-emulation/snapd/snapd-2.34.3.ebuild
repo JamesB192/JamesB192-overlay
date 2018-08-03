@@ -7,9 +7,13 @@ inherit bash-completion-r1 golang-base golang-vcs-snapshot linux-info systemd
 
 DESCRIPTION="Service and tools for management of snap packages"
 HOMEPAGE="http://snapcraft.io/"
+SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
+
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE=""
+
 MY_S="${S}/src/github.com/snapcore/${PN}"
 PKG_LINGUAS="am bs ca cs da de el en_GB es fi fr gl hr ia id it ja lt ms nb oc pt_BR pt ru sv tr ug zh_CN"
 
@@ -28,9 +32,7 @@ CONFIG_CHECK="	CGROUPS \
 export GOPATH="${S}/${PN}"
 
 EGO_PN="github.com/snapcore/${PN}"
-SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
 RESTRICT="mirror"
-KEYWORDS="~amd64"
 
 RDEPEND="!sys-apps/snap-confine
 	sys-libs/libseccomp[static-libs]
