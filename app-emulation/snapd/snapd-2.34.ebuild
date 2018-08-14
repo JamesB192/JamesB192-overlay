@@ -41,8 +41,6 @@ CONFIG_CHECK="	CGROUPS \
 
 export GOPATH="${S}/${PN}"
 
-RESTRICT="mirror"
-
 src_unpack() {
 	debug-print-function $FUNCNAME "$@"
 

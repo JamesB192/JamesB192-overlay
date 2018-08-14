@@ -2,6 +2,10 @@
 # Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  14 Aug 2018; James Browning <JamesB.fe80@gmail.com> snapd-2.34.ebuild,
+  snapd-2.34.3.ebuild:
+  drop mirror restriction
+
   03 Aug 2018; James Browning <JamesB.fe80@gmail.com> snapd-2.34.ebuild,
   snapd-2.34.3.ebuild, snapd-9999.ebuild:
   formatting
