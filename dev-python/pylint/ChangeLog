@@ -1,0 +1,9 @@
+# ChangeLog for dev-python/pylint
+# Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+*pylint-2.1.1 (14 Aug 2018)
+
+  14 Aug 2018; James Browning <JamesB.fe80@gmail.com> +pylint-2.1.1.ebuild:
+  initial check in / revbump
+
