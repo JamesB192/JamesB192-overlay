@@ -1,0 +1,9 @@
+# ChangeLog for dev-python/astroid
+# Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+*astroid-2.0.4 (14 Aug 2018)
+
+  14 Aug 2018; James Browning <JamesB.fe80@gmail.com> +astroid-2.0.4.ebuild:
+  initial check in / revbump
+
