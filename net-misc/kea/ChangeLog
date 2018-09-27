@@ -1,0 +1,10 @@
+# ChangeLog for net-misc/kea
+# Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+*kea-9999 (27 Sep 2018)
+
+  27 Sep 2018; James Browning <JamesB.fe80@gmail.com> +files/kea-confd,
+  +files/kea-initd, +kea-9999.ebuild, +metadata.xml:
+  add mysql, postgres useflags
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jamesb.fe80@gmail.com</email>
+		<name>James Browning</name>
+	</maintainer>
+	<use>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of Botan</flag>
+		<flag name="samples">Install sample configuration files</flag>
+	</use>
+</pkgmetadata>

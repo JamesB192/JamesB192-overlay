@@ -2,6 +2,8 @@
 # your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using egencache *
 
+net-misc/kea:openssl - Use dev-libs/openssl instead of Botan
+net-misc/kea:samples - Install sample configuration files
 net-misc/ntpsec:early - Drop root privileges early
 net-misc/ntpsec:gdb - Enable debugging with gdb
 net-misc/ntpsec:heat - Install contrib heat generating scripts
