@@ -16,6 +16,7 @@ KEYWORDS="-*"
 IUSE=""
 MY_S="${S}/src/github.com/snapcore/${PN}"
 PKG_LINGUAS="am bs ca cs da de el en_GB es fi fr gl hr ia id it ja lt ms nb oc pt_BR pt ru sv tr ug zh_CN"
+RESYTICT="primaryuri"
 
 RDEPEND="!sys-apps/snap-confine
 	sys-libs/libseccomp[static-libs]

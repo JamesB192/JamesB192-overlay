@@ -13,6 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
 KEYWORDS="~amd64"
+RESTRICT="primaryuri"
 
 RDEPEND="!sys-apps/snap-confine
 	sys-libs/libseccomp[static-libs]
