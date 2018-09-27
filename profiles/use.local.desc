@@ -6,9 +6,7 @@ net-misc/kea:openssl - Use dev-libs/openssl instead of Botan
 net-misc/kea:samples - Install sample configuration files
 net-misc/ntpsec:early - Drop root privileges early
 net-misc/ntpsec:gdb - Enable debugging with gdb
-net-misc/ntpsec:heat - Install contrib heat generating scripts
 net-misc/ntpsec:nist - Enable lockclock
-net-misc/ntpsec:ntpviz - Make visualizations of offsets, jiffies, etc.
 net-misc/ntpsec:rclock_arbiter - Arbiter 1088A/B GPS driver
 net-misc/ntpsec:rclock_generic - Enable support for generic time radios and GPSDOs
 net-misc/ntpsec:rclock_gpsd - Enable gpsd daemon support
@@ -26,4 +24,3 @@ net-misc/ntpsec:rclock_trimble - Trimble driver
 net-misc/ntpsec:rclock_truetime - Trutime driver (deprecated)
 net-misc/ntpsec:rclock_zyfer - Zyfer driver
 net-misc/ntpsec:smear - Specify the interval over which a leap second is applied (experimental)
-net-misc/ntpsec:tests - Enable tests

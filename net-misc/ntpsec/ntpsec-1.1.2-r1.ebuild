@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit flag-o-matic python-r1 waf-utils systemd user
@@ -28,11 +28,11 @@ NTPSEC_REFCLOCK=(
 	shm pps hpgps zyfer arbiter nmea neoclock modem
 	local)
 
-IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
+IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/+rclock_}
 
 LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
 SLOT="0"
-IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat libressl nist ntpviz samba seccomp smear tests" #ionice
+IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb libressl nist samba seccomp smear" #ionice
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # net-misc/pps-tools oncore,pps
@@ -45,7 +45,6 @@ CDEPEND="${PYTHON_DEPS}
 	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="${CDEPEND}
-	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
 	!net-misc/ntp
 	!net-misc/openntpd
 "
@@ -68,17 +67,7 @@ src_prepare() {
 	default
 	# Remove autostripping of binaries
 	sed -i -e '/Strip binaries/d' wscript
-	eapply "${FILESDIR}/0001-wafScriptRevise.patch"
-	eapply "${FILESDIR}/0002-log_rotation.patch"
 	python_copy_sources
-
-	local NTPSEC_PYTHON_PATCH_ITERATION=0
-	python_patch() {
-		if (( ++NTPSEC_PYTHON_PATCH_ITERATION > 1 )); then
-			eapply "${FILESDIR}/0003-pylibntpsec_only.patch"
-		fi
-	}
-	python_foreach_impl run_in_build_dir python_patch
 }
 
 src_configure() {
@@ -96,8 +85,6 @@ src_configure() {
 	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
 
 	local myconf=(
-		--nopyc
-		--nopyo
 		--refclock="${CLOCKSTRING}"
 		$(use doc	&& echo "--enable-doc")
 		$(use early	&& echo "--enable-early-droproot")
@@ -106,7 +93,6 @@ src_configure() {
 		$(use samba	&& echo "--enable-mssntp")
 		$(use seccomp	&& echo "--enable-seccomp")
 		$(use smear	&& echo "--enable-leap-smear")
-		$(use tests	&& echo "--alltests")
 		$(use debug	&& echo "--enable-debug")
 	)
 
@@ -131,7 +117,7 @@ src_install() {
 	python_foreach_impl run_in_build_dir python_install
 
 	# Install heat generating scripts
-	use heat && dosbin "${S}"/contrib/ntpheat{,usb}
+	dosbin "${S}"/contrib/ntpheat{,usb}
 
 	# Install the openrc files
 	newinitd "${FILESDIR}"/ntpd.rc-r2 ntp
@@ -139,6 +125,11 @@ src_install() {
 
 	# Install the systemd unit file
 	systemd_newunit "${FILESDIR}"/ntpd.service ntpd.service
+	for I in ntp-wait.service \
+		ntplog{gps,temp}.{service,timer} \
+		ntpviz-{dai,week}ly.{service,timer} ;do
+		systemd_newunit "${S}/etc/${I}" "$I";
+	done
 
 	# Prepare a directory for the ntp.drift file
 	mkdir -pv "${ED}"/var/lib/ntp
@@ -151,22 +142,7 @@ src_install() {
 	doins "${S}"/etc/logrotate-config.ntpd
 
 	# Install the configuration file and sample configuration
-	insinto /etv
+	insinto /etc
 	doins "${FILESDIR}"/ntp.conf
 	doins -r "${S}"/etc/ntp.d/
-}
-
-src_test() {
-	python_test() {
-		./waf check -v
-	}
-	python_foreach_impl run_in_build_dir python_test
-}
-
-pkg_postinst() {
-	einfo "If you want to serve time on your local network, then"
-	einfo "you should disable all the ref_clocks unless you have"
-	einfo "one and can get stable time from it.  Feel free to try"
-	einfo "it but PPS probably won't work unless you have a UART"
-	einfo "GPS that actually provides PPS messages."
 }
