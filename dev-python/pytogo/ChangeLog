@@ -1,0 +1,14 @@
+# ChangeLog for dev-python/pytogo
+# Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+*pytogo-9999 (08 Oct 2018)
+*pytogo-1.2 (08 Oct 2018)
+*pytogo-1.1 (08 Oct 2018)
+*pytogo-1.0 (08 Oct 2018)
+
+  08 Oct 2018; James Browning <JamesB.fe80@gmail.com> +metadata.xml,
+  +pytogo-1.0.ebuild, +pytogo-1.1.ebuild, +pytogo-1.2.ebuild,
+  +pytogo-9999.ebuild:
+  add 1.0 1.1 1.2 and 9999 for initial check in.
+

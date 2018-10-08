@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>JamesB.fe80@gmail.com</email>
+    <name>JamesB192</name>
+  </maintainer>
+  <longdescription>
+pytogo is a fast, crude, incomplete Python-to-Go translator meant to
+assist a human programmer in translating large volumes of Python to
+idiomatic Go, preserving comments and structure. It does the
+mechanical things that are easy for software but hard for humans,
+leaving a human free to concentrate on the hard parts like type
+annotations.
+
+It exists because at the time it was written the only automated
+translators available either produced rather horrifying generated Go
+or wouldn't translate standalone Python code to standalone Go.
+
+It is conservative, never actually throwing away information from
+the input Python. It assumes its Python input is well-formed, and
+can fail on inputs that are sufficiently weird.
+</longdescription>
+</pkgmetadata>
