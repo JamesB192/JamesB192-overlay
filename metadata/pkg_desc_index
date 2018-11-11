@@ -3,3 +3,4 @@ dev-python/pytogo 1.0 1.1 1.2 9999: pytogo is a fast, crude, incomplete Python-t
 media-sound/helm 0.6.1.9999 0.6.2.9999 0.6.3.9999 0.6.6.9999 0.7.0.9999 0.7.1.9999 0.8.0.9999 0.8.5.9999 0.8.6.9999 0.9.0.9999 9999: Open source polyphonic software synthesizer with lots of modulation
 net-misc/kea 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/ntpsec 1.1.2-r1: The NTP reference implementation, refactored
+sys-libs/timezone-data 2018g: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
