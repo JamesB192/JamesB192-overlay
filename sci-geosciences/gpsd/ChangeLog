@@ -1,0 +1,43 @@
+# ChangeLog for sci-geosciences/gpsd
+# Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+  12 Jan 2018; James Browning <JamesB.fe80@gmail.com> -gpsd-9999.ebuild,
+  -metadata.xml:
+  rip out all of the gpsd ebuilds for throwing 200+ errors
+
+  15 Dec 2017; James Browning <JamesB.fe80@gmail.com> gpsd-9999.ebuild:
+  dev-python/raven & sci-geosciences/gpsd: change git-2 eclass to git-r3
+
+  09 Mar 2017; James Browning <JamesB.fe80@gmail.com> gpsd-9999.ebuild:
+  global: change ebuild headers and lint
+
+  09 Mar 2017; James Browning <JamesB.fe80@gmail.com> gpsd-9999.ebuild:
+  shim to upstream except cancelled attempt at adding python 3.{4,5,6} support
+
+*gpsd-9999 (23 Feb 2017)
+
+  23 Feb 2017; James Browning <JamesB.fe80@gmail.com> -gpsd-9998-r1.ebuild,
+  +gpsd-9999.ebuild:
+  Bump to EAPI 6 , change to git-r3 and unroll 9999 ifs.
+
+  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> gpsd-9998-r1.ebuild:
+  Another omniblob commit
+
+  change header on all ebuilds
+  regenerate md5 metadata cache
+  media-sound/helm: pull 9999 into the fold
+  media-sound/helm: add missing inherit multilib to placate RepoMan
+
+  21 Feb 2017; James Browning <JamesB.fe80@gmail.com> gpsd-9998-r1.ebuild:
+  omnibus commit
+
+  21 Feb 2017; James Browning <JamesB.fe80@gmail.com> +metadata.xml:
+  copy metadata.xml for repoman
+
+*gpsd-9998-r1 (22 Jan 2017)
+
+  22 Jan 2017; James Browning <JamesB.fe80@gmail.com> +gpsd-9998-r1.ebuild:
+  add less functional gpsd ebuld for gpsd-log suppoort (lower numbered than
+  9999)
+
