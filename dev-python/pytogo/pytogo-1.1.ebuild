@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,5 +32,5 @@ src_compile() {
 src_install() {
 	dobin pytogo
 	doman pytogo.1
-	dodoc NEWS COPYING pytogo.html
+	dodoc NEWS pytogo.html
 }

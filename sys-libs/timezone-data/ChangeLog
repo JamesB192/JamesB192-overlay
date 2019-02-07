@@ -2,6 +2,10 @@
 # Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  07 Feb 2019; James Browning <JamesB.fe80@gmail.com>
+  timezone-data-2018g.ebuild:
+  Linting part two
+
   01 Feb 2019; James Browning <JamesB.fe80@gmail.com>
   timezone-data-2018g.ebuild:
   HTTPS and FreeBSD

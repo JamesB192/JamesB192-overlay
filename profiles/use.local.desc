@@ -24,5 +24,11 @@ net-misc/ntpsec:rclock_trimble - Trimble driver
 net-misc/ntpsec:rclock_truetime - Trutime driver (deprecated)
 net-misc/ntpsec:rclock_zyfer - Zyfer driver
 net-misc/ntpsec:smear - Specify the interval over which a leap second is applied (experimental)
+sci-geosciences/gpsd:dbus - export gpsd data over dbus connections
+sci-geosciences/gpsd:gpsd_protocols_greis - Zerk.
+sci-geosciences/gpsd:latency_timing - support latency timing information
+sci-geosciences/gpsd:ntp - Enable net-misc/ntp shared memory interface and PPS kernel support for GPS time
+sci-geosciences/gpsd:shm - export gpsd over shared memory
+sci-geosciences/gpsd:sockets - export gpsd over unix sockets
 sys-libs/timezone-data:leaps_timezone - Install the set of "right" timezones; these timezones include leap seconds when counting seconds since the epoch (while POSIX does not) as they are based on the TAI (International Atomic Time) clock
 sys-libs/timezone-data:ntp - Install the leap-seconds.list file for NTP servers. Defaults tto YES. This should eliminate the need for NTP server operators to get the file from a third part site such as the USNO, the IETF, the IANA or the Paris observatory.

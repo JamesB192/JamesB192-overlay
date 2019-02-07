@@ -7,4 +7,4 @@ LICENSE=BSD-2
 RDEPEND=dev-lang/python
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
-_md5_=c174cef9f7c6e0dc2a2d006ac5895f08
+_md5_=05e30db5449b3612148bd9c725466525
