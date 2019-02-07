@@ -2,6 +2,13 @@
 # Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+*gpsd-3.18.1 (01 Feb 2019)
+
+  01 Feb 2019; James Browning <JamesB.fe80@gmail.com>
+  +files/gpsd-3.3-setup.py, +files/gpsd.conf-2, +files/gpsd.init-2,
+  +gpsd-3.18.1.ebuild:
+  version bump
+
   12 Jan 2018; James Browning <JamesB.fe80@gmail.com> -gpsd-9999.ebuild,
   -metadata.xml:
   rip out all of the gpsd ebuilds for throwing 200+ errors

@@ -1,6 +1,12 @@
 # ChangeLog for net-misc/ntpsec
-# Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
+
+*ntpsec-9999 (07 Feb 2019)
+
+  07 Feb 2019; James Browning <JamesB.fe80@gmail.com> ntpsec-1.1.2-r1.ebuild,
+  +ntpsec-9999.ebuild:
+  9999, fix epoch and simplify
 
 *ntpsec-1.1.2-r1 (27 Sep 2018)
 
