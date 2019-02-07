@@ -9,7 +9,6 @@ egencache --repo=JamesB192 --write-timestamp --tolerant \
 
 repoman -d \
  -x \
- -e y \
  --experimental-inherit y \
  --unmatched-removal \
  full
