@@ -74,7 +74,6 @@ src_configure() {
 	is-flagq -flto* && filter-flags -flto* -fuse-linker-plugin
 
 	local string_127=""
-	local rclocks="";
 	local CLOCKSTRING=""
 
 	for refclock in ${NTPSEC_REFCLOCK[@]} ; do
@@ -83,8 +82,10 @@ src_configure() {
 		fi
 	done
 	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
+	local epoch="`date +%s`"
 
 	local myconf=(
+		--build-epoch="${epoch}"
 		--refclock="${CLOCKSTRING}"
 		$(use doc	&& echo "--enable-doc")
 		$(use early	&& echo "--enable-early-droproot")
