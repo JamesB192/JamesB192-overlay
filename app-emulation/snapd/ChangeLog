@@ -6,7 +6,7 @@
 
   07 Feb 2019; James Browning <JamesB.fe80@gmail.com> +snapd-2.37.2.ebuild,
   -snapd-9999.ebuild:
-  linting
+  drop 9999 and verbump
 
 *snapd-2.36.1 (11 Nov 2018)
 *snapd-2.35.5 (11 Nov 2018)
