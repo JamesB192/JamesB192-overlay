@@ -1,0 +1,15 @@
+BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=app-text/asciidoc >=dev-libs/openssl-1.0.1:0
+DESCRIPTION=An RFC5297-compliant C implementation of AES-SIV
+EAPI=7
+HOMEPAGE=https://github.com/dfoxfranke/libaes_siv
+IUSE=+test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=app-text/asciidoc >=dev-libs/openssl-1.0.1:0
+RESTRICT=primaryuri
+SLOT=git
+SRC_URI=https://github.com/dfoxfranke/libaes_siv/archive/v1.0.0.tar.gz
+_eclasses_=cmake-multilib	9400794da450ca9e38faef6eefbb3957	cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=a7e9e1b06b96716a956fbc5ad2ae9c0a

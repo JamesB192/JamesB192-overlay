@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,6 +26,7 @@ find_package(OpenSSL 1.0.1 REQUIRED COMPONENTS Crypto)
+ find_program(A2X a2x)
+
+ configure_file(config.h.in config.h)
++include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+ add_library(aes_siv SHARED aes_siv.c)
+ target_link_libraries(aes_siv ${OPENSSL_CRYPTO_LIBRARY})
+

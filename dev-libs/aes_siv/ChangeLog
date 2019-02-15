@@ -1,0 +1,11 @@
+# ChangeLog for dev-libs/aes_siv
+# Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+*aes_siv-9999 (15 Feb 2019)
+*aes_siv-1.0.0 (15 Feb 2019)
+
+  15 Feb 2019; James Browning <JamesB.fe80@gmail.com> +aes_siv-1.0.0.ebuild,
+  +aes_siv-9999.ebuild, +files/aes_siv-1.0.0-include.patch, +metadata.xml:
+  Initial merge
+
