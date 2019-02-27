@@ -1,0 +1,10 @@
+# ChangeLog for net-misc/linuxptp
+# Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+*linuxptp-9999 (27 Feb 2019)
+
+  27 Feb 2019; James Browning <JamesB.fe80@gmail.com> +linuxptp-9999.ebuild,
+  +metadata.xml:
+  intial 9999 verbump, revised metadata
+

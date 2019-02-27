@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jamesb.fe80@gmail.com</email>
+		<name>James Browning</name>
+	</maintainer>
+	<longdescription>Precision Time Protocol (IEEE 1588) stack
+		for Linux.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">linuxptp</remote-id>
+	</upstream>
+</pkgmetadata>
