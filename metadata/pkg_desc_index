@@ -5,5 +5,5 @@ media-sound/helm 0.6.1.9999 0.6.2.9999 0.6.3.9999 0.6.6.9999 0.7.0.9999 0.7.1.99
 net-misc/kea 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/linuxptp 9999: The Linux Precision Time Protocol (PTP) implementation
 net-misc/ntpsec 1.1.2-r1 9999: The NTP reference implementation, refactored
-sci-geosciences/gpsd 3.18.1: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
+sci-geosciences/gpsd 3.18.1 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sys-libs/timezone-data 2018g: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)

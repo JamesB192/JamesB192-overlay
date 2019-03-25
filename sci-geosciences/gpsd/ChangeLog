@@ -2,6 +2,11 @@
 # Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+*gpsd-9999 (25 Mar 2019)
+
+  25 Mar 2019; James Browning <JamesB.fe80@gmail.com> +gpsd-9999.ebuild:
+  Symlink live ebuild
+
   07 Feb 2019; James Browning <JamesB.fe80@gmail.com> +metadata.xml:
   Linting part two
 
