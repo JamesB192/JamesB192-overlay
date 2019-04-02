@@ -117,7 +117,6 @@ src_configure() {
 		gpsd_user=gpsd
 		gpsd_group=uucp
 		nostrip=True
-		manbuild=False
 		shared=$(usex !static True False)
 		$(use_scons bluetooth bluez)
 		$(use_scons cxx libgpsmm)
@@ -134,6 +133,10 @@ src_configure() {
 		$(use_scons sockets socket_export)
 		$(use_scons usb)
 	)
+
+	if [[ ${PV} != *9999* ]] ; then
+		myesconsargs+=( manbuild=False )
+	fi
 
 	use X && myesconsargs+=( xgps=1 )
 	use qt5 && myesconsargs+=( qt_versioned=5 )

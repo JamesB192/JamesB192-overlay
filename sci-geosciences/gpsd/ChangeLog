@@ -2,6 +2,9 @@
 # Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  02 Apr 2019; James Browning <JamesB.fe80@gmail.com> gpsd-3.18.1.ebuild:
+  Make manual not building conditional on tarballs
+
 *gpsd-9999 (25 Mar 2019)
 
   25 Mar 2019; James Browning <JamesB.fe80@gmail.com> +gpsd-9999.ebuild:
