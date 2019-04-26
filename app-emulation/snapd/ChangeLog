@@ -2,6 +2,11 @@
 # Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+*snapd-2.38 (26 Apr 2019)
+
+  26 Apr 2019; James Browning <JamesB.fe80@gmail.com> +snapd-2.38.ebuild:
+  version bump to 2.38
+
 *snapd-2.37.2 (07 Feb 2019)
 
   07 Feb 2019; James Browning <JamesB.fe80@gmail.com> +snapd-2.37.2.ebuild,
