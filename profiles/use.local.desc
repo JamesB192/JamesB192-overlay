@@ -6,7 +6,6 @@ net-misc/kea:openssl - Use dev-libs/openssl instead of Botan
 net-misc/kea:samples - Install sample configuration files
 net-misc/ntpsec:early - Drop root privileges early
 net-misc/ntpsec:gdb - Enable debugging with gdb
-net-misc/ntpsec:nist - Enable lockclock
 net-misc/ntpsec:rclock_arbiter - Arbiter 1088A/B GPS driver
 net-misc/ntpsec:rclock_generic - Enable support for generic time radios and GPSDOs
 net-misc/ntpsec:rclock_gpsd - Enable gpsd daemon support
@@ -14,7 +13,6 @@ net-misc/ntpsec:rclock_hpgps - Hewlett Packard GPS driver
 net-misc/ntpsec:rclock_jjy - JJY driver
 net-misc/ntpsec:rclock_local - Support for undisciplined local clock (not recommended)
 net-misc/ntpsec:rclock_modem - NIST/USNO/PTB Modem Time Services
-net-misc/ntpsec:rclock_neoclock - NeoClock4X DCF77/TDF driver
 net-misc/ntpsec:rclock_nmea - NMEA GPS driver
 net-misc/ntpsec:rclock_oncore - Oncore driver
 net-misc/ntpsec:rclock_pps - PPS cesium clock driver
