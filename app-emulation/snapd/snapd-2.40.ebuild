@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}
 	sys-fs/xfsprogs"
 
 MY_S="${S}/src/github.com/snapcore/${PN}"
+MINE="github.com/snapd"
 PKG_LINGUAS="am bs ca cs da de el en_GB es fi fr gl hr ia id it ja lt ms nb oc pt_BR pt ru sv tr ug zh_CN"
 
 CONFIG_CHECK="	CGROUPS \

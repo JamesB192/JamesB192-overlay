@@ -2,6 +2,16 @@
 # Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+*snapd-2.40 (26 Aug 2019)
+*snapd-2.39.3 (26 Aug 2019)
+*snapd-2.37.4 (26 Aug 2019)
+
+  26 Aug 2019; James Browning <JamesB.fe80@gmail.com> -snapd-2.34.ebuild,
+  -snapd-2.34.3.ebuild, -snapd-2.35.2.ebuild, -snapd-2.35.5.ebuild,
+  -snapd-2.36.1.ebuild, -snapd-2.37.2.ebuild, +snapd-2.37.4.ebuild,
+  +snapd-2.39.3.ebuild, +snapd-2.40.ebuild, +snapd-2.41.pre1.ebuilt:
+  fix ebuild and version bumps
+
 *snapd-2.38 (26 Apr 2019)
 
   26 Apr 2019; James Browning <JamesB.fe80@gmail.com> +snapd-2.38.ebuild:
