@@ -10,7 +10,6 @@ setup(
 	license = "BSD",
 	ext_modules=[
 		Extension("gps.packet", @GPS_PACKET_SOURCES@, include_dirs=["."]),
-		Extension("gps.clienthelpers", @GPS_CLIENT_SOURCES@, include_dirs=["."]),
 	],
 	packages = ['gps'],
 	scripts = @SCRIPTS@,

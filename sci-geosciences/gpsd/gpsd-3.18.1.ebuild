@@ -4,13 +4,13 @@
 EAPI=5
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 SCONS_MIN_VERSION="1.2.1"
 
 inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.savannah.nongnu.org/gpsd.git"
+	EGIT_REPO_URI="https://gitlab.com/gpsd/gpsd.git"
 	inherit git-2
 else
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
@@ -95,14 +95,12 @@ python_prepare_all() {
 	local pybins=$(pyvar python_progs | tail -1)
 	local pysrcs=$(sed -n '/^ *python_extensions = {/,/}/{s:^ *::;s:os[.]sep:"/":g;p}' SConstruct)
 	local packet=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/packet'])")
-	local client=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/clienthelpers'])")
 	sed \
 		-e "s|@VERSION@|$(pyvar gpsd_version)|" \
 		-e "s|@URL@|$(pyvar website)|" \
 		-e "s|@EMAIL@|$(pyvar devmail)|" \
 		-e "s|@SCRIPTS@|${pybins}|" \
 		-e "s|@GPS_PACKET_SOURCES@|${packet}|" \
-		-e "s|@GPS_CLIENT_SOURCES@|${client}|" \
 		-e "s|@SCRIPTS@|${pybins}|" \
 		"${FILESDIR}"/${PN}-3.3-setup.py > setup.py || die
 	distutils-r1_python_prepare_all
