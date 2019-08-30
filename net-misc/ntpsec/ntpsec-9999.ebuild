@@ -125,9 +125,12 @@ src_install() {
 	# Install the systemd unit file
 	systemd_newunit "${FILESDIR}"/ntpd.service ntpd.service
 	for I in ntp-wait.service \
-		ntplog{gps,temp}.{service,timer} \
+		ntplogtemp.{service,timer} \
 		ntpviz-{dai,week}ly.{service,timer} ;do
-		systemd_newunit "${S}/build/main/etc/${I}" "$I";
+		systemd_newunit "${S}-python${USE_PYTHON}/build/main/etc/${I}" "$I";
+	done
+	for I in ntploggps.{service,timer} ;do
+		systemd_newunit "${S}-python${USE_PYTHON}/etc/${I}" "$I";
 	done
 
 	# Prepare a directory for the ntp.drift file

@@ -2,6 +2,9 @@
 # Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
+  30 Aug 2019; James Browning <JamesB.fe80@gmail.com> ntpsec-9999.ebuild:
+  Use properly processed systemd files instead of in files
+
 *ntpsec-1.1.6 (25 Aug 2019)
 *ntpsec-1.1.4 (25 Aug 2019)
 
