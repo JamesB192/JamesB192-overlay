@@ -1,3 +1,4 @@
+acct-group/dhcp 0: System group: dhcp
 acct-user/dhcp 0: user for dhpc daemon
 acct-user/gpsd 0: user for gpsd daemon
 app-emulation/snapd 2.37.4 2.38 2.39.3 2.40: Service and tools for management of snap packages
