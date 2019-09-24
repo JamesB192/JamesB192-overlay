@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 SCONS_MIN_VERSION="1.2.1"
 
-inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs
+inherit eutils udev multilib distutils-r1 scons-utils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/gpsd/gpsd.git"
@@ -55,7 +55,8 @@ RDEPEND="
 	)
 	python? ( ${PYTHON_DEPS} )
 	usb? ( virtual/libusb:1 )
-	X? ( dev-python/pygobject:3[cairo,${PYTHON_USEDEP}] )"
+	X? ( dev-python/pygobject:3[cairo,${PYTHON_USEDEP}] )
+	acct-user/gpsd"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( sys-devel/bc )"
@@ -162,10 +163,4 @@ src_install() {
 	newinitd "${FILESDIR}"/gpsd.init-2 gpsd
 
 	use python && distutils-r1_src_install
-}
-
-pkg_preinst() {
-	# Run the gpsd daemon as gpsd and group uucp; create it here
-	# as it doesn't seem to be needed during compile/install ...
-	enewuser gpsd -1 -1 -1 "uucp"
 }
