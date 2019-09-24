@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs user
+inherit toolchain-funcs
 
 MY_PV="${PV//_alpha/a}"
 MY_PV="${MY_PV//_beta/b}"
@@ -34,7 +34,10 @@ DEPEND="
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql:* )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	acct-group/dhcp
+	acct-user/dhcp
+"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -64,9 +67,4 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}-confd ${PN}
 	newinitd "${FILESDIR}"/${PN}-initd ${PN}
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
-}
-
-pkg_preinst() {
-	enewgroup dhcp
-	enewuser dhcp -1 -1 /var/lib/dhcp dhcp
 }
