@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit flag-o-matic python-r1 waf-utils systemd user
+inherit flag-o-matic python-r1 waf-utils systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -46,6 +46,8 @@ CDEPEND="${PYTHON_DEPS}
 RDEPEND="${CDEPEND}
 	!net-misc/ntp
 	!net-misc/openntpd
+	acct-group/ntp
+	acct-user/ntp
 "
 DEPEND="${CDEPEND}
 	app-text/asciidoc
@@ -56,11 +58,6 @@ DEPEND="${CDEPEND}
 "
 
 WAF_BINARY="${S}/waf"
-
-pkg_setup() {
-	enewgroup ntp 123
-	enewuser ntp 123 -1 /dev/null ntp
-}
 
 src_prepare() {
 	default
