@@ -7,5 +7,5 @@ LICENSE=BSD-2
 PROPERTIES=live
 RDEPEND=dev-lang/python
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
 _md5_=05e30db5449b3612148bd9c725466525
