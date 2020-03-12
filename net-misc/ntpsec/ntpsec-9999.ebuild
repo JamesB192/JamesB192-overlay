@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit flag-o-matic python-r1 waf-utils systemd
@@ -28,7 +28,7 @@ NTPSEC_REFCLOCK=(
 	shm pps hpgps zyfer arbiter nmea modem local
 )
 
-IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/+rclock_}
+IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/+rclock-}
 
 LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
 SLOT="0"
@@ -53,8 +53,8 @@ DEPEND="${CDEPEND}
 	app-text/asciidoc
 	app-text/docbook-xsl-stylesheets
 	sys-devel/bison
-	rclock_oncore? ( net-misc/pps-tools )
-	rclock_pps? ( net-misc/pps-tools )
+	rclock-oncore? ( net-misc/pps-tools )
+	rclock-pps? ( net-misc/pps-tools )
 "
 
 WAF_BINARY="${S}/waf"
@@ -73,7 +73,7 @@ src_configure() {
 	local CLOCKSTRING=""
 
 	for refclock in ${NTPSEC_REFCLOCK[@]} ; do
-		if use rclock_${refclock} ; then
+		if use rclock-${refclock} ; then
 			string_127+="$refclock,"
 		fi
 	done
