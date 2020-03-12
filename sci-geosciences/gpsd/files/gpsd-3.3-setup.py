@@ -12,5 +12,4 @@ setup(
 		Extension("gps.packet", @GPS_PACKET_SOURCES@, include_dirs=["."]),
 	],
 	packages = ['gps'],
-	scripts = @SCRIPTS@,
 )

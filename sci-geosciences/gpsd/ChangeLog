@@ -1,6 +1,10 @@
 # ChangeLog for sci-geosciences/gpsd
-# Copyright 1999-2019 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2020 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
+
+  12 Mar 2020; James Browning <JamesB.fe80@gmail.com> files/gpsd-3.3-setup.py,
+  gpsd-3.18.1.ebuild:
+  Update 9999 probably breaking 3.17.1
 
   24 Sep 2019; James Browning <JamesB.fe80@gmail.com> gpsd-3.18.1.ebuild:
   use acct-user/gpsd to conform to glep-0081

@@ -1,27 +1,27 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
-SCONS_MIN_VERSION="1.2.1"
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+SCONS_MIN_VERSION="2.3.0"
 
 inherit eutils udev multilib distutils-r1 scons-utils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/gpsd/gpsd.git"
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 	KEYWORDS="amd64 arm ~ppc ~ppc64 ~sparc x86"
 fi
 
 DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping clients"
-HOMEPAGE="http://catb.org/gpsd/"
+HOMEPAGE="https://gpsd.gitlab.io/gpsd/"
 
 LICENSE="BSD"
-SLOT="0/23"
+SLOT="0/24"
 
 GPSD_PROTOCOLS=(
 	aivdm ashtech earthmate evermore fury fv18 garmin garmintxt geostar
@@ -33,6 +33,9 @@ IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/+gpsd_protocols_}
 IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency_timing ncurses ntp python qt5 +shm +sockets static test udev usb X"
 REQUIRED_USE="X? ( python )
 	gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
+	gpsd_protocols_isync? ( gpsd_protocols_ublox )
+	gpsd_protocols_ublox? ( python )
+	gpsd_protocols_greis? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt5? ( cxx )"
 
