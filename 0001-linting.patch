@@ -1,0 +1,411 @@
+From 1401dc05e6b333e74cf4614c9f69d5263f2a540a Mon Sep 17 00:00:00 2001
+From: James Browning <JamesB.fe80@gmail.com>
+Date: Tue, 28 Jul 2020 08:42:41 -0700
+Subject: [PATCH] *: linting
+
+---
+ metadata/md5-cache/acct-group/dhcp-0            |  4 ++--
+ metadata/md5-cache/acct-user/dhcp-0             |  4 ++--
+ metadata/md5-cache/acct-user/gpsd-0             |  4 ++--
+ metadata/md5-cache/app-emulation/snapd-2.37.4   |  2 +-
+ metadata/md5-cache/app-emulation/snapd-2.38     |  2 +-
+ metadata/md5-cache/app-emulation/snapd-2.39.3   |  2 +-
+ metadata/md5-cache/app-emulation/snapd-2.40     |  2 +-
+ metadata/md5-cache/dev-libs/aes_siv-1.0.0       |  2 +-
+ metadata/md5-cache/dev-libs/aes_siv-9999        |  2 +-
+ metadata/md5-cache/dev-python/pytogo-9999       |  2 +-
+ metadata/md5-cache/media-sound/helm-0.6.1.9999  |  2 +-
+ metadata/md5-cache/media-sound/helm-0.6.2.9999  |  2 +-
+ metadata/md5-cache/media-sound/helm-0.6.3.9999  |  2 +-
+ metadata/md5-cache/media-sound/helm-0.6.6.9999  |  2 +-
+ metadata/md5-cache/media-sound/helm-0.7.0.9999  |  2 +-
+ metadata/md5-cache/media-sound/helm-0.7.1.9999  |  2 +-
+ metadata/md5-cache/media-sound/helm-0.8.0.9999  |  2 +-
+ metadata/md5-cache/media-sound/helm-0.8.5.9999  |  2 +-
+ metadata/md5-cache/media-sound/helm-0.8.6.9999  |  2 +-
+ metadata/md5-cache/media-sound/helm-0.9.0.9999  |  2 +-
+ metadata/md5-cache/media-sound/helm-9999        |  2 +-
+ metadata/md5-cache/net-misc/kea-9999            |  2 +-
+ metadata/md5-cache/net-misc/linuxptp-9999       |  2 +-
+ metadata/md5-cache/net-misc/ntpsec-9999         |  2 +-
+ metadata/md5-cache/sci-geosciences/gpsd-3.18.1  |  2 +-
+ metadata/md5-cache/sci-geosciences/gpsd-9999    |  2 +-
+ metadata/md5-cache/sys-libs/timezone-data-2018g |  2 +-
+ metadata/timestamp.chk                          |  2 +-
+ sci-geosciences/gpsd/ChangeLog                  |  3 +++
+ sci-geosciences/gpsd/Manifest                   | 10 +++++-----
+ sci-geosciences/gpsd/files/gpsd-3.3-setup.py    |  3 ---
+ 31 files changed, 39 insertions(+), 39 deletions(-)
+
+diff --git a/metadata/md5-cache/acct-group/dhcp-0 b/metadata/md5-cache/acct-group/dhcp-0
+index 97bca72..d916c3b 100644
+--- a/metadata/md5-cache/acct-group/dhcp-0
++++ b/metadata/md5-cache/acct-group/dhcp-0
+@@ -1,7 +1,7 @@
+ DEFINED_PHASES=preinst pretend
+ DESCRIPTION=System group: dhcp
+ EAPI=7
+-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
++KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+ SLOT=0
+-_eclasses_=acct-group	7126fca4f6bf56620d1ce1fd317066fc	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
++_eclasses_=acct-group	b2fc98881af84e4c35840090037852e1	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+ _md5_=7d8a7de83f99de199cfecdaf2a289a3f
+diff --git a/metadata/md5-cache/acct-user/dhcp-0 b/metadata/md5-cache/acct-user/dhcp-0
+index 10feb7b..62757e7 100644
+--- a/metadata/md5-cache/acct-user/dhcp-0
++++ b/metadata/md5-cache/acct-user/dhcp-0
+@@ -1,8 +1,8 @@
+ DEFINED_PHASES=install postinst preinst prerm pretend
+ DESCRIPTION=user for dhpc daemon
+ EAPI=7
+-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
++KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+ RDEPEND=acct-group/dhcp
+ SLOT=0
+-_eclasses_=acct-user	1729414f09229fbe725c2bc404e60fac	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
++_eclasses_=acct-user	17ea51dbbada9829d84e966f92df9297	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+ _md5_=531e5d9dbfb44552a18d0732b4608436
+diff --git a/metadata/md5-cache/acct-user/gpsd-0 b/metadata/md5-cache/acct-user/gpsd-0
+index 64b8c64..3933cfa 100644
+--- a/metadata/md5-cache/acct-user/gpsd-0
++++ b/metadata/md5-cache/acct-user/gpsd-0
+@@ -1,8 +1,8 @@
+ DEFINED_PHASES=install postinst preinst prerm pretend
+ DESCRIPTION=user for gpsd daemon
+ EAPI=7
+-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
++KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+ RDEPEND=acct-group/dialout
+ SLOT=0
+-_eclasses_=acct-user	1729414f09229fbe725c2bc404e60fac	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
++_eclasses_=acct-user	17ea51dbbada9829d84e966f92df9297	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+ _md5_=33b6a8ec172a4c1444fe47dbe1bee2f2
+diff --git a/metadata/md5-cache/app-emulation/snapd-2.37.4 b/metadata/md5-cache/app-emulation/snapd-2.37.4
+index bc4f148..df4af35 100644
+--- a/metadata/md5-cache/app-emulation/snapd-2.37.4
++++ b/metadata/md5-cache/app-emulation/snapd-2.37.4
+@@ -10,5 +10,5 @@ RDEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-apps/apparmo
+ RESTRICT=primaryuri
+ SLOT=0
+ SRC_URI=https://github.com/snapcore/snapd/releases/download/2.37.4/snapd_2.37.4.vendor.tar.xz -> snapd-2.37.4.tar.xz
+-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
++_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+ _md5_=15488099cfad9c1ffc05d2b99caeefd2
+diff --git a/metadata/md5-cache/app-emulation/snapd-2.38 b/metadata/md5-cache/app-emulation/snapd-2.38
+index 20a3e3a..ef82f65 100644
+--- a/metadata/md5-cache/app-emulation/snapd-2.38
++++ b/metadata/md5-cache/app-emulation/snapd-2.38
+@@ -10,5 +10,5 @@ RDEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-apps/apparmo
+ RESTRICT=primaryuri
+ SLOT=0
+ SRC_URI=https://github.com/snapcore/snapd/releases/download/2.38/snapd_2.38.vendor.tar.xz -> snapd-2.38.tar.xz
+-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
++_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+ _md5_=15488099cfad9c1ffc05d2b99caeefd2
+diff --git a/metadata/md5-cache/app-emulation/snapd-2.39.3 b/metadata/md5-cache/app-emulation/snapd-2.39.3
+index a92cb37..6eec9c4 100644
+--- a/metadata/md5-cache/app-emulation/snapd-2.39.3
++++ b/metadata/md5-cache/app-emulation/snapd-2.39.3
+@@ -10,5 +10,5 @@ RDEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-apps/apparmo
+ RESTRICT=primaryuri
+ SLOT=0
+ SRC_URI=https://github.com/snapcore/snapd/releases/download/2.39.3/snapd_2.39.3.vendor.tar.xz -> snapd-2.39.3.tar.xz
+-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
++_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+ _md5_=15488099cfad9c1ffc05d2b99caeefd2
+diff --git a/metadata/md5-cache/app-emulation/snapd-2.40 b/metadata/md5-cache/app-emulation/snapd-2.40
+index 3a19c0a..675be0a 100644
+--- a/metadata/md5-cache/app-emulation/snapd-2.40
++++ b/metadata/md5-cache/app-emulation/snapd-2.40
+@@ -10,5 +10,5 @@ RDEPEND=!sys-apps/snap-confine sys-libs/libseccomp[static-libs] sys-apps/apparmo
+ RESTRICT=primaryuri
+ SLOT=0
+ SRC_URI=https://github.com/snapcore/snapd/releases/download/2.40/snapd_2.40.vendor.tar.xz -> snapd-2.40.tar.xz
+-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
++_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+ _md5_=15488099cfad9c1ffc05d2b99caeefd2
+diff --git a/metadata/md5-cache/dev-libs/aes_siv-1.0.0 b/metadata/md5-cache/dev-libs/aes_siv-1.0.0
+index 058a568..f186a99 100644
+--- a/metadata/md5-cache/dev-libs/aes_siv-1.0.0
++++ b/metadata/md5-cache/dev-libs/aes_siv-1.0.0
+@@ -11,5 +11,5 @@ RDEPEND=app-text/asciidoc >=dev-libs/openssl-1.0.1:0
+ RESTRICT=primaryuri
+ SLOT=git
+ SRC_URI=https://github.com/dfoxfranke/libaes_siv/archive/v1.0.0.tar.gz
+-_eclasses_=cmake-multilib	b396704c8c04bb210b7b45dff5c67fea	cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
++_eclasses_=cmake-multilib	b396704c8c04bb210b7b45dff5c67fea	cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multilib-build	8ad5b5535b73a8971881f09277b939f4	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+ _md5_=a7e9e1b06b96716a956fbc5ad2ae9c0a
+diff --git a/metadata/md5-cache/dev-libs/aes_siv-9999 b/metadata/md5-cache/dev-libs/aes_siv-9999
+index 6140fe4..117f2ed 100644
+--- a/metadata/md5-cache/dev-libs/aes_siv-9999
++++ b/metadata/md5-cache/dev-libs/aes_siv-9999
+@@ -10,5 +10,5 @@ LICENSE=Apache-2.0
+ PROPERTIES=live
+ RDEPEND=app-text/asciidoc >=dev-libs/openssl-1.0.1:0
+ SLOT=git
+-_eclasses_=cmake-multilib	b396704c8c04bb210b7b45dff5c67fea	cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
++_eclasses_=cmake-multilib	b396704c8c04bb210b7b45dff5c67fea	cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	8ec5b53812bce105ae7943930e4660f8	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multilib-build	8ad5b5535b73a8971881f09277b939f4	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+ _md5_=a7e9e1b06b96716a956fbc5ad2ae9c0a
+diff --git a/metadata/md5-cache/dev-python/pytogo-9999 b/metadata/md5-cache/dev-python/pytogo-9999
+index 8b2bb88..3b9322f 100644
+--- a/metadata/md5-cache/dev-python/pytogo-9999
++++ b/metadata/md5-cache/dev-python/pytogo-9999
+@@ -7,5 +7,5 @@ LICENSE=BSD-2
+ PROPERTIES=live
+ RDEPEND=dev-lang/python
+ SLOT=0
+-_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
++_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8
+ _md5_=05e30db5449b3612148bd9c725466525
+diff --git a/metadata/md5-cache/media-sound/helm-0.6.1.9999 b/metadata/md5-cache/media-sound/helm-0.6.1.9999
+index 54089c7..2251250 100644
+--- a/metadata/md5-cache/media-sound/helm-0.6.1.9999
++++ b/metadata/md5-cache/media-sound/helm-0.6.1.9999
+@@ -8,5 +8,5 @@ LICENSE=GPL-3+
+ PROPERTIES=live
+ RDEPEND=media-libs/alsa-lib media-libs/lv2 media-sound/jack-audio-connection-kit virtual/opengl x11-libs/libX11 x11-libs/libXext
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=1f73f7b3970e2651833f9e1fcbe6b1c3
+diff --git a/metadata/md5-cache/media-sound/helm-0.6.2.9999 b/metadata/md5-cache/media-sound/helm-0.6.2.9999
+index 54089c7..2251250 100644
+--- a/metadata/md5-cache/media-sound/helm-0.6.2.9999
++++ b/metadata/md5-cache/media-sound/helm-0.6.2.9999
+@@ -8,5 +8,5 @@ LICENSE=GPL-3+
+ PROPERTIES=live
+ RDEPEND=media-libs/alsa-lib media-libs/lv2 media-sound/jack-audio-connection-kit virtual/opengl x11-libs/libX11 x11-libs/libXext
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=1f73f7b3970e2651833f9e1fcbe6b1c3
+diff --git a/metadata/md5-cache/media-sound/helm-0.6.3.9999 b/metadata/md5-cache/media-sound/helm-0.6.3.9999
+index 54089c7..2251250 100644
+--- a/metadata/md5-cache/media-sound/helm-0.6.3.9999
++++ b/metadata/md5-cache/media-sound/helm-0.6.3.9999
+@@ -8,5 +8,5 @@ LICENSE=GPL-3+
+ PROPERTIES=live
+ RDEPEND=media-libs/alsa-lib media-libs/lv2 media-sound/jack-audio-connection-kit virtual/opengl x11-libs/libX11 x11-libs/libXext
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=1f73f7b3970e2651833f9e1fcbe6b1c3
+diff --git a/metadata/md5-cache/media-sound/helm-0.6.6.9999 b/metadata/md5-cache/media-sound/helm-0.6.6.9999
+index 54089c7..2251250 100644
+--- a/metadata/md5-cache/media-sound/helm-0.6.6.9999
++++ b/metadata/md5-cache/media-sound/helm-0.6.6.9999
+@@ -8,5 +8,5 @@ LICENSE=GPL-3+
+ PROPERTIES=live
+ RDEPEND=media-libs/alsa-lib media-libs/lv2 media-sound/jack-audio-connection-kit virtual/opengl x11-libs/libX11 x11-libs/libXext
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=1f73f7b3970e2651833f9e1fcbe6b1c3
+diff --git a/metadata/md5-cache/media-sound/helm-0.7.0.9999 b/metadata/md5-cache/media-sound/helm-0.7.0.9999
+index 54089c7..2251250 100644
+--- a/metadata/md5-cache/media-sound/helm-0.7.0.9999
++++ b/metadata/md5-cache/media-sound/helm-0.7.0.9999
+@@ -8,5 +8,5 @@ LICENSE=GPL-3+
+ PROPERTIES=live
+ RDEPEND=media-libs/alsa-lib media-libs/lv2 media-sound/jack-audio-connection-kit virtual/opengl x11-libs/libX11 x11-libs/libXext
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=1f73f7b3970e2651833f9e1fcbe6b1c3
+diff --git a/metadata/md5-cache/media-sound/helm-0.7.1.9999 b/metadata/md5-cache/media-sound/helm-0.7.1.9999
+index 54089c7..2251250 100644
+--- a/metadata/md5-cache/media-sound/helm-0.7.1.9999
++++ b/metadata/md5-cache/media-sound/helm-0.7.1.9999
+@@ -8,5 +8,5 @@ LICENSE=GPL-3+
+ PROPERTIES=live
+ RDEPEND=media-libs/alsa-lib media-libs/lv2 media-sound/jack-audio-connection-kit virtual/opengl x11-libs/libX11 x11-libs/libXext
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=1f73f7b3970e2651833f9e1fcbe6b1c3
+diff --git a/metadata/md5-cache/media-sound/helm-0.8.0.9999 b/metadata/md5-cache/media-sound/helm-0.8.0.9999
+index 54089c7..2251250 100644
+--- a/metadata/md5-cache/media-sound/helm-0.8.0.9999
++++ b/metadata/md5-cache/media-sound/helm-0.8.0.9999
+@@ -8,5 +8,5 @@ LICENSE=GPL-3+
+ PROPERTIES=live
+ RDEPEND=media-libs/alsa-lib media-libs/lv2 media-sound/jack-audio-connection-kit virtual/opengl x11-libs/libX11 x11-libs/libXext
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=1f73f7b3970e2651833f9e1fcbe6b1c3
+diff --git a/metadata/md5-cache/media-sound/helm-0.8.5.9999 b/metadata/md5-cache/media-sound/helm-0.8.5.9999
+index 54089c7..2251250 100644
+--- a/metadata/md5-cache/media-sound/helm-0.8.5.9999
++++ b/metadata/md5-cache/media-sound/helm-0.8.5.9999
+@@ -8,5 +8,5 @@ LICENSE=GPL-3+
+ PROPERTIES=live
+ RDEPEND=media-libs/alsa-lib media-libs/lv2 media-sound/jack-audio-connection-kit virtual/opengl x11-libs/libX11 x11-libs/libXext
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=1f73f7b3970e2651833f9e1fcbe6b1c3
+diff --git a/metadata/md5-cache/media-sound/helm-0.8.6.9999 b/metadata/md5-cache/media-sound/helm-0.8.6.9999
+index 54089c7..2251250 100644
+--- a/metadata/md5-cache/media-sound/helm-0.8.6.9999
++++ b/metadata/md5-cache/media-sound/helm-0.8.6.9999
+@@ -8,5 +8,5 @@ LICENSE=GPL-3+
+ PROPERTIES=live
+ RDEPEND=media-libs/alsa-lib media-libs/lv2 media-sound/jack-audio-connection-kit virtual/opengl x11-libs/libX11 x11-libs/libXext
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=1f73f7b3970e2651833f9e1fcbe6b1c3
+diff --git a/metadata/md5-cache/media-sound/helm-0.9.0.9999 b/metadata/md5-cache/media-sound/helm-0.9.0.9999
+index 54089c7..2251250 100644
+--- a/metadata/md5-cache/media-sound/helm-0.9.0.9999
++++ b/metadata/md5-cache/media-sound/helm-0.9.0.9999
+@@ -8,5 +8,5 @@ LICENSE=GPL-3+
+ PROPERTIES=live
+ RDEPEND=media-libs/alsa-lib media-libs/lv2 media-sound/jack-audio-connection-kit virtual/opengl x11-libs/libX11 x11-libs/libXext
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=1f73f7b3970e2651833f9e1fcbe6b1c3
+diff --git a/metadata/md5-cache/media-sound/helm-9999 b/metadata/md5-cache/media-sound/helm-9999
+index 54089c7..2251250 100644
+--- a/metadata/md5-cache/media-sound/helm-9999
++++ b/metadata/md5-cache/media-sound/helm-9999
+@@ -8,5 +8,5 @@ LICENSE=GPL-3+
+ PROPERTIES=live
+ RDEPEND=media-libs/alsa-lib media-libs/lv2 media-sound/jack-audio-connection-kit virtual/opengl x11-libs/libX11 x11-libs/libXext
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=1f73f7b3970e2651833f9e1fcbe6b1c3
+diff --git a/metadata/md5-cache/net-misc/kea-9999 b/metadata/md5-cache/net-misc/kea-9999
+index 8b493e2..2e51031 100644
+--- a/metadata/md5-cache/net-misc/kea-9999
++++ b/metadata/md5-cache/net-misc/kea-9999
+@@ -8,5 +8,5 @@ LICENSE=ISC BSD SSLeay GPL-2
+ PROPERTIES=live
+ RDEPEND=dev-libs/boost:= dev-cpp/gtest dev-libs/log4cplus !openssl? ( dev-libs/botan:0= ) openssl? ( dev-libs/openssl:= ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:* ) acct-group/dhcp acct-user/dhcp
+ SLOT=0
+-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
++_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	8ec5b53812bce105ae7943930e4660f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+ _md5_=8236ea8fdef0dc398e87dc541b73a3a4
+diff --git a/metadata/md5-cache/net-misc/linuxptp-9999 b/metadata/md5-cache/net-misc/linuxptp-9999
+index 65c884e..cd792bd 100644
+--- a/metadata/md5-cache/net-misc/linuxptp-9999
++++ b/metadata/md5-cache/net-misc/linuxptp-9999
+@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
+ LICENSE=GPL-2
+ PROPERTIES=live
+ SLOT=0
+-_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
++_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+ _md5_=5e2a4e651ead6986cdd67dc27550f46c
+diff --git a/metadata/md5-cache/net-misc/ntpsec-9999 b/metadata/md5-cache/net-misc/ntpsec-9999
+index b3c9da7..fb975fa 100644
+--- a/metadata/md5-cache/net-misc/ntpsec-9999
++++ b/metadata/md5-cache/net-misc/ntpsec-9999
+@@ -9,5 +9,5 @@ PROPERTIES=live
+ RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_6? ( dev-lang/python:3.6[threads(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[threads(+)] ) python_targets_python3_8? ( dev-lang/python:3.8[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] sys-libs/libcap dev-python/psutil[python_targets_python2_7(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-libs/openssl:* seccomp? ( sys-libs/libseccomp ) !net-misc/ntp !net-misc/openntpd acct-group/ntp acct-user/ntp
+ REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
+ SLOT=0
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	4dfa39908a2b26ac08e45ca546f7c9b6	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	waf-utils	1fab5379519d4b71bff5790435a71986
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	79e26ce8f853c9daebe9a4956e37cc1b	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	waf-utils	cf9742c01975dc707eb982114a9d70fa
+ _md5_=df647be416c259e0d24577299af6a5dd
+diff --git a/metadata/md5-cache/sci-geosciences/gpsd-3.18.1 b/metadata/md5-cache/sci-geosciences/gpsd-3.18.1
+index 995f41f..9a9bbea 100644
+--- a/metadata/md5-cache/sci-geosciences/gpsd-3.18.1
++++ b/metadata/md5-cache/sci-geosciences/gpsd-3.18.1
+@@ -10,5 +10,5 @@ RDEPEND=>=net-misc/pps-tools-0.0.20120407 bluetooth? ( net-wireless/bluez ) dbus
+ REQUIRED_USE=X? ( python ) gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm ) gpsd_protocols_isync? ( gpsd_protocols_ublox ) gpsd_protocols_ublox? ( python ) gpsd_protocols_greis? ( python ) python? ( || ( python_targets_python2_7 python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 ) ) qt5? ( cxx )
+ SLOT=0/24
+ SRC_URI=mirror://nongnu/gpsd/gpsd-3.18.1.tar.gz
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	distutils-r1	741ee6361e3e62791ae1f32ec416afc4	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	4dfa39908a2b26ac08e45ca546f7c9b6	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	scons-utils	7fa3bb47972ff4c5fa8004463ec6f023	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	distutils-r1	0dda1d9008ac0b2530588115a772d99d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	79e26ce8f853c9daebe9a4956e37cc1b	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+ _md5_=4c0c33808d180174349257594fe01a5c
+diff --git a/metadata/md5-cache/sci-geosciences/gpsd-9999 b/metadata/md5-cache/sci-geosciences/gpsd-9999
+index c02a51c..df97fd2 100644
+--- a/metadata/md5-cache/sci-geosciences/gpsd-9999
++++ b/metadata/md5-cache/sci-geosciences/gpsd-9999
+@@ -9,5 +9,5 @@ PROPERTIES=live
+ RDEPEND=>=net-misc/pps-tools-0.0.20120407 bluetooth? ( net-wireless/bluez ) dbus? ( sys-apps/dbus dev-libs/dbus-glib ) ncurses? ( sys-libs/ncurses:= ) ntp? ( || ( net-misc/ntp net-misc/ntpsec net-misc/chrony ) ) qt5? ( dev-qt/qtcore:5 dev-qt/qtnetwork:5 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] ) usb? ( virtual/libusb:1 ) X? ( dev-python/pygobject:3[cairo,python_targets_python2_7(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] ) acct-user/gpsd
+ REQUIRED_USE=X? ( python ) gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm ) gpsd_protocols_isync? ( gpsd_protocols_ublox ) gpsd_protocols_ublox? ( python ) gpsd_protocols_greis? ( python ) python? ( || ( python_targets_python2_7 python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 ) ) qt5? ( cxx )
+ SLOT=0/24
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	distutils-r1	741ee6361e3e62791ae1f32ec416afc4	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	4dfa39908a2b26ac08e45ca546f7c9b6	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	scons-utils	7fa3bb47972ff4c5fa8004463ec6f023	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	distutils-r1	0dda1d9008ac0b2530588115a772d99d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	8ec5b53812bce105ae7943930e4660f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	79e26ce8f853c9daebe9a4956e37cc1b	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+ _md5_=4c0c33808d180174349257594fe01a5c
+diff --git a/metadata/md5-cache/sys-libs/timezone-data-2018g b/metadata/md5-cache/sys-libs/timezone-data-2018g
+index 8557da7..370fedf 100644
+--- a/metadata/md5-cache/sys-libs/timezone-data-2018g
++++ b/metadata/md5-cache/sys-libs/timezone-data-2018g
+@@ -9,5 +9,5 @@ LICENSE=BSD public-domain
+ RDEPEND=nls? ( virtual/libintl ) !sys-libs/glibc[vanilla(+)]
+ SLOT=0
+ SRC_URI=https://www.iana.org/time-zones/repository/releases/tzdata2018g.tar.gz https://www.iana.org/time-zones/repository/releases/tzcode2018g.tar.gz
+-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
++_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+ _md5_=f12edacd6adebd4de29152378f55d0e8
+diff --git a/metadata/timestamp.chk b/metadata/timestamp.chk
+index 7d5f702..710a75a 100644
+--- a/metadata/timestamp.chk
++++ b/metadata/timestamp.chk
+@@ -1 +1 @@
+-Thu, 12 Mar 2020 16:55:50 +0000
++Tue, 28 Jul 2020 15:43:06 +0000
+diff --git a/sci-geosciences/gpsd/ChangeLog b/sci-geosciences/gpsd/ChangeLog
+index cd2ac22..1270ca0 100644
+--- a/sci-geosciences/gpsd/ChangeLog
++++ b/sci-geosciences/gpsd/ChangeLog
+@@ -2,6 +2,9 @@
+ # Copyright 1999-2020 Gentoo Foundation; Distributed under the GPL v2
+ # (auto-generated from git log)
+ 
++  28 Jul 2020; James Browning <JamesB.fe80@gmail.com> files/gpsd-3.3-setup.py:
++  remove old packet module deps and lint
++
+   12 Mar 2020; James Browning <JamesB.fe80@gmail.com> files/gpsd-3.3-setup.py,
+   gpsd-3.18.1.ebuild:
+   Update 9999 probably breaking 3.17.1
+diff --git a/sci-geosciences/gpsd/Manifest b/sci-geosciences/gpsd/Manifest
+index a57cbb4..6d0685a 100644
+--- a/sci-geosciences/gpsd/Manifest
++++ b/sci-geosciences/gpsd/Manifest
+@@ -1,17 +1,17 @@
+ -----BEGIN PGP SIGNED MESSAGE-----
+ Hash: SHA256
+ 
+-AUX gpsd-3.3-setup.py 350 BLAKE2B b78bc3cfda767499e6448c54889381b0165003ee03780f09c4a556e633b7716be610380f489aa1764adf1355bcee9fd3789fdfebf87ea78cb17c4f6cd368793d SHA512 ff094963667f600991893884680fb31f20597e49362b32bd3e195ad5b92738ced4e9e85d4f6f288af8fc38dca92f3fdba13699c1dd1ea622da84b4000231941c
++AUX gpsd-3.3-setup.py 262 BLAKE2B 89e8fbbd6ef55189790a3b7b85fbe74859ff18ff0a36d9abd9fd396df41264395832f99abe730850c948603f603dcf9a38eec4653fe0fb7953d75bde96f51e68 SHA512 6d4ad8889ef4be2ed577573195477ae7d4cffc32fad38ef73b4a7ff4df8ccff471039adebde2ce1b7a72061180f80875b109fee91c9abbaa9b43e1ef34e4890a
+ AUX gpsd.conf-2 198 BLAKE2B c72808d1b43c8f1d97d97369d3f95fe2726a7972ea08915dcd35e82f543265cd457646405b00bd15e45b4a131c5f8d0efefb910be6013476ba7b052650298934 SHA512 75dbfe39eb900cc9587dd70794ee77ae2230765bbede47760ca227145aa3f2290b6995335ffcfeae6cd86f56b01ca87367548f4fbcf810aff1bc012b7416deef
+ AUX gpsd.init-2 825 BLAKE2B 340bd992093d81067cef4329e50e4daa6e663ae214e560080ee58f99fbde742272979ca8b843c47ad6f1c2038d5bcab5c7886a963881bcf09079fb1ec1730aae SHA512 51319247eb78c3021d3eb897cb5d6026cc09d46a532a245a835459ed525947ffb6239f08126dd7e344de52e3b0387226bce060191ec3f14f99fc9f255d96f8ea
+ DIST gpsd-3.18.1.tar.gz 9031595 BLAKE2B 170863740c7281ea111c3f4db2dfeb67f4366da7e9e8d2f7f3bbddacbc9d2083558379b1fe60c9293c31a6428288d205aba565694fedde6f1dfe67999a6782c6 SHA512 b381b177fcd29089a61aa11f5df2c67473720a6bbc5590ca1c4fda627331c407de01c62caceeddae780626b9a02392e9a770d52a143357e1babdcc2fbff0ed38
+ EBUILD gpsd-3.18.1.ebuild 4582 BLAKE2B 703685a2b6342e0618974a1a4f06a63fe7b62b5dde305c7f6c742a346ce6fc40c83ce66eab997b8ce51b6eb16ff5c5160650c0200bab6e5f0039e521016c124b SHA512 f2e695fa5418f98f64e1b1a1b2bf52c4751707ccb639f8ce2264f83dbd9843d32d7124220d0f933c1144b22915d16b947b0c63b3d3f81252ad42a062a2eed544
+ EBUILD gpsd-9999.ebuild 4582 BLAKE2B 703685a2b6342e0618974a1a4f06a63fe7b62b5dde305c7f6c742a346ce6fc40c83ce66eab997b8ce51b6eb16ff5c5160650c0200bab6e5f0039e521016c124b SHA512 f2e695fa5418f98f64e1b1a1b2bf52c4751707ccb639f8ce2264f83dbd9843d32d7124220d0f933c1144b22915d16b947b0c63b3d3f81252ad42a062a2eed544
+-MISC ChangeLog 2779 BLAKE2B a96e7864d9306368de62a1dc216b6af4904cc7463f30f15eba6135bf4ea4a5c4600f764e27270021f143ec415e80f10cc4eb54e69d87beb8c80669d3dd8aa8c4 SHA512 1a4f424a4445ae508a0a6586d7538eca2be8f61efbbb95ccea422cbf58bcbdba40efd85713daaeda623dfaf9e1f42c88f4124999866762e6ce6bbc3e260331c1
++MISC ChangeLog 2900 BLAKE2B 1e06ed3c81e8585dad506a8ca9a3f83959e75d32a82c743e942c96ea2bd45d3a1d59af1bfae873635a8f83bf67eac0d1af6898c392ee494b7fe20e0961733e46 SHA512 efb255ac4dcefbe06a6321a5d8d911e0a5e5589b17252a41899d5ff1e89cd0cfb73aef1b693dc6e540c5284222eb85b463f2385b1351e3efcd59b63d19b250b4
+ MISC metadata.xml 1001 BLAKE2B 0450de736fb163dbaf3c8d89afcf883e6236ecc829d6e54eb32decf610388627cb7ed62c6f5b2e97e2851e8392cb1a5c4a206b11569c48ff650555a49793bb67 SHA512 ad92280fed3cb99e2c8fbbe78973ed57ce93a845bf752e1060ae0a370719653b7e898cbb0fd1a2eb1ee49fdb23e9cddc5b47165a575a0d46164069756c8925e4
+ -----BEGIN PGP SIGNATURE-----
+ 
+-iF0EAREIAB0WIQSD2p5pAALzG2roqaT/MDGzt24PtAUCXmplsQAKCRD/MDGzt24P
+-tDeqAJ4zI6bhpyjDGLx96J3Xk9vAkdUT+ACfV7kFdl7puR5yHkLmh8Zehvutvyw=
+-=yosO
++iF0EAREIAB0WIQSD2p5pAALzG2roqaT/MDGzt24PtAUCXyBHiQAKCRD/MDGzt24P
++tK0gAJ9rLViWdFrnqXiNCHTIrngeLUqvgACfYTDRScXH/958rQtUe1TjeYyI4GA=
++=+V6i
+ -----END PGP SIGNATURE-----
+diff --git a/sci-geosciences/gpsd/files/gpsd-3.3-setup.py b/sci-geosciences/gpsd/files/gpsd-3.3-setup.py
+index b88f70b..7a8dee6 100644
+--- a/sci-geosciences/gpsd/files/gpsd-3.3-setup.py
++++ b/sci-geosciences/gpsd/files/gpsd-3.3-setup.py
+@@ -8,8 +8,5 @@ setup(
+ 	author = 'the GPSD project',
+ 	author_email = @EMAIL@,
+ 	license = "BSD",
+-	ext_modules=[
+-		Extension("gps.packet", @GPS_PACKET_SOURCES@, include_dirs=["."]),
+-	],
+ 	packages = ['gps'],
+ )
+-- 
+2.24.1
+
