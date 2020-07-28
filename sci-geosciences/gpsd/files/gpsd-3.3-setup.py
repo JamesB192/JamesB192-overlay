@@ -8,8 +8,5 @@ setup(
 	author = 'the GPSD project',
 	author_email = @EMAIL@,
 	license = "BSD",
-	ext_modules=[
-		Extension("gps.packet", @GPS_PACKET_SOURCES@, include_dirs=["."]),
-	],
 	packages = ['gps'],
 )
