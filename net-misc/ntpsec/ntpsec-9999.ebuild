@@ -1,89 +1,115 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
-PYTHON_REQ_USE='threads(+)'
-
-inherit flag-o-matic python-r1 waf-utils systemd
+PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_REQ_USE="threads(+)"
+DISTUTILS_USE_PEP517="no"
+inherit python-r1 flag-o-matic waf-utils systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
-	BDEPEND=""
-	KEYWORDS=""
 else
-	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
-	RESTRICT="mirror"
-	BDEPEND=""
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ntpsec.asc
+	inherit verify-sig
+	SRC_URI="
+		https://ftp.ntpsec.org/pub/releases/${P}.tar.gz
+		verify-sig? ( https://ftp.ntpsec.org/pub/releases/${P}.tar.gz.asc )
+	"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ntpsec )"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"
 HOMEPAGE="https://www.ntpsec.org/"
+
+LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
+SLOT="0"
 
 NTPSEC_REFCLOCK=(
 	oncore trimble truetime gpsd jjy generic spectracom
 	shm pps hpgps zyfer arbiter nmea modem local
 )
 
-IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/+rclock-}
+IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
-LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
-SLOT="0"
-IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb samba seccomp smear" #ionice
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat libbsd nist ntpviz samba seccomp smear" #ionice
+REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( rclock_local )"
 
 # net-misc/pps-tools oncore,pps
-CDEPEND="${PYTHON_DEPS}
-	${BDEPEND}
-	sys-libs/libcap
+DEPEND="
+	${PYTHON_DEPS}
+	dev-libs/openssl:=
 	dev-python/psutil[${PYTHON_USEDEP}]
-	dev-libs/openssl:*
+	sys-libs/libcap
+	libbsd? ( dev-libs/libbsd:0= )
 	seccomp? ( sys-libs/libseccomp )
+	rclock_oncore? ( net-misc/pps-tools )
+	rclock_pps? ( net-misc/pps-tools )
 "
-RDEPEND="${CDEPEND}
+RDEPEND="
+	${DEPEND}
 	!net-misc/ntp
 	!net-misc/openntpd
 	acct-group/ntp
 	acct-user/ntp
+	ntpviz? (
+		media-fonts/liberation-fonts
+		sci-visualization/gnuplot
+	)
 "
-DEPEND="${CDEPEND}
-	app-text/asciidoc
+BDEPEND+="
+	>=app-text/asciidoc-8.6.8
+	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
 	sys-devel/bison
-	rclock-oncore? ( net-misc/pps-tools )
-	rclock-pps? ( net-misc/pps-tools )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
+	"${FILESDIR}/${PN}-1.2.2-logrotate.patch"
+)
 
 WAF_BINARY="${S}/waf"
 
 src_prepare() {
 	default
+
 	# Remove autostripping of binaries
-	sed -i -e '/Strip binaries/d' wscript
-	python_copy_sources
+	sed -i -e '/Strip binaries/d' wscript || die
+	if ! use libbsd ; then
+		eapply "${FILESDIR}/${PN}-no-bsd.patch"
+	fi
+	# remove extra default pool servers
+	sed -i '/use-pool/s/^/#/' "${S}"/etc/ntp.d/default.conf || die
+
 }
 
 src_configure() {
-	is-flagq -flto* && filter-flags -flto* -fuse-linker-plugin
+	filter-lto
 
 	local string_127=""
+	local rclocks="";
 	local CLOCKSTRING=""
 
 	for refclock in ${NTPSEC_REFCLOCK[@]} ; do
-		if use rclock-${refclock} ; then
+		if use rclock_${refclock} ; then
 			string_127+="$refclock,"
 		fi
 	done
 	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
-	local epoch="`date +%s`"
 
-	local myconf=(
-		--build-epoch="${epoch}"
+	myconf=(
+		--notests
+		--nopyc
+		--nopyo
+		--enable-pylib ext
 		--refclock="${CLOCKSTRING}"
-		$(use doc	&& echo "--enable-doc")
+		#--build-epoch="$(date +%s)"
+		$(use doc	|| echo "--disable-doc")
 		$(use early	&& echo "--enable-early-droproot")
 		$(use gdb	&& echo "--enable-debug-gdb")
 		$(use samba	&& echo "--enable-mssntp")
@@ -91,44 +117,21 @@ src_configure() {
 		$(use smear	&& echo "--enable-leap-smear")
 		$(use debug	&& echo "--enable-debug")
 	)
-
-	python_configure() {
-		waf-utils_src_configure "${myconf[@]}"
-	}
-	python_foreach_impl run_in_build_dir python_configure
-}
-
-src_compile() {
-	unset MAKEOPTS
-	python_compile() {
-		waf-utils_src_compile
-	}
-	python_foreach_impl run_in_build_dir python_compile
+	python_setup
+	waf-utils_src_configure "${myconf[@]}"
 }
 
 src_install() {
-	python_install() {
-		waf-utils_src_install
-	}
-	python_foreach_impl run_in_build_dir python_install
-
+	waf-utils_src_install
 	# Install heat generating scripts
-	dosbin "${S}"/contrib/ntpheat{,usb}
+	use heat && dosbin "${S}"/contrib/ntpheat{,usb}
 
 	# Install the openrc files
-	newinitd "${FILESDIR}"/ntpd.rc-r2 ntp
+	newinitd "${FILESDIR}"/ntpd.rc-r3 ntp
 	newconfd "${FILESDIR}"/ntpd.confd ntp
 
 	# Install the systemd unit file
-	systemd_newunit "${FILESDIR}"/ntpd.service ntpd.service
-	for I in ntp-wait.service \
-		ntplogtemp.{service,timer} \
-		ntpviz-{dai,week}ly.{service,timer} ;do
-		systemd_newunit "${S}-python${USE_PYTHON}/build/main/etc/${I}" "$I";
-	done
-	for I in ntploggps.{service,timer} ;do
-		systemd_newunit "${S}-python${USE_PYTHON}/etc/${I}" "$I";
-	done
+	systemd_newunit "${FILESDIR}"/ntpd-r1.service ntpd.service
 
 	# Prepare a directory for the ntp.drift file
 	mkdir -pv "${ED}"/var/lib/ntp
@@ -136,12 +139,22 @@ src_install() {
 	chmod 770 "${ED}"/var/lib/ntp
 	keepdir /var/lib/ntp
 
-	# Install a log rotate script
-	insinto /etc/logrotate.d
-	doins "${S}"/etc/logrotate-config.ntpd
+	# Install a logrotate script
+	mkdir -pv "${ED}"/etc/logrotate.d
+	cp -v "${S}"/etc/logrotate-config.ntpd "${ED}"/etc/logrotate.d/ntpd
 
 	# Install the configuration file and sample configuration
-	insinto /etc
-	doins "${FILESDIR}"/ntp.conf
-	doins -r "${S}"/etc/ntp.d/
+	cp -v "${FILESDIR}"/ntp.conf "${ED}"/etc/ntp.conf
+	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
+
+	# move doc files to /usr/share/doc/"${P}"
+	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
+}
+
+pkg_postinst() {
+	einfo "If you want to serve time on your local network, then"
+	einfo "you should disable all the ref_clocks unless you have"
+	einfo "one and can get stable time from it.  Feel free to try"
+	einfo "it but PPS probably won't work unless you have a UART"
+	einfo "GPS that actually provides PPS messages."
 }

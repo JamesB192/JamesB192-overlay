@@ -1,220 +1,23 @@
 # ChangeLog for net-misc/ntpsec
-# Copyright 1999-2020 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2023 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
-  12 Mar 2020; James Browning <JamesB.fe80@gmail.com> metadata.xml,
-  -ntpsec-1.1.4.ebuild, -ntpsec-1.1.6.ebuild, -ntpsec-1.1.7.ebuild,
-  ntpsec-9999.ebuild:
-  only support live version with updted Pythons
+  10 Dec 2023; James Browning <jamesb.fe80@gmail.com>
+  -files/0001-wafScriptRevise.patch, -files/0002-log_rotation.patch,
+  -files/0003-pylibntpsec_only.patch, +files/ntpd-r1.service,
+  -files/ntpd.rc-r2, +files/ntpd.rc-r3, -files/ntpd.service,
+  -files/ntpsec-1.0.0-fix-seccomp.patch,
+  +files/ntpsec-1.1.9-remove-asciidoctor-from-config.patch,
+  +files/ntpsec-1.2.2-logrotate.patch, +files/ntpsec-no-bsd.patch,
+  metadata.xml, ntpsec-9999.ebuild:
+  Drop everything, then add 9999 back from gentoo
 
-  24 Sep 2019; James Browning <JamesB.fe80@gmail.com> ntpsec-1.1.7.ebuild,
-  ntpsec-9999.ebuild:
-  conform to glep-0081
+*ntpsec-9999 (28 Jul 2020)
 
-*ntpsec-1.1.7 (03 Sep 2019)
-
-  03 Sep 2019; James Browning <JamesB.fe80@gmail.com> +ntpsec-1.1.7.ebuild:
-  bump version to 1.1.7
-
-  30 Aug 2019; James Browning <JamesB.fe80@gmail.com> ntpsec-9999.ebuild:
-  Use properly processed systemd files instead of in files
-
-*ntpsec-1.1.6 (25 Aug 2019)
-*ntpsec-1.1.4 (25 Aug 2019)
-
-  25 Aug 2019; James Browning <JamesB.fe80@gmail.com> metadata.xml,
-  -ntpsec-1.1.2-r1.ebuild, +ntpsec-1.1.4.ebuild, +ntpsec-1.1.6.ebuild:
-  Bump to recent versions and drop some USE
-
-*ntpsec-9999 (07 Feb 2019)
-
-  07 Feb 2019; James Browning <JamesB.fe80@gmail.com> ntpsec-1.1.2-r1.ebuild,
-  +ntpsec-9999.ebuild:
-  9999, fix epoch and simplify
-
-*ntpsec-1.1.2-r1 (27 Sep 2018)
-
-  27 Sep 2018; James Browning <JamesB.fe80@gmail.com> metadata.xml,
-  -ntpsec-1.1.1-r1.ebuild, +ntpsec-1.1.2-r1.ebuild:
-  revise ebuild
-
-  27 Jul 2018; James Browning <JamesB.fe80@gmail.com>
-  files/0001-wafScriptRevise.patch, ntpsec-1.1.1-r1.ebuild:
-  fix wscript patch, patching for 2nd+ runs
-
-  27 Jul 2018; James Browning <JamesB.fe80@gmail.com>
-  -files/0002-pylibntpsec_only.patch, ntpsec-1.1.1-r1.ebuild:
-  delete obselete patch and replace cp calls w/ do* helper
-
-*ntpsec-1.1.1-r1 (26 Jul 2018)
-
-  26 Jul 2018; James Browning <JamesB.fe80@gmail.com>
+  28 Jul 2020; James Browning <JamesB.fe80@gmail.com>
   +files/0001-wafScriptRevise.patch, +files/0002-log_rotation.patch,
-  +files/0002-pylibntpsec_only.patch, +files/0003-pylibntpsec_only.patch,
-  +files/ntp.conf, +files/ntpd.confd, +files/ntpd.rc-r2, +files/ntpd.service,
-  +files/ntpsec-1.0.0-fix-seccomp.patch, +metadata.xml,
-  +ntpsec-1.1.1-r1.ebuild:
-  Try to rig up a faster working build for multi python installs.
-
-  09 Jul 2018; James Browning <JamesB.fe80@gmail.com> -common.ntpsec,
-  -files/ntpd.confd, -files/ntpd.rc-r1, -files/ntpd.service, -metadata.xml,
-  -ntpsec-1.0.0.ebuild, -ntpsec-1.0.1.9999.ebuild, -ntpsec-9999.ebuild:
-  */*: automatc lint and
-  app-emulation/snapd: remove line in files repoman pointed at
-  net-misc/ntpsec: dropped as now in upstream
-  sys-fs/diod: dropped as broken
-  sys-apps/modprobe-db: dropped due to missing dep
-
-*ntpsec-9999 (27 Jan 2018)
-*ntpsec-1.0.1.9999 (27 Jan 2018)
-
-  27 Jan 2018; James Browning <JamesB.fe80@gmail.com>
-  +ntpsec-1.0.1.9999.ebuild, +ntpsec-9999.ebuild, -ntpsec-9999-r2.ebuild:
-  strip r2 from 9999 rebump and add 1.0.1 ebuild from git
-
-  13 Jan 2018; James Browning <JamesB.fe80@gmail.com> ntpsec-9999-r2.ebuild:
-  unsuccessfully try to get ntpsec to build the module for more than 2.7
-
-  24 Dec 2017; James Browning <JamesB.fe80@gmail.com> metadata.xml,
-  -ntpsec-0.9.6.ebuild, -ntpsec-0.9.7.ebuild:
-  remove versions < 1.0
-
-  24 Dec 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999-r2.ebuild:
-  ntpsec/ntpsec-9999: fix HTML install path, remove NTPviz documentation
-  conditionally and lint
-
-  22 Dec 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999-r2.ebuild:
-  net-misc/ntpviz-99999-r2 change docdir and allow compiled python files
-
-*ntpsec-9999-r2 (19 Dec 2017)
-
-  19 Dec 2017; James Browning <JamesB.fe80@gmail.com> -ntpsec-9999-r1.ebuild,
-  +ntpsec-9999-r2.ebuild:
-  add warning and notices to bump ntpmisc-9999 to r2 also lint
-
-*ntpsec-9999-r1 (15 Dec 2017)
-
-  15 Dec 2017; James Browning <JamesB.fe80@gmail.com> -ntpsec-9999.ebuild,
-  +ntpsec-9999-r1.ebuild:
-  9999: bump to -r1 fixing several bug and increasing ntpviz use-flag
-  features...
-
-  ... miscellaneous lint
-
-*ntpsec-1.0.0 (14 Dec 2017)
-
-  14 Dec 2017; James Browning <JamesB.fe80@gmail.com> +ntpsec-1.0.0.ebuild:
-  1.0.0.ebuild: add finally after forgetting for so long.
-
-  14 Dec 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-0.9.7.ebuild:
-  0.9.7.ebuild: remove requirement for libsodium.
-
-  25 Apr 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999.ebuild:
-  remove libsodium dependancy and add systemd units to 9999
-
-*ntpsec-0.9.7 (24 Mar 2017)
-
-  24 Mar 2017; James Browning <JamesB.fe80@gmail.com> +ntpsec-0.9.7.ebuild,
-  ntpsec-9999.ebuild:
-  0.9.7 bump and include contrib/ better
-
-  09 Mar 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-0.9.6.ebuild,
-  ntpsec-9999.ebuild:
-  global: change ebuild headers and lint
-
-  09 Mar 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999.ebuild:
-  drop 0.9.6 from 9999 and trade out obselete contrib/ for makeheat
-
-  23 Feb 2017; James Browning <JamesB.fe80@gmail.com> -Manifest.old,
-  -ebuild.0.9.0, -ebuild.0.9.1, -ebuild.0.9.2, -ebuild.0.9.3, -ebuild.0.9.4,
-  -ebuild.0.9.5:
-  clean up old cruft
-
-  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999.ebuild:
-  Remove no longer upstrem config files from install list ...
-
-  ... and add ChangeLog
-
-  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-0.9.6.ebuild:
-  Another omniblob commit
-
-  change header on all ebuilds
-  regenerate md5 metadata cache
-  media-sound/helm: pull 9999 into the fold
-  media-sound/helm: add missing inherit multilib to placate RepoMan
-
-  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-0.9.6.ebuild:
-  remove some git version related cruft
-
-  Package-Manager: Portage-2.3.3, Repoman-2.3.1
-
-  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> metadata.xml:
-  Update multiple metadatat.xml file to include text from upstream.
-
-  Package-Manager: Portage-2.3.3, Repoman-2.3.1
-
-  22 Feb 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-0.9.6.ebuild,
-  ntpsec-9999.ebuild:
-  change LICENSE to properly be CC-BY-SA-4.0 to match the ...
-
-  ... upstream documentation I did not read. Doh.
-
-  Package-Manager: Portage-2.3.3, Repoman-2.3.1
-
-  21 Feb 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999.ebuild:
-  commit head linting for RepoMan
-
-  20 Feb 2017; James Browning <jamesb.fe80@gmail.com> ntpsec-0.9.6.ebuild,
-  ntpsec-9999.ebuild:
-  Change NTP license to HPND which it is essentially.
-
-  20 Feb 2017; James Browning <jamesb.fe80@gmail.com> ntpsec-0.9.6.ebuild,
-  ntpsec-9999.ebuild:
-  change the LICENSE line probably wrongly.
-
-  20 Feb 2017; James Browning <jamesb.fe80@gmail.com> ntpsec-0.9.6.ebuild,
-  ntpsec-9999.ebuild:
-  Change Licensing and whitespace
-
-  20 Feb 2017; James Browning <jamesb.fe80@gmail.com> metadata.xml,
-  ntpsec-0.9.6.ebuild, ntpsec-9999.ebuild:
-  net-misc/ntp refclock cleanup
-
-  20 Feb 2017; James Browning <jamesb.fe80@gmail.com> metadata.xml:
-  metadata.xml cleanu up early and earlydrop warnings from typo
-
-  20 Feb 2017; James Browning <jamesb.fe80@gmail.com> +Manifest.old:
-  Manifest clean up Manifest
-
-  20 Feb 2017; James Browning <jamesb.fe80@gmail.com> metadata.xml:
-  metadata.xml reorder and fix useflags for refclocks
-
-  20 Feb 2017; James Browning <jamesb.fe80@gmail.com> ntpsec-0.9.6.ebuild,
-  ntpsec-9999.ebuild:
-  fix minor spacing issues in ebuilds
-
-  20 Feb 2017; James Browning <jamesb.fe80@gmail.com> metadata.xml:
-  metadata.xml fix closing tag.
-
-  20 Feb 2017; James Browning <jamesb.fe80@gmail.com> metadata.xml:
-  metadata.xml fill in all the use flags.
-
-  20 Feb 2017; James Browning <JamesB.fe80@gmail.com> +metadata.xml,
-  ntpsec-0.9.6.ebuild, ntpsec-9999.ebuild:
-  linting
-
-  15 Feb 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999.ebuild:
-  require openssl. add temp-log
-
-  24 Jan 2017; James Browning <JamesB.fe80@gmail.com> ntpsec-9999.ebuild:
-  remove ssl useflag from net-mic/ntpsec-9999
-
-*ntpsec-9999 (22 Jan 2017)
-*ntpsec-0.9.6 (22 Jan 2017)
-
-  22 Jan 2017; James Browning <JamesB.fe80@gmail.com> +common.ntpsec,
-  +ebuild.0.9.0, +ebuild.0.9.1, +ebuild.0.9.2, +ebuild.0.9.3, +ebuild.0.9.4,
-  +ebuild.0.9.5, +files/ntpd.confd, +files/ntpd.rc-r1, +files/ntpd.service,
-  +ntpsec-0.9.6.ebuild, +ntpsec-9999.ebuild:
-  refactor into an unenclosed overlay rather than a bare directory
+  +files/0003-pylibntpsec_only.patch, +files/ntp.conf, +files/ntpd.confd,
+  +files/ntpd.rc-r2, +files/ntpd.service,
+  +files/ntpsec-1.0.0-fix-seccomp.patch, +metadata.xml, +ntpsec-9999.ebuild:
+  *: Linting
 
