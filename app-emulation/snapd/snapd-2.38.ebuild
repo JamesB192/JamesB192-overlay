@@ -1,1 +1,0 @@
-snapd-2.40.ebuild
