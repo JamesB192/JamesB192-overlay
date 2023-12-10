@@ -1,8 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils git-r3 multilib
+EAPI=8
+inherit git-r3 desktop # multilib # eutils
 
 DESCRIPTION="Open source polyphonic software synthesizer with lots of modulation"
 HOMEPAGE="http://tytel.org/helm/"
@@ -24,7 +24,7 @@ esac
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="media-libs/alsa-lib
@@ -42,7 +42,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake PREFIX="${D}/usr"
+	emake PREFIX="/usr"
 }
 
 src_install() {
