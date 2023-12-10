@@ -7,6 +7,7 @@ DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{9..11} )
 SCONS_MIN_VERSION="2.3.0"
 
+DISTUTILS_USE_PEP517="setuptools"
 inherit distutils-r1 scons-utils systemd toolchain-funcs udev
 
 if [[ ${PV} == 9999 ]] ; then
@@ -67,6 +68,7 @@ RDEPEND="
 	X? ( dev-python/pygobject:3[cairo,${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
+	${DISTUTILS_DEPS}
 	$(python_gen_any_dep 'dev-util/scons[${PYTHON_USEDEP}]')
 	test? ( sys-devel/bc )"
 RDEPEND+=" selinux? ( sec-policy/selinux-gpsd )"
@@ -77,13 +79,14 @@ if [[ ${PV} == *9999* ]] ; then
 fi
 
 python_check_deps() {
-	has_version -b "dev-util/scons[${PYTHON_USEDEP}]" || return 1
+	python_has_version -b "dev-util/scons[${PYTHON_USEDEP}]" || return 1
 }
 
 src_prepare() {
 	# Make sure our list matches the source.
 	local src_protocols=$(echo $(
-		sed -n '/# GPS protocols/,/# Time service/{s:#.*::;s:[(",]::g;p}' "${S}"/SConscript | awk '{print $1}' | LC_ALL=C sort
+		sed -n '/# GPS protocols/,/# Time service/{s:#.*::;s:[(",]::g;p}' "${S}"/SConscript \
+			| awk '{print $1}' | LC_ALL=C sort
 	) )
 
 	if [[ ${src_protocols} != ${GPSD_PROTOCOLS[*]} ]] ; then
@@ -136,6 +139,7 @@ python_prepare_all() {
 		-e "s|@PROJECTPAGE@|$(pyvar projectpage)|" \
 		-e "s|@SUPPORT@|https://gpsd.io/SUPPORT.html|" \
 		-e "s|@WEBSITE@|https://gpsd.io/|" \
+		-e "s|~dev|.dev|" \
 		"${S}"/packaging/gpsd-setup.py.in > setup.py || die
 	distutils-r1_python_prepare_all
 }
