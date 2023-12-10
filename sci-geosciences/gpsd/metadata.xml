@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>sci-geosciences@gentoo.org</email>
@@ -14,12 +14,14 @@
     <subslots>Reflect major ABI of libgps.so.</subslots>
   </slots>
   <use>
-    <flag name="gpsd_protocols_greis">Zerk.</flag>
     <flag name="dbus">export gpsd data over dbus connections</flag>
-    <flag name="latency_timing">support latency timing information</flag>
+    <flag name="latency-timing">support latency timing information</flag>
     <flag name="ntp">Enable <pkg>net-misc/ntp</pkg> shared memory interface
     and PPS kernel support for GPS time</flag>
     <flag name="sockets">export gpsd over unix sockets</flag>
     <flag name="shm">export gpsd over shared memory</flag>
   </use>
+  <upstream>
+    <remote-id type="gitlab">gpsd/gpsd</remote-id>
+  </upstream>
 </pkgmetadata>
