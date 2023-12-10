@@ -1,1 +1,0 @@
-pytogo-1.1.ebuild
